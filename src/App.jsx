@@ -25,7 +25,6 @@ function App() {
 
   return (
     <>
-      <div>Test</div>
       <AuthContext.Provider value={{ isAuth, setIsAuth }}>
         <RouterProvider router={router}></RouterProvider>
       </AuthContext.Provider>
