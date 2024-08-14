@@ -1,0 +1,85 @@
+.pageContainer {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgb(51, 51, 51);
+}
+.loginLogoHeader {
+  padding: 10px;
+  background-color: rgb(202, 202, 202);
+  border-radius: 5px 5px 0px 0px;
+}
+
+.logoImg {
+  position: relative;
+  left: 50%;
+  transform: translate(-50%);
+}
+
+.loginContent {
+  width: fit-content;
+  border-radius: 12px;
+  padding: 12px;
+}
+
+.emailInputBox,
+.passwordInputBox {
+  border-radius: 5px;
+  border: none;
+  width: 100%;
+  box-sizing: border-box;
+  padding: 6px;
+}
+
+.loginForm {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.loginMain {
+  background-color: rgba(245, 245, 220, 0.562);
+  padding: 10px;
+}
+
+.welcomeHeading {
+  text-align: center;
+  margin-top: 0;
+  font-size: 1.05rem;
+}
+
+.createNew {
+  background-color: rgba(245, 245, 220, 0.562);
+  border-radius: 0px 0px 5px 5px;
+  padding: 10px;
+  text-align: center;
+}
+
+.submitButton {
+  width: 100%;
+  height: 1.7rem;
+  border-radius: 5px 5px 5px 5px;
+  border: 0;
+  font-weight: bold;
+  background-color: rgb(17, 127, 252);
+  color: white;
+  transition-duration: 1s;
+  transition: 1s ease-in-out;
+}
+
+.submitButton:hover {
+  cursor: pointer;
+  background-color: white;
+  color: rgb(17, 127, 252);
+}
+
+hr {
+  width: 98%;
+}
+
+.labelEmail,
+.labelPassword {
+  font-size: 0.9rem;
+}
