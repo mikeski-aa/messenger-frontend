@@ -1,0 +1,45 @@
+.backgroundElement {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+  background: linear-gradient(
+      0deg,
+      rgba(73, 73, 73, 0.3),
+      rgba(82, 82, 82, 0.3)
+    ),
+    url("../assets/testBck.png");
+  background-size: cover;
+  filter: blur(3px);
+  z-index: -5;
+}
+
+.errorContainer {
+  display: flex;
+  width: 100vw;
+  height: 100vh;
+  justify-content: center;
+  align-items: center;
+  color: white;
+}
+
+.errorHeading {
+  background-color: rgb(37, 37, 37);
+  padding: 8px;
+  border-radius: 5px 5px 0px 0px;
+}
+.errorHeading > h1 {
+  margin: 0;
+}
+
+.errorBody {
+  background-color: rgb(71, 71, 71, 0.664);
+  padding: 8px;
+  border-radius: 0px 0px 5px 5px;
+  font-weight: bold;
+}
+
+.backHome {
+  color: rgb(17, 127, 252);
+}

@@ -20,7 +20,7 @@ function Login() {
 
   return (
     <>
-      <div className="testbackground"></div>
+      <div className="backgroundElement"></div>
       <div className="pageContainer">
         <div className="loginContent">
           <div className="loginLogoHeader">

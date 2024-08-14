@@ -6,6 +6,7 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Login from "./pages/Login";
 import Home from "./pages/Home";
 import Register from "./pages/Register";
+import ErrorElement from "./pages/ErrorPage";
 
 export const AuthContext = createContext();
 
@@ -13,6 +14,7 @@ const router = createBrowserRouter([
   {
     path: "/",
     element: <Home />,
+    errorElement: <ErrorElement />,
   },
   {
     path: "/login",
