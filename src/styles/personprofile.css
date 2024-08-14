@@ -19,5 +19,9 @@
 }
 
 .personName:hover {
-  cursor: default;
+  cursor: pointer;
+}
+
+.personProfileContainer.hide {
+  /* visibility: hidden; */
 }

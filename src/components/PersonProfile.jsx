@@ -1,10 +1,10 @@
 import person from "../assets/person.svg";
 import "../styles/personprofile.css";
 
-function PersonProfile() {
+function PersonProfile(props) {
   return (
     <>
-      <div className="personProfileContainer">
+      <div className={"personProfileContainer " + props.visible}>
         <div className="personProfilePic">
           <img className="profilePicImg" src={person} />
         </div>

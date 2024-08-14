@@ -5,7 +5,7 @@
   text-align: left;
   box-sizing: border-box;
   overflow: hidden;
-  transition-duration: 2s;
+  transition-duration: 0s;
 }
 
 .navButton:hover {
@@ -17,5 +17,5 @@
 }
 
 .navButton.hide {
-  transform: translateX(-150%);
+  /* visibility: hidden; */
 }

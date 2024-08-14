@@ -8,10 +8,26 @@
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
+  max-width: 100%;
+  transition: 1s;
+}
+
+.navBar.hide {
+  /* max-width: fit-content; */
+}
+
+.navOpts {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
   transition-duration: 1s;
-  background-color: white;
   height: fit-content;
   margin-right: 10px;
+  background-color: white;
+}
+
+.navOpts.hide {
+  /* transform: translateX(200%); */
 }
 
 .navBar.show {
@@ -20,14 +36,12 @@
 
 .navBar.hide {
   max-width: 0px;
-  /* transform: translateX(-100%); */
 }
 
 .toggleShow {
   padding: 0;
   margin: 0;
   border: 0;
-  background-color: white;
 }
 
 .rightArrowImg {
@@ -40,4 +54,15 @@
 
 .rightArrowImg.hide {
   transform: rotate(0deg);
+}
+
+.showBtnContainer {
+  width: 100%;
+  display: flex;
+  justify-content: left;
+  transition: 1s;
+}
+
+.showBtnContainer.show {
+  transform: translateX(40%);
 }

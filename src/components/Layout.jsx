@@ -19,33 +19,37 @@ function Layout({ children }) {
     <>
       <div className="layoutContainer">
         <div className={"navBar " + navVis}>
-          <PersonProfile />
-          <NavButton
-            buttonName="friendsBtn"
-            buttonText="Friends"
-            hideStatus={navVis}
-          ></NavButton>
-          <NavButton
-            buttonName="messagesBtn"
-            buttonText="Messages"
-            hideStatus={navVis}
-          ></NavButton>
-          <NavButton
-            buttonName="Groups"
-            buttonText="Groups"
-            hideStatus={navVis}
-          ></NavButton>
-          <button
-            className="toggleShow"
-            onClick={handleShowClick}
-            hideStatus={navVis}
-          >
-            <img
-              src={rightArrow}
-              width={"25px"}
-              className={"rightArrowImg " + navVis}
-            ></img>
-          </button>
+          <div className={"showBtnContainer " + navVis}>
+            <button
+              className="toggleShow"
+              onClick={handleShowClick}
+              hideStatus={navVis}
+            >
+              <img
+                src={rightArrow}
+                width={"25px"}
+                className={"rightArrowImg " + navVis}
+              ></img>
+            </button>
+          </div>
+          <div className={"navOpts " + navVis}>
+            <PersonProfile visible={navVis} />
+            <NavButton
+              buttonName="friendsBtn"
+              buttonText="Friends"
+              hideStatus={navVis}
+            ></NavButton>
+            <NavButton
+              buttonName="messagesBtn"
+              buttonText="Messages"
+              hideStatus={navVis}
+            ></NavButton>
+            <NavButton
+              buttonName="Groups"
+              buttonText="Groups"
+              hideStatus={navVis}
+            ></NavButton>
+          </div>
         </div>
         {children}
       </div>
