@@ -3,6 +3,8 @@
   padding: 8px;
   width: 100%;
   text-align: left;
+  box-sizing: border-box;
+  overflow: hidden;
 }
 
 .navButton:hover {

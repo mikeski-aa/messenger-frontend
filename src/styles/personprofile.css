@@ -16,11 +16,8 @@
 
 .personName {
   overflow: hidden;
-  transition-duration: 1s;
 }
 
 .personName:hover {
-  overflow: visible;
   cursor: default;
-  transform: translateX(5px);
 }
