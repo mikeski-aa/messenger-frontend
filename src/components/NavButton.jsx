@@ -3,8 +3,10 @@ import "../styles/navbutton.css";
 function NavButton(props) {
   return (
     <>
-      <div className="buttonContainer">
-        <button className={"navButton " + props.buttonName}>
+      <div className={"buttonContainer "}>
+        <button
+          className={"navButton " + props.hideStatus + " " + props.buttonName}
+        >
           {props.buttonText}
         </button>
       </div>

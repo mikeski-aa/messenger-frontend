@@ -11,6 +11,7 @@
   transition-duration: 1s;
   background-color: white;
   height: fit-content;
+  margin-right: 10px;
 }
 
 .navBar.show {
@@ -19,6 +20,7 @@
 
 .navBar.hide {
   max-width: 0px;
+  /* transform: translateX(-100%); */
 }
 
 .toggleShow {

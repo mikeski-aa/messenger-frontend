@@ -5,8 +5,17 @@
   text-align: left;
   box-sizing: border-box;
   overflow: hidden;
+  transition-duration: 2s;
 }
 
 .navButton:hover {
   cursor: pointer;
+}
+
+.buttonContainer {
+  transition: 3s;
+}
+
+.navButton.hide {
+  transform: translateX(-150%);
 }
