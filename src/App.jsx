@@ -1,6 +1,4 @@
 import { createContext, useState } from "react";
-import reactLogo from "./assets/react.svg";
-import viteLogo from "/vite.svg";
 import "./App.css";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Login from "./pages/Login";
@@ -28,7 +26,7 @@ const router = createBrowserRouter([
 
 function App() {
   const [count, setCount] = useState(0);
-  const [isAuth, setIsAuth] = useState(false);
+  const [isAuth, setIsAuth] = useState(true);
 
   return (
     <>

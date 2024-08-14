@@ -1,5 +1,6 @@
 import { AuthContext } from "../App";
 import { useContext } from "react";
+import Layout from "../components/Layout";
 
 function Home() {
   const authContext = useContext(AuthContext);
@@ -9,9 +10,11 @@ function Home() {
 
   return (
     <>
-      <div className="homePage">
-        <h3>Homepage</h3>
-      </div>
+      <Layout>
+        <div className="homePage">
+          <h3>Homepage</h3>
+        </div>
+      </Layout>
     </>
   );
 }
