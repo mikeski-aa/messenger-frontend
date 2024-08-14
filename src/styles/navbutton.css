@@ -1,0 +1,10 @@
+.navButton {
+  border: 0;
+  padding: 8px;
+  width: 100%;
+  text-align: left;
+}
+
+.navButton:hover {
+  cursor: pointer;
+}

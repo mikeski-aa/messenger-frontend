@@ -3,3 +3,10 @@
   height: 100vh;
   display: flex;
 }
+
+.navBar {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  width: 10vw;
+}

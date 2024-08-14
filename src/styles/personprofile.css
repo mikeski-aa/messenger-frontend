@@ -1,0 +1,26 @@
+.personProfileContainer {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.profilePicImg {
+  background-color: white;
+  border-radius: 25px;
+  width: 25px;
+}
+
+.personProfilePic {
+  display: flex;
+}
+
+.personName {
+  overflow: hidden;
+  transition-duration: 1s;
+}
+
+.personName:hover {
+  overflow: visible;
+  cursor: default;
+  transform: translateX(5px);
+}
