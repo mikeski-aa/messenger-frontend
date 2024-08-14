@@ -21,7 +21,7 @@ function Layout({ children }) {
         <div className={"navBar " + navVis}>
           <div className={"showBtnContainer " + navVis}>
             <button
-              className="toggleShow"
+              className={"toggleShow " + navVis}
               onClick={handleShowClick}
               hideStatus={navVis}
             >
@@ -51,7 +51,7 @@ function Layout({ children }) {
             ></NavButton>
           </div>
         </div>
-        {children}
+        <div className="mainCont">{children}</div>
       </div>
     </>
   );

@@ -11,11 +11,3 @@
 .navButton:hover {
   cursor: pointer;
 }
-
-.buttonContainer {
-  transition: 3s;
-}
-
-.navButton.hide {
-  /* visibility: hidden; */
-}
