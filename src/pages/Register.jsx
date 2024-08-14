@@ -1,10 +1,9 @@
 import { useContext } from "react";
 import { AuthContext } from "../App";
 import dmLogo from "../assets/DM_ME_LOGO.png";
-import background from "../assets/testBck.png";
 import "../styles/forms.css";
 
-function Login() {
+function Register() {
   const authContext = useContext(AuthContext);
 
   if (authContext.isAuth === false) {
@@ -28,10 +27,24 @@ function Login() {
           </div>
           <div className="loginMain">
             <div className="welcomeHeadingDiv">
-              <h1 className="welcomeHeading">Welcome back</h1>
+              <h1 className="welcomeHeading">Register account</h1>
             </div>
-            <form className="loginForm" onSubmit={(e) => handleSubmit(e)}>
-              <div className="emailLogin">
+            <form className="registerForm" onSubmit={(e) => handleSubmit(e)}>
+              <div className="usernameRegister">
+                <label htmlFor="username" className="labelUsername">
+                  USERNAME
+                </label>
+                <div className="usernameInputDiv">
+                  <input
+                    type="text"
+                    name="username"
+                    className="usernameInputBox"
+                    minLength={3}
+                    required
+                  />
+                </div>
+              </div>
+              <div className="emailRegister">
                 <label htmlFor="email" className="labelEmail">
                   EMAIL
                 </label>
@@ -45,7 +58,7 @@ function Login() {
                   />
                 </div>
               </div>
-              <div className="passwordLogin">
+              <div className="passwordRegister">
                 <label htmlFor="password" className="labelPassword">
                   PASSWORD
                 </label>
@@ -54,6 +67,21 @@ function Login() {
                     type="password"
                     name="password"
                     className="passwordInputBox"
+                    minLength={2}
+                    required
+                  />
+                </div>
+              </div>
+              <div className="passwordRegisterConfirm">
+                <label htmlFor="password" className="labelPassword">
+                  CONFIRM PASSWORD
+                </label>
+                <div className="passwordInputDiv">
+                  <input
+                    type="password"
+                    name="password"
+                    className="passwordInputBox"
+                    minLength={2}
                     required
                   />
                 </div>
@@ -61,15 +89,15 @@ function Login() {
               <hr></hr>
               <div className="buttonContainer">
                 <button className="submitButton" type="submit">
-                  Login
+                  Register
                 </button>
               </div>
             </form>
           </div>
           <div className="createNew">
-            Don't have an account?{" "}
-            <a href="/register" className="formLink">
-              Register!
+            Already have an account?{" "}
+            <a href="/login" className="formLink">
+              Login!
             </a>
           </div>
         </div>
@@ -78,4 +106,4 @@ function Login() {
   );
 }
 
-export default Login;
+export default Register;
