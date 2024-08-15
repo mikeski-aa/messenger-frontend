@@ -27,7 +27,7 @@ describe("testing login page render", () => {
 // TO DO: add user interaction with fields check
 
 describe("test user typing", () => {
-  it("test user typing password and email", async () => {
+  it("test user typing email", async () => {
     render(
       <AuthContext.Provider value={{ test: true }}>
         <Login />
@@ -41,7 +41,7 @@ describe("test user typing", () => {
     expect(emailInput).toHaveValue("testTyping");
   });
 
-  it("test user typing password and email", async () => {
+  it("test user typing password", async () => {
     render(
       <AuthContext.Provider value={{ test: true }}>
         <Login />
@@ -52,5 +52,13 @@ describe("test user typing", () => {
 
     await userEvent.type(screen.getByTestId("add-password"), "testPassword");
     expect(passwordInput).toHaveValue("testPassword");
+  });
+
+  it("test user typing wrong email", async () => {
+    render(
+      <AuthContext.Provider value={{ test }}>
+        <Login />
+      </AuthContext.Provider>
+    );
   });
 });
