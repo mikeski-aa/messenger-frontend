@@ -56,20 +56,25 @@ function Login() {
                     type="password"
                     name="password"
                     className="passwordInputBox"
+                    aria-label="Password"
                     required
                   />
                 </div>
               </div>
               <hr></hr>
               <div className="buttonContainer">
-                <button className="submitButton" type="submit">
+                <button
+                  className="submitButton"
+                  type="submit"
+                  aria-label="Login"
+                >
                   Login
                 </button>
               </div>
             </form>
           </div>
           <div className="createNew">
-            Don't have an account?{" "}
+            Don't have an account?
             <a href="/register" className="formLink">
               Register!
             </a>

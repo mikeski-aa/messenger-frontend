@@ -10,7 +10,15 @@ describe("testing login page render", () => {
         <Login />
       </AuthContext.Provider>
     );
+
+    const emailInput = screen.getByPlaceholderText("hello@dm_me.com");
+    const loginButton = screen.getByRole("button", { name: "Login" });
+    const passwordInput = screen.getByLabelText("Password");
+
     expect(screen.getByRole("heading").textContent).toMatch("Welcome back");
     expect(screen.getByRole("button").textContent).toMatch("Login");
+    expect(emailInput).toBeInTheDocument();
+    expect(loginButton).toBeInTheDocument();
+    expect(passwordInput).toBeInTheDocument();
   });
 });
