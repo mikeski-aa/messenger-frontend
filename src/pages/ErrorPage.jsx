@@ -1,6 +1,6 @@
 import "../styles/errorElement.css";
 
-function ErrorElement() {
+function ErrorPage() {
   return (
     <>
       <div className="backgroundElement"></div>
@@ -21,4 +21,4 @@ function ErrorElement() {
   );
 }
 
-export default ErrorElement;
+export default ErrorPage;

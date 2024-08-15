@@ -1,0 +1,25 @@
+.tempDiv {
+  background-color: white;
+  transition-duration: 1s;
+  max-height: 100;
+}
+.tempDiv:hover {
+  cursor: pointer;
+}
+.tempDiv.hide {
+  max-height: 25px;
+}
+
+.tempDiv.show {
+  max-height: 100%;
+}
+
+.msgTest.show {
+  visibility: visible;
+  opacity: 1;
+}
+
+.msgTest.hide {
+  visibility: hidden;
+  opacity: 0;
+}

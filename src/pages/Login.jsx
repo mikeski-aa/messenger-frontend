@@ -9,6 +9,8 @@ function Login() {
 
   if (authContext.isAuth === false) {
     console.log("Context false");
+  } else {
+    console.log("Context true");
   }
 
   // need to add some more styling to this page, in particular background - transparent, with overlay.
