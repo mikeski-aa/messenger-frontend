@@ -11,5 +11,6 @@ describe("testing login page render", () => {
       </AuthContext.Provider>
     );
     expect(screen.getByRole("heading").textContent).toMatch("Welcome back");
+    expect(screen.getByRole("button").textContent).toMatch("Login");
   });
 });

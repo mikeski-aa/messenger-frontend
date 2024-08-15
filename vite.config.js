@@ -9,4 +9,7 @@ export default defineConfig({
     environment: "jsdom",
     setupFiles: "./tests/setup.js",
   },
+  optimizeDeps: {
+    exclude: ["uuid"],
+  },
 });
