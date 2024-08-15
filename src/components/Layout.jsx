@@ -23,7 +23,6 @@ function Layout({ children }) {
             <button
               className={"toggleShow " + navVis}
               onClick={handleShowClick}
-              hideStatus={navVis}
             >
               <img
                 src={rightArrow}
@@ -33,7 +32,7 @@ function Layout({ children }) {
             </button>
           </div>
           <div className={"navOpts " + navVis}>
-            <PersonProfile visible={navVis} />
+            <PersonProfile visible={navVis} username="ExampleNameLong" />
             <NavButton
               buttonName="friendsBtn"
               buttonText="Friends"

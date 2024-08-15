@@ -8,7 +8,7 @@ function PersonProfile(props) {
         <div className="personProfilePic">
           <img className="profilePicImg" src={person} />
         </div>
-        <div className="personName">ExampleNameLong</div>
+        <div className="personName">{props.username}</div>
       </div>
     </>
   );

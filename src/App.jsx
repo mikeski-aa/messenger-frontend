@@ -6,6 +6,7 @@ import Home from "./pages/Home";
 import Register from "./pages/Register";
 import ErrorElement from "./pages/ErrorPage";
 import Friends from "./pages/Friends";
+import UserProfile from "./pages/UserProfile";
 
 export const AuthContext = createContext();
 
@@ -23,7 +24,14 @@ const router = createBrowserRouter([
     path: "/register",
     element: <Register />,
   },
-  { path: "/friends", element: <Friends /> },
+  {
+    path: "/friends",
+    element: <Friends />,
+  },
+  {
+    path: "/profile",
+    element: <UserProfile username="ExampleNameLong" />,
+  },
 ]);
 
 function App() {
