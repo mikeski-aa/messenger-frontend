@@ -1,0 +1,79 @@
+.personImg,
+.moreBtnImage,
+.friendBtn {
+  width: 25px;
+  border-radius: 25px;
+}
+
+.friendProfileContainer {
+  display: flex;
+  justify-content: space-between;
+  background-color: rgba(211, 211, 211, 0.63);
+  border-radius: 5px;
+  padding: 4px;
+}
+
+.friendBtn {
+  display: flex;
+  align-items: center;
+}
+
+.friendMain {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.personImg.online {
+  outline: 3px solid limegreen;
+}
+
+.personImg.offline {
+  outline: 3px solid grey;
+}
+
+.personImg.busy {
+  outline: 3px solid red;
+}
+
+.personImg.away {
+  outline: 3px solid yellow;
+}
+
+.moreOptBtn {
+  border-radius: 25px;
+  background-color: rgba(255, 255, 255, 0);
+  display: flex;
+  justify-content: center;
+  border: 0;
+  width: 25px;
+  height: 25px;
+}
+
+.moreOptBtn:focus {
+  outline: 2px solid rgb(37, 37, 37);
+}
+
+.moreOptBtn:hover {
+  cursor: pointer;
+}
+
+.menu {
+  right: 40px;
+  position: absolute;
+  border-radius: 5px;
+  background-color: white;
+  outline: 2px solid black;
+  transition: 1s;
+}
+
+.menu.open {
+  opacity: 1;
+  visibility: visible;
+}
+
+.menu.closed {
+  opacity: 0;
+  visibility: hidden;
+  transform: translateX(100%);
+}

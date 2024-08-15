@@ -37,10 +37,34 @@ const router = createBrowserRouter([
 function App() {
   const [count, setCount] = useState(0);
   const [isAuth, setIsAuth] = useState(true);
+  // dummy friendlist state
+  const friends = [
+    {
+      username: "LongFriendNameX",
+      profilePic: "default",
+      status: "online",
+    },
+    {
+      username: "xXxFriendxXx",
+      profilePic: "default",
+      status: "busy",
+    },
+    {
+      username: "DS",
+      profilePic: "default",
+      status: "offline",
+    },
+    {
+      username: "Jupp",
+      profilePic: "default",
+      status: "away",
+    },
+  ];
+  const [tempFriends, setTempFriends] = useState(friends);
 
   return (
     <>
-      <AuthContext.Provider value={{ isAuth, setIsAuth }}>
+      <AuthContext.Provider value={{ isAuth, setIsAuth, tempFriends }}>
         <RouterProvider router={router}></RouterProvider>
       </AuthContext.Provider>
     </>

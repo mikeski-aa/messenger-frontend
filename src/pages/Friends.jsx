@@ -1,7 +1,12 @@
 import Layout from "../components/Layout";
 import "../styles/friends.css";
+import { AuthContext } from "../App";
+import { useContext } from "react";
+import FriendProfile from "../components/FriendProfile";
 
 function Friends() {
+  const authContext = useContext(AuthContext);
+
   return (
     <>
       <Layout>
@@ -19,17 +24,12 @@ function Friends() {
                 <button type="submit">Search</button>
               </div>
             </form>
-            <ul>
-              <li>Friend...</li>
-              <li>Friend...</li>
-              <li>Friend...</li>
-              <li>Friend...</li>
-              <li>Friend...</li>
-              <li>Friend...</li>
-              <li>Friend...</li>
-              <li>Friend...</li>
-              <li>Friend...</li>
-            </ul>
+            {authContext.tempFriends.map((friend) => (
+              <FriendProfile
+                username={friend.username}
+                status={friend.status}
+              />
+            ))}
           </div>
         </div>
       </Layout>
