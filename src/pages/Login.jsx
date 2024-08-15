@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { AuthContext } from "../App";
 import dmLogo from "../assets/DM_ME_LOGO.png";
 import background from "../assets/testBck.png";
@@ -6,6 +6,8 @@ import "../styles/forms.css";
 
 function Login() {
   const authContext = useContext(AuthContext);
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
 
   if (authContext.isAuth === false) {
     console.log("Context false");
@@ -20,6 +22,17 @@ function Login() {
     console.log("form submitted");
   };
 
+  // handling email input
+
+  const handleEmailInput = (e) => {
+    console.log(email);
+    setEmail(e.target.value);
+  };
+  // handling password input
+  const handlePasswordInput = (e) => {
+    console.log(password);
+    setPassword(e.target.value);
+  };
   return (
     <>
       <div className="backgroundElement"></div>
@@ -43,6 +56,10 @@ function Login() {
                     name="email"
                     className="emailInputBox"
                     placeholder="hello@dm_me.com"
+                    data-testid="add-email"
+                    onChange={(e) => {
+                      handleEmailInput(e);
+                    }}
                     required
                   />
                 </div>
@@ -57,6 +74,8 @@ function Login() {
                     name="password"
                     className="passwordInputBox"
                     aria-label="Password"
+                    data-testid="add-password"
+                    onChange={(e) => handlePasswordInput(e)}
                     required
                   />
                 </div>
