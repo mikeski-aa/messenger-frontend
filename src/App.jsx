@@ -35,8 +35,6 @@ const router = createBrowserRouter([
 ]);
 
 function App() {
-  const [count, setCount] = useState(0);
-  const [isAuth, setIsAuth] = useState(true);
   // dummy friendlist state
   const friends = [
     {
@@ -60,6 +58,9 @@ function App() {
       status: "away",
     },
   ];
+  const [count, setCount] = useState(0);
+  const [isAuth, setIsAuth] = useState(true);
+
   const [tempFriends, setTempFriends] = useState(friends);
 
   return (

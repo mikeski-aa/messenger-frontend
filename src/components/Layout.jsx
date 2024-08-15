@@ -21,6 +21,7 @@ function Layout({ children }) {
 
   return (
     <>
+      <div className="backgroundTest"></div>
       <div className="layoutContainer">
         <div className={"navBar " + navVis}>
           <div className={"showBtnContainer " + navVis}>

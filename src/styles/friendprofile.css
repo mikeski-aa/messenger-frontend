@@ -65,6 +65,7 @@
   background-color: white;
   outline: 2px solid black;
   transition: 1s;
+  padding: 4px;
 }
 
 .menu.open {
@@ -75,5 +76,16 @@
 .menu.closed {
   opacity: 0;
   visibility: hidden;
-  transform: translateX(100%);
+  transform: translateX(-100%);
+  filter: blur(8px);
+}
+.optionFriend {
+  border-radius: 5px;
+  padding: 3px;
+}
+
+.optionFriend:hover {
+  cursor: pointer;
+  background-color: rgba(95, 95, 95, 0.671);
+  font-style: bold;
 }

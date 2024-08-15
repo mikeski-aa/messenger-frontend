@@ -17,9 +17,9 @@ function FriendProfile(props) {
     <>
       <div className="friendProfileContainer">
         <div className={"menu " + menuOpen}>
-          <div>opt1</div>
-          <div>opt2</div>
-          <div>opt3</div>
+          <div className="optionFriend One">Message</div>
+          <div className="optionFriend Two">Remove friend</div>
+          <div className="optionFriend Three">Block</div>
         </div>
         <div className="friendMain">
           <img src={person} className={"personImg " + props.status}></img>
