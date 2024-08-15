@@ -14,13 +14,15 @@ function UserProfile(props) {
               <form>
                 <div className="status">
                   <label htmlFor="changeStatus">Change status</label>
-                  <select name="changeStatus">
-                    <option value="online">Online</option>
-                    <option value="busy">Busy</option>
-                    <option value="away">Away</option>
-                    <option value="aoffline">Appear Offline</option>
-                  </select>
-                  <button type="submit">Save</button>
+                  <div className="btnInput">
+                    <select name="changeStatus" className="statusSelectBox">
+                      <option value="online">Online</option>
+                      <option value="busy">Busy</option>
+                      <option value="away">Away</option>
+                      <option value="aoffline">Appear Offline</option>
+                    </select>
+                    <button type="submit">Save</button>
+                  </div>
                 </div>
               </form>
             </div>
@@ -28,17 +30,29 @@ function UserProfile(props) {
               <form>
                 <div className="picFile">
                   <label htmlFor="uploadPic">Change profile picture</label>
-                  <input type="file" name="uploadPic" />
-                  <button type="submit">Save</button>
+                  <div className="btnInput">
+                    <input
+                      type="file"
+                      name="uploadPic"
+                      className="inputBoxFile"
+                    />
+                    <button type="submit">Save</button>
+                  </div>
                 </div>
               </form>
             </div>
             <div className="changeDisplayName">
               <form>
                 <div className="nameChange">
-                  <label htmlFor="changeName">Change dispaly name</label>
-                  <input type="text" defaultValue={props.username}></input>
-                  <button type="submit">Save</button>
+                  <label htmlFor="changeName">Change display name</label>
+                  <div className="btnInput">
+                    <input
+                      type="text"
+                      defaultValue={props.username}
+                      className="inputBoxName"
+                    ></input>
+                    <button type="submit">Save</button>
+                  </div>
                 </div>
               </form>
             </div>

@@ -1,0 +1,27 @@
+.mainProfileCont {
+  background-color: rgba(255, 255, 255, 0.288);
+  border-radius: 5px;
+  padding: 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.btnInput {
+  display: flex;
+  justify-content: space-between;
+}
+
+.statusSelectBox,
+.inputBoxFile,
+.inputBoxName,
+#file-upload-button {
+  border-radius: 5px;
+  border: 0px;
+}
+
+.statusSelectBox:focus,
+.inputBoxFile:focus,
+.inputBoxName:focus {
+  outline: 2px solid rgb(17, 127, 252);
+}

@@ -2,9 +2,15 @@ import person from "../assets/person.svg";
 import "../styles/personprofile.css";
 
 function PersonProfile(props) {
+  const tempHandler = () => {
+    window.location.href = "/profile";
+  };
   return (
     <>
-      <div className={"personProfileContainer " + props.visible}>
+      <div
+        className={"personProfileContainer " + props.visible}
+        onClick={tempHandler}
+      >
         <div className="personProfilePic">
           <img className="profilePicImg" src={person} />
         </div>

@@ -33,21 +33,13 @@ function Layout({ children }) {
           </div>
           <div className={"navOpts " + navVis}>
             <PersonProfile visible={navVis} username="ExampleNameLong" />
-            <NavButton
-              buttonName="friendsBtn"
-              buttonText="Friends"
-              hideStatus={navVis}
-            ></NavButton>
+            <NavButton buttonName="friendsBtn" buttonText="Friends"></NavButton>
             <NavButton
               buttonName="messagesBtn"
               buttonText="Messages"
-              hideStatus={navVis}
             ></NavButton>
-            <NavButton
-              buttonName="Groups"
-              buttonText="Groups"
-              hideStatus={navVis}
-            ></NavButton>
+            <NavButton buttonName="Groups" buttonText="Groups"></NavButton>
+            <NavButton buttonName="logout" buttonText="Logout"></NavButton>
           </div>
         </div>
         <div className="mainCont">{children}</div>
