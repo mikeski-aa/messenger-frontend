@@ -15,6 +15,10 @@ function Layout({ children }) {
     }
   };
 
+  const handleFriendsClick = () => {
+    window.location.href = "/friends";
+  };
+
   return (
     <>
       <div className="layoutContainer">
@@ -33,7 +37,11 @@ function Layout({ children }) {
           </div>
           <div className={"navOpts " + navVis}>
             <PersonProfile visible={navVis} username="ExampleNameLong" />
-            <NavButton buttonName="friendsBtn" buttonText="Friends"></NavButton>
+            <NavButton
+              buttonName="friendsBtn"
+              buttonText="Friends"
+              click={handleFriendsClick}
+            ></NavButton>
             <NavButton
               buttonName="messagesBtn"
               buttonText="Messages"
