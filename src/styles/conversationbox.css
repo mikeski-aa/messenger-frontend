@@ -1,4 +1,97 @@
 .convoContainer {
   background-color: rgba(0, 0, 0, 0.568);
   border-radius: 5px;
+  padding: 5px;
+}
+.msg {
+  width: 50%;
+  border-radius: 5px;
+  padding: 2px;
+}
+
+.msg.isOwner {
+  background-color: rgba(7, 156, 255, 0.616);
+  position: relative;
+  left: 100%;
+  max-width: 45%;
+  transform: translateX(-100%);
+}
+
+.msg.notOwner {
+  background-color: rgba(213, 235, 23, 0.616);
+  text-align: left;
+  max-width: 45%;
+}
+
+.convoHistory {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.newMessageInput {
+  width: 100%;
+  padding: 2px;
+  border-radius: 5px;
+  border: 0;
+}
+
+.newMsgInputForm {
+  position: sticky;
+  top: 0;
+  margin-top: 10px;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-content: center;
+}
+
+.sendButtonMsg {
+  border: 0;
+  border-radius: 5px;
+  padding: 5px;
+}
+
+.msg.notOwner {
+  position: relative;
+  background: rgba(213, 235, 23, 0.616);
+  border-radius: 0.4em;
+  margin-bottom: 15px;
+}
+
+.msg.notOwner:after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 25%;
+  width: 0;
+  height: 0;
+  border: 20px solid transparent;
+  border-top-color: rgba(213, 235, 23, 0.616);
+  border-bottom: 0;
+  border-left: 0;
+  margin-left: -10px;
+  margin-bottom: -20px;
+}
+
+.msg.isOwner {
+  position: relative;
+  background: rgba(7, 156, 255, 0.616);
+  border-radius: 0.4em;
+  margin-bottom: 15px;
+}
+
+.msg.isOwner:after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 75%;
+  width: 0;
+  height: 0;
+  border: 20px solid transparent;
+  border-top-color: rgba(7, 156, 255, 0.616);
+  border-bottom: 0;
+  border-right: 0;
+  margin-left: -10px;
+  margin-bottom: -20px;
 }

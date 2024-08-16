@@ -5,7 +5,7 @@ import Layout from "../components/Layout";
 import FriendMessage from "../components/FriendMessage";
 import { v4 as uuidv4 } from "uuid";
 
-function Conversations() {
+function Messages() {
   const authContext = useContext(AuthContext);
   const [testShow, setTestShow] = useState("hide");
 
@@ -40,4 +40,4 @@ function Conversations() {
   );
 }
 
-export default Conversations;
+export default Messages;

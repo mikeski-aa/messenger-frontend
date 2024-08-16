@@ -20,6 +20,20 @@ function UserMessage() {
       message: "Reply",
       author: "Me",
     },
+    {
+      message: "Test three",
+      author: "Author one",
+    },
+    {
+      message:
+        "Super long message test, Super long message test, Super long message test, Super long message test, Super long message test, Super long message test, Super long message test, Super long message test, Super long message test, Super long message test, ",
+      author: "Me",
+    },
+    {
+      message:
+        "Super long message test 2, Super long message test 2, Super long message test 2, Super long message test 2, Super long message test 2, Super long message test 2, Super long message test 2, Super long message test 2, Super long message test 2, Super long message test 2, Super long message test 2, ",
+      author: "Author one",
+    },
   ];
 
   console.log(userId);
