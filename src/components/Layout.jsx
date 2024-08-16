@@ -3,6 +3,7 @@ import NavButton from "./NavButton";
 import PersonProfile from "./PersonProfile";
 import { useState } from "react";
 import rightArrow from "../assets/rightArrow.svg";
+import mainLogo from "../assets/DM_ME_LOGO.png";
 
 function Layout({ children }) {
   const [navVis, setNavVis] = useState("show");
@@ -29,18 +30,7 @@ function Layout({ children }) {
       <div className="backgroundTest"></div>
       <div className="layoutContainer">
         <div className={"navBar " + navVis}>
-          <div className={"showBtnContainer " + navVis}>
-            <button
-              className={"toggleShow " + navVis}
-              onClick={handleShowClick}
-            >
-              <img
-                src={rightArrow}
-                width={"25px"}
-                className={"rightArrowImg " + navVis}
-              ></img>
-            </button>
-          </div>
+          <div className={"showBtnContainer " + navVis}></div>
           <div className={"navOpts " + navVis}>
             <PersonProfile visible={navVis} username="ExampleNameLong" />
             <NavButton
@@ -57,7 +47,22 @@ function Layout({ children }) {
             <NavButton buttonName="logout" buttonText="Logout"></NavButton>
           </div>
         </div>
-        <div className="mainCont">{children}</div>
+        <div className="mainCont">
+          <div className={"logoActionHeader " + navVis}>
+            <button
+              className={"toggleShow " + navVis}
+              onClick={handleShowClick}
+            >
+              <img
+                src={rightArrow}
+                width={"25px"}
+                className={"rightArrowImg " + navVis}
+              ></img>
+            </button>
+            <img className={"mainLogo " + navVis} src={mainLogo}></img>
+          </div>
+          {children}
+        </div>
       </div>
     </>
   );

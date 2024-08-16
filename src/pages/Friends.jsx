@@ -4,6 +4,7 @@ import { AuthContext } from "../App";
 import { useContext } from "react";
 import FriendProfile from "../components/FriendProfile";
 import { v4 as uuidv4 } from "uuid";
+
 function Friends() {
   const authContext = useContext(AuthContext);
 
