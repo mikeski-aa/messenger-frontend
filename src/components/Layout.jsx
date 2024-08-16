@@ -19,6 +19,11 @@ function Layout({ children }) {
     window.location.href = "/friends";
   };
 
+  const handleMessagesClick = () => {
+    console.log("test");
+    window.location.href = "/messages";
+  };
+
   return (
     <>
       <div className="backgroundTest"></div>
@@ -46,6 +51,7 @@ function Layout({ children }) {
             <NavButton
               buttonName="messagesBtn"
               buttonText="Messages"
+              click={handleMessagesClick}
             ></NavButton>
             <NavButton buttonName="Groups" buttonText="Groups"></NavButton>
             <NavButton buttonName="logout" buttonText="Logout"></NavButton>

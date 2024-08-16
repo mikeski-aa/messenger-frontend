@@ -2,8 +2,10 @@ import "../styles/messages.css";
 import { AuthContext } from "../App";
 import { useContext, useState } from "react";
 import Layout from "../components/Layout";
+import FriendMessage from "../components/FriendMessage";
+import { v4 as uuidv4 } from "uuid";
 
-function Messages() {
+function Conversations() {
   const authContext = useContext(AuthContext);
   const [testShow, setTestShow] = useState("hide");
 
@@ -15,27 +17,27 @@ function Messages() {
     }
   };
 
+  // this should return a list of people with currently active conversations
+  // map them
+  // option to delete conversation
   return (
     <>
       <Layout>
         <div className="messagesContainer">
-          <h1>Messages</h1>
-          {authContext.tempMessages.map((message) => (
-            <>
-              <div className={"tempDiv " + testShow} onClick={handleShowClick}>
-                <div>From: {message.author}</div>
-                <div className={"msgTest " + testShow}>
-                  {message.message.map((test) => (
-                    <div>{test}</div>
-                  ))}
-                </div>
-              </div>
-            </>
-          ))}
+          <h1>Conversations</h1>
+          <div className="messageContainer">
+            {authContext.tempFriends.map((friend) => (
+              <FriendMessage
+                username={friend.username}
+                status={friend.status}
+                key={uuidv4()}
+              />
+            ))}
+          </div>
         </div>
       </Layout>
     </>
   );
 }
 
-export default Messages;
+export default Conversations;

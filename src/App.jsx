@@ -36,6 +36,12 @@ const router = createBrowserRouter([
   {
     path: "/messages",
     element: <Messages />,
+    children: [
+      {
+        path: ":id",
+        element: <Login />,
+      },
+    ],
   },
 ]);
 
