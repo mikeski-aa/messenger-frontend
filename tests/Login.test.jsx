@@ -62,3 +62,35 @@ describe("test user typing", () => {
     );
   });
 });
+
+describe("test submitted email and password", () => {
+  it("correct submit", async () => {
+    render(
+      <AuthContext.Provider value={{ test: true }}>
+        <Login />
+      </AuthContext.Provider>
+    );
+
+    const submitButton = screen.getByTestId("submit-login");
+    await userEvent.type(screen.getByTestId("add-email"), "test@test.com");
+    await userEvent.type(screen.getByTestId("add-password"), "password");
+    userEvent.click(submitButton);
+  });
+});
+
+// testing for error mesage
+// describe("testing error message for email and password", () => {
+//   it("test email is entered", async () => {
+//     render(
+//       <AuthContext.Provider value={{ test }}>
+//         <Login />
+//       </AuthContext.Provider>
+//     );
+
+//     const submitButton = screen.getByTestId("submit-login");
+//     userEvent.click(submitButton);
+
+//     const errorMessage = screen.getByText("Please fill out this field.");
+//     expect(errorMessage).toBeInTheDocument();
+//   });
+// });

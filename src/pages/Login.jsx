@@ -20,6 +20,7 @@ function Login() {
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log("form submitted");
+    window.location.href = "/";
   };
 
   // handling email input
@@ -86,6 +87,7 @@ function Login() {
                   className="submitButton"
                   type="submit"
                   aria-label="Login"
+                  data-testid="submit-login"
                 >
                   Login
                 </button>

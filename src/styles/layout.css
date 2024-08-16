@@ -5,6 +5,10 @@
 }
 
 .navBar {
+  /*fixed might be better for mobile!*/
+  /* position: fixed;
+  left: 0;
+  top: 0; */
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
