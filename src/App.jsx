@@ -8,6 +8,7 @@ import ErrorPage from "./pages/ErrorPage";
 import Friends from "./pages/Friends";
 import UserProfile from "./pages/UserProfile";
 import Messages from "./pages/Messages";
+import UserMessage from "./pages/UserMessage";
 
 export const AuthContext = createContext();
 
@@ -36,12 +37,10 @@ const router = createBrowserRouter([
   {
     path: "/messages",
     element: <Messages />,
-    children: [
-      {
-        path: ":id",
-        element: <Login />,
-      },
-    ],
+  },
+  {
+    path: "/messages/:id",
+    element: <UserMessage />,
   },
 ]);
 
