@@ -1,11 +1,31 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { AuthContext } from "../App";
 import dmLogo from "../assets/DM_ME_LOGO.png";
 import "../styles/forms.css";
 
 function Register() {
   const authContext = useContext(AuthContext);
+  const [username, setUsername] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
+  const [errors, setErrors] = useState("");
 
+  // handlers for typing / input
+  const handleUserInput = (e) => {
+    setUsername(e.target.value);
+  };
+  const handleEmailInput = (e) => {
+    setEmail(e.target.value);
+  };
+  const handlePasswordInput = (e) => {
+    setPassword(e.target.value);
+  };
+  const handlePasswordConfirmInput = (e) => {
+    setConfirmPassword(e.target.value);
+  };
+
+  // temp function, once fully working this will redirect if someone is logged in currently backwads for context testing
   if (authContext.isAuth === false) {
     console.log("Context false");
   }
@@ -14,6 +34,12 @@ function Register() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+
+    // check passwords are matching
+    if (password != confirmPassword) {
+      return setErrors("Passwords are not matching!");
+    }
+
     console.log("form submitted");
   };
 
@@ -39,7 +65,8 @@ function Register() {
                     type="text"
                     name="username"
                     className="usernameInputBox"
-                    minLength={3}
+                    minLength={1}
+                    onChange={(e) => handleUserInput(e)}
                     required
                   />
                 </div>
@@ -54,6 +81,7 @@ function Register() {
                     name="email"
                     className="emailInputBox"
                     placeholder="hello@dm_me.com"
+                    onChange={(e) => handleEmailInput(e)}
                     required
                   />
                 </div>
@@ -67,7 +95,8 @@ function Register() {
                     type="password"
                     name="password"
                     className="passwordInputBox"
-                    minLength={2}
+                    onChange={(e) => handlePasswordInput(e)}
+                    minLength={3}
                     required
                   />
                 </div>
@@ -81,7 +110,8 @@ function Register() {
                     type="password"
                     name="password"
                     className="passwordInputBox"
-                    minLength={2}
+                    onChange={(e) => handlePasswordConfirmInput(e)}
+                    minLength={3}
                     required
                   />
                 </div>
