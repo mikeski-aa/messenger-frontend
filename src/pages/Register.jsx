@@ -2,6 +2,7 @@ import { useContext, useState } from "react";
 import { AuthContext } from "../App";
 import dmLogo from "../assets/DM_ME_LOGO.png";
 import "../styles/forms.css";
+import postUser from "../services/postUser";
 
 function Register() {
   const authContext = useContext(AuthContext);
@@ -32,13 +33,17 @@ function Register() {
 
   // need to add some more styling to this page, in particular background - transparent, with overlay.
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
     // check passwords are matching
     if (password != confirmPassword) {
       return setErrors("Passwords are not matching!");
     }
+
+    // TO DO: create funtion to call the API.
+    const result = await postUser(username, email, password, confirmPassword);
+    // console.log(result);
 
     console.log("form submitted");
   };
