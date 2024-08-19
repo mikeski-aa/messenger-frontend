@@ -1,5 +1,9 @@
 import axios from "axios";
 const url = "http://localhost:3000/api/user";
+const headerinfo = {
+  Accept: "application/json",
+  "Content-Type": "application/json",
+};
 // function for calling my api and creating a new user
 async function postUser(username, email, password, confirmPassword) {
   const body = {
@@ -10,24 +14,26 @@ async function postUser(username, email, password, confirmPassword) {
   };
 
   try {
-    const response = await axios({
+    const response = await fetch(url, {
       method: "POST",
-      url: url,
-      data: body,
+      body: JSON.stringify(body),
+      headers: headerinfo,
     });
 
     console.log(response);
 
-    if (!response.status != 200) {
+    if (!response.ok) {
+      console.log("response NOT OK!");
       throw new Error(`Error: ${response.status}`);
     }
 
     const json = await response.json();
     console.log(json);
+    console.log(json.body);
+
     return json;
   } catch (error) {
     console.log("try, catch ERROR!");
-
     return console.log(error);
   }
 }
