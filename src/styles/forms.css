@@ -40,6 +40,7 @@
   width: fit-content;
   border-radius: 12px;
   padding: 12px;
+  transition: 1s;
 }
 
 .emailInputBox,
@@ -122,12 +123,32 @@ hr {
 .registerErrorContainer {
   display: flex;
   justify-content: center;
+  outline: 3px solid red;
+  border-radius: 5px;
+  max-width: fit-content;
+  max-height: fit-content;
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.registerErrorContainer.hide {
+  display: none;
 }
 
 .errorText {
   color: red;
   background-color: rgba(0, 0, 0, 0.719);
   border-radius: 5px;
-  width: fit-content;
+  max-width: 255px;
   padding: 2px;
+  font-size: 1rem;
+  text-align: center;
+  font-weight: bold;
+}
+
+.passwordRegister.show,
+.passwordRegisterConfirm.show {
+  outline: 3px solid red;
+  border-radius: 5px;
 }

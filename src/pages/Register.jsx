@@ -10,7 +10,9 @@ function Register() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
-  const [errors, setErrors] = useState("");
+  const [passwordError, setPasswordError] = useState("hide");
+  const [generalError, setGeneralError] = useState("hide");
+  const [generalErrorMsg, setGeneralErrorMsg] = useState("");
 
   // handlers for typing / input
   const handleUserInput = (e) => {
@@ -37,15 +39,33 @@ function Register() {
     e.preventDefault();
 
     // check passwords are matching
+    // TO DO: show error under passwords, and highliht password fields
     if (password != confirmPassword) {
-      return setErrors("Passwords are not matching!");
+      setPasswordError("show");
+      setGeneralError("show");
+      return setGeneralErrorMsg("Passwords need to match!");
+    } else {
+      setPasswordError("hide");
+      setGeneralError("hide");
     }
 
     // TO DO: create funtion to call the API.
     const result = await postUser(username, email, password, confirmPassword);
-    // console.log(result);
+    console.log("logging on register page: ");
+
+    if (typeof result.response === "undefined") {
+      // no response, therefore error
+      setGeneralError("show");
+      return setGeneralErrorMsg(
+        "Please make sure the email is correct and unique"
+      );
+    } else {
+      setGeneralError("hide");
+    }
 
     console.log("form submitted");
+    // redirect user to login page
+    window.location.href = "/login";
   };
 
   return (
@@ -71,6 +91,7 @@ function Register() {
                     name="username"
                     className="usernameInputBox"
                     minLength={1}
+                    maxLength={15}
                     onChange={(e) => handleUserInput(e)}
                     required
                   />
@@ -91,7 +112,7 @@ function Register() {
                   />
                 </div>
               </div>
-              <div className="passwordRegister">
+              <div className={"passwordRegister " + passwordError}>
                 <label htmlFor="password" className="labelPassword">
                   PASSWORD
                 </label>
@@ -106,7 +127,7 @@ function Register() {
                   />
                 </div>
               </div>
-              <div className="passwordRegisterConfirm">
+              <div className={"passwordRegisterConfirm " + passwordError}>
                 <label htmlFor="password" className="labelPassword">
                   CONFIRM PASSWORD
                 </label>
@@ -121,8 +142,8 @@ function Register() {
                   />
                 </div>
               </div>
-              <div className="registerErrorContainer">
-                <div className="errorText">ERROR TEXT GOES HERE</div>
+              <div className={"registerErrorContainer " + generalError}>
+                <div className="errorText">{generalErrorMsg}</div>
               </div>
               <hr></hr>
               <div className="buttonContainer">
