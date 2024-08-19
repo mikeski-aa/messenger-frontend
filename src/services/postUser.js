@@ -24,6 +24,7 @@ async function postUser(username, email, password, confirmPassword) {
 
     if (!response.ok) {
       console.log("response NOT OK!");
+      console.log(response.body);
       throw new Error(`Error: ${response.status}`);
     }
 
@@ -34,7 +35,9 @@ async function postUser(username, email, password, confirmPassword) {
     return json;
   } catch (error) {
     console.log("try, catch ERROR!");
-    return console.log(error);
+    console.log(error);
+
+    return error;
   }
 }
 

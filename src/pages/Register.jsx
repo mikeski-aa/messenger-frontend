@@ -121,6 +121,9 @@ function Register() {
                   />
                 </div>
               </div>
+              <div className="registerErrorContainer">
+                <div className="errorText">ERROR TEXT GOES HERE</div>
+              </div>
               <hr></hr>
               <div className="buttonContainer">
                 <button className="submitButton" type="submit">

@@ -118,3 +118,16 @@ hr {
 .formLink {
   color: rgb(17, 127, 252);
 }
+
+.registerErrorContainer {
+  display: flex;
+  justify-content: center;
+}
+
+.errorText {
+  color: red;
+  background-color: rgba(0, 0, 0, 0.719);
+  border-radius: 5px;
+  width: fit-content;
+  padding: 2px;
+}
