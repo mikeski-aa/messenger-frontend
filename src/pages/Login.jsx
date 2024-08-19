@@ -2,7 +2,9 @@ import { useContext, useState } from "react";
 import { AuthContext } from "../App";
 import dmLogo from "../assets/DM_ME_LOGO.png";
 import background from "../assets/testBck.png";
+import postLogin from "../services/postLogin";
 import "../styles/forms.css";
+import postUser from "../services/postUser";
 
 function Login() {
   const authContext = useContext(AuthContext);
@@ -34,6 +36,15 @@ function Login() {
     console.log(password);
     setPassword(e.target.value);
   };
+
+  const handleLogin = async (e) => {
+    e.preventDefault();
+
+    const response = await postLogin(email, password);
+    console.log(response);
+    console.log("login clicked");
+  };
+
   return (
     <>
       <div className="backgroundElement"></div>
@@ -88,6 +99,7 @@ function Login() {
                   type="submit"
                   aria-label="Login"
                   data-testid="submit-login"
+                  onClick={(e) => handleLogin(e)}
                 >
                   Login
                 </button>

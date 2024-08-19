@@ -1,5 +1,4 @@
-import axios from "axios";
-const url = "http://localhost:3000/api/user";
+const url = "http://localhost:3000/api/register";
 const headerinfo = {
   Accept: "application/json",
   "Content-Type": "application/json",
