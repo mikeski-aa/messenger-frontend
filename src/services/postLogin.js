@@ -4,6 +4,10 @@ const headerinfo = {
   "Content-Type": "application/json",
 };
 
+// const headerTest = {
+//   Authorization: "bearer " + localStorage.getItem("token"),
+// };
+
 async function postLogin(email, password) {
   const newbody = {
     email: email,
@@ -24,6 +28,10 @@ async function postLogin(email, password) {
     }
 
     const json = await response.json();
+    console.log(json);
+
+    // saves token in localstorage
+    localStorage.setItem("token", json.token);
 
     return json;
   } catch (error) {
