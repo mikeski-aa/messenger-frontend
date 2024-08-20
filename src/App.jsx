@@ -11,13 +11,18 @@ import Messages from "./pages/Messages";
 import UserMessage from "./pages/UserMessage";
 import validateUser from "./services/authValidate";
 import { validate } from "uuid";
+import ProtectedRoute from "./components/ProtectedRoute";
 
 export const AuthContext = createContext();
 
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <Home />,
+    element: (
+      <ProtectedRoute user={true}>
+        <Home />
+      </ProtectedRoute>
+    ),
     errorElement: <ErrorPage />,
   },
   {
@@ -86,12 +91,9 @@ function App() {
       const result = await validateUser();
       console.log(result);
 
-      if (!result) {
-        return <div>Loading...</div>;
-      }
-
       if (typeof result === "undefined") {
-        window.location.href = "/login";
+        console.log("USER IS NOT LOGGED IN! GO BACK");
+        setIsAuth(false);
       } else {
         setUser(result.user);
         setIsAuth(true);
