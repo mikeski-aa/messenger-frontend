@@ -1,4 +1,4 @@
-import { createContext, useState } from "react";
+import { createContext, useEffect, useState } from "react";
 import "./App.css";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Login from "./pages/Login";
@@ -9,6 +9,8 @@ import Friends from "./pages/Friends";
 import UserProfile from "./pages/UserProfile";
 import Messages from "./pages/Messages";
 import UserMessage from "./pages/UserMessage";
+import validateUser from "./services/authValidate";
+import { validate } from "uuid";
 
 export const AuthContext = createContext();
 
@@ -74,10 +76,31 @@ function App() {
       message: ["First test message", "Second test message!"],
     },
   ];
-  const [user, setUser] = useState("");
-  const [isAuth, setIsAuth] = useState(true);
+  const [user, setUser] = useState({ username: "", id: null });
+  const [isAuth, setIsAuth] = useState("");
   const [tempFriends, setTempFriends] = useState(friends);
   const [tempMessages, setTempMessages] = useState(messages);
+
+  useEffect(() => {
+    const test = async () => {
+      const result = await validateUser();
+      console.log(result);
+
+      if (!result) {
+        return <div>Loading...</div>;
+      }
+
+      if (typeof result === "undefined") {
+        window.location.href = "/login";
+      } else {
+        setUser(result.user);
+        setIsAuth(true);
+        console.log(user);
+      }
+    };
+
+    test();
+  }, []);
 
   return (
     <>

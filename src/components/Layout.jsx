@@ -1,25 +1,14 @@
 import "../styles/layout.css";
 import NavButton from "./NavButton";
 import PersonProfile from "./PersonProfile";
-import { useState } from "react";
+import { useState, useContext } from "react";
 import rightArrow from "../assets/rightArrow.svg";
 import mainLogo from "../assets/DM_ME_LOGO.png";
-import validateUser from "../services/authValidate";
+import { AuthContext } from "../App";
 
 function Layout({ children }) {
+  const authContext = useContext(AuthContext);
   const [navVis, setNavVis] = useState("show");
-
-  const test = async () => {
-    const xd = await validateUser();
-
-    if (typeof xd === "undefined") {
-      return (window.location.href = "/login");
-    } else {
-      // set state
-    }
-  };
-
-  test();
 
   const handleShowClick = () => {
     if (navVis === "show") {
@@ -38,6 +27,11 @@ function Layout({ children }) {
     window.location.href = "/messages";
   };
 
+  const handleLogoutClick = () => {
+    localStorage.removeItem("token");
+    window.location.href = "/login";
+  };
+
   return (
     <>
       <div className="backgroundTest"></div>
@@ -45,7 +39,10 @@ function Layout({ children }) {
         <div className={"navBar " + navVis}>
           <div className={"showBtnContainer " + navVis}></div>
           <div className={"navOpts " + navVis}>
-            <PersonProfile visible={navVis} username="ExampleNameLong" />
+            <PersonProfile
+              visible={navVis}
+              username={authContext.user.username}
+            />
             <NavButton
               buttonName="friendsBtn"
               buttonText="Friends"
@@ -57,7 +54,11 @@ function Layout({ children }) {
               click={handleMessagesClick}
             ></NavButton>
             <NavButton buttonName="Groups" buttonText="Groups"></NavButton>
-            <NavButton buttonName="logout" buttonText="Logout"></NavButton>
+            <NavButton
+              buttonName="logout"
+              buttonText="Logout"
+              click={handleLogoutClick}
+            ></NavButton>
           </div>
         </div>
         <div className="mainCont">

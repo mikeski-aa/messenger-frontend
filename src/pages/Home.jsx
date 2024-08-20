@@ -6,7 +6,7 @@ import "../styles/home.css";
 function Home() {
   const authContext = useContext(AuthContext);
   if (authContext.isAuth === false) {
-    window.location.href = "/login";
+    console.log(authContext.isAuth);
   }
 
   return (

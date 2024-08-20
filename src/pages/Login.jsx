@@ -13,11 +13,11 @@ function Login() {
   const [generalError, setGeneralError] = useState("hide");
   const [generalErrorMsg, setGeneralErrorMsg] = useState("");
 
-  if (authContext.isAuth === false) {
-    console.log("Context false");
-  } else {
-    console.log("Context true");
-  }
+  // if (authContext.isAuth === false) {
+  //   console.log("Context false");
+  // } else {
+  //   console.log("Context true");
+  // }
 
   // need to add some more styling to this page, in particular background - transparent, with overlay.
 
@@ -42,14 +42,16 @@ function Login() {
     e.preventDefault();
 
     const response = await postLogin(email, password);
+    console.log(response);
     if (typeof response === "undefined") {
       setGeneralError("show");
       return setGeneralErrorMsg("Make sure email and password is correct!");
     } else {
       setGeneralError("hide");
+      console.log("response logged in handle login: ");
+      console.log(response);
+      window.location.href = "/";
     }
-    console.log("response logged in handle login: ");
-    console.log(response);
   };
 
   return (
