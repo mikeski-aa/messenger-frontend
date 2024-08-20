@@ -12,6 +12,7 @@ import UserMessage from "./pages/UserMessage";
 import validateUser from "./services/authValidate";
 import { validate } from "uuid";
 import ProtectedRoute from "./components/ProtectedRoute";
+import Layout from "./components/Layout";
 
 export const AuthContext = createContext();
 
@@ -72,7 +73,7 @@ function App() {
       path: "/",
       element: (
         <ProtectedRoute loggedIn={isAuth}>
-          <Home />
+          <Layout />
         </ProtectedRoute>
       ),
       children: [
@@ -87,12 +88,10 @@ function App() {
         {
           path: "messages",
           element: <Messages />,
-          children: [
-            {
-              path: ":id",
-              element: <UserMessage />,
-            },
-          ],
+        },
+        {
+          path: "convo/:id",
+          element: <UserMessage />,
         },
       ],
       errorElement: <ErrorPage />,

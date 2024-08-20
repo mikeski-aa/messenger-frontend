@@ -23,21 +23,18 @@ function Messages() {
   // option to delete conversation
   return (
     <>
-      <Outlet />
-      <Layout>
-        <div className="messagesContainer">
-          <h1>Conversations</h1>
-          <div className="messageContainer">
-            {authContext.tempFriends.map((friend) => (
-              <FriendMessage
-                username={friend.username}
-                status={friend.status}
-                key={uuidv4()}
-              />
-            ))}
-          </div>
+      <div className="messagesContainer">
+        <h1>Conversations</h1>
+        <div className="messageContainer">
+          {authContext.tempFriends.map((friend) => (
+            <FriendMessage
+              username={friend.username}
+              status={friend.status}
+              key={uuidv4()}
+            />
+          ))}
         </div>
-      </Layout>
+      </div>
     </>
   );
 }

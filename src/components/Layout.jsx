@@ -5,6 +5,7 @@ import { useState, useContext } from "react";
 import rightArrow from "../assets/rightArrow.svg";
 import mainLogo from "../assets/DM_ME_LOGO.png";
 import { AuthContext } from "../App";
+import { Outlet } from "react-router-dom";
 
 function Layout({ children }) {
   const authContext = useContext(AuthContext);
@@ -75,7 +76,8 @@ function Layout({ children }) {
             </button>
             <img className={"mainLogo " + navVis} src={mainLogo}></img>
           </div>
-          {children}
+
+          <Outlet />
         </div>
       </div>
     </>
