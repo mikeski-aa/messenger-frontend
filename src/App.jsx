@@ -15,44 +15,7 @@ import ProtectedRoute from "./components/ProtectedRoute";
 
 export const AuthContext = createContext();
 
-const router = createBrowserRouter([
-  {
-    path: "/",
-    element: (
-      <ProtectedRoute user={true}>
-        <Home />
-      </ProtectedRoute>
-    ),
-    errorElement: <ErrorPage />,
-  },
-  {
-    path: "/login",
-    element: <Login />,
-  },
-  {
-    path: "/register",
-    element: <Register />,
-  },
-  {
-    path: "/friends",
-    element: <Friends />,
-  },
-  {
-    path: "/profile",
-    element: <UserProfile username="ExampleNameLong" />,
-  },
-  {
-    path: "/messages",
-    element: <Messages />,
-  },
-  {
-    path: "/messages/:id",
-    element: <UserMessage />,
-  },
-]);
-
 function App() {
-  // dummy friendlist state
   const friends = [
     {
       username: "LongFriendNameX",
@@ -104,6 +67,46 @@ function App() {
     test();
   }, []);
 
+  const router = createBrowserRouter([
+    {
+      path: "/",
+      element: (
+        <ProtectedRoute loggedIn={isAuth}>
+          <Home />
+        </ProtectedRoute>
+      ),
+      children: [
+        {
+          path: "friends",
+          element: <Friends />,
+        },
+        {
+          path: "profile",
+          element: <UserProfile username={user.username} />,
+        },
+        {
+          path: "messages",
+          element: <Messages />,
+          children: [
+            {
+              path: ":id",
+              element: <UserMessage />,
+            },
+          ],
+        },
+      ],
+      errorElement: <ErrorPage />,
+    },
+    {
+      path: "/login",
+      element: <Login />,
+    },
+    {
+      path: "/register",
+      element: <Register />,
+    },
+  ]);
+
   return (
     <>
       <AuthContext.Provider
@@ -116,3 +119,5 @@ function App() {
 }
 
 export default App;
+
+// dummy friendlist state

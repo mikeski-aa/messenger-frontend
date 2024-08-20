@@ -2,6 +2,7 @@ import { AuthContext } from "../App";
 import { useContext } from "react";
 import Layout from "../components/Layout";
 import "../styles/home.css";
+import { Outlet } from "react-router-dom";
 
 function Home() {
   const authContext = useContext(AuthContext);

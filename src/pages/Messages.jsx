@@ -4,6 +4,7 @@ import { useContext, useState } from "react";
 import Layout from "../components/Layout";
 import FriendMessage from "../components/FriendMessage";
 import { v4 as uuidv4 } from "uuid";
+import { Outlet } from "react-router-dom";
 
 function Messages() {
   const authContext = useContext(AuthContext);
@@ -22,6 +23,7 @@ function Messages() {
   // option to delete conversation
   return (
     <>
+      <Outlet />
       <Layout>
         <div className="messagesContainer">
           <h1>Conversations</h1>

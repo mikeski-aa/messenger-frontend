@@ -1,10 +1,10 @@
-function ProtectedRoute({ user, children }) {
-  if (user === false) {
+function ProtectedRoute({ loggedIn, children }) {
+  if (loggedIn === false) {
     console.log("test");
     window.location.href = "/login";
   }
   console.log("children");
-  return children;
+  return <>{children}</>;
 }
 
 export default ProtectedRoute;
