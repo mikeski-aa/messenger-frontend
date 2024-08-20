@@ -4,9 +4,22 @@ import PersonProfile from "./PersonProfile";
 import { useState } from "react";
 import rightArrow from "../assets/rightArrow.svg";
 import mainLogo from "../assets/DM_ME_LOGO.png";
+import validateUser from "../services/authValidate";
 
 function Layout({ children }) {
   const [navVis, setNavVis] = useState("show");
+
+  const test = async () => {
+    const xd = await validateUser();
+
+    if (typeof xd === "undefined") {
+      return (window.location.href = "/login");
+    } else {
+      // set state
+    }
+  };
+
+  test();
 
   const handleShowClick = () => {
     if (navVis === "show") {
