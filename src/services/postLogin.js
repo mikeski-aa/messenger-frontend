@@ -13,28 +13,26 @@ async function postLogin(email, password) {
     email: email,
     password: password,
   };
-  console.log(newbody);
+
   try {
     const response = await fetch(url, {
       method: "POST",
       headers: headerinfo,
       body: JSON.stringify(newbody),
     });
-    console.log(newbody);
-    console.log(response);
 
     if (!response.ok) {
       throw new Error(`ERROR: ${response.status}`);
     }
 
     const json = await response.json();
-    console.log(json);
 
     // saves token in localstorage
     localStorage.setItem("token", json.token);
 
     return json;
   } catch (error) {
+    console.log("Error caught: ");
     console.log(error);
   }
 }

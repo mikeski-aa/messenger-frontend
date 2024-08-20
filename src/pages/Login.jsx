@@ -10,6 +10,8 @@ function Login() {
   const authContext = useContext(AuthContext);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [generalError, setGeneralError] = useState("hide");
+  const [generalErrorMsg, setGeneralErrorMsg] = useState("");
 
   if (authContext.isAuth === false) {
     console.log("Context false");
@@ -28,21 +30,26 @@ function Login() {
   // handling email input
 
   const handleEmailInput = (e) => {
-    console.log(email);
     setEmail(e.target.value);
   };
   // handling password input
   const handlePasswordInput = (e) => {
-    console.log(password);
     setPassword(e.target.value);
   };
 
   const handleLogin = async (e) => {
+    console.log("login clicked");
     e.preventDefault();
 
     const response = await postLogin(email, password);
+    if (typeof response === "undefined") {
+      setGeneralError("show");
+      return setGeneralErrorMsg("Make sure email and password is correct!");
+    } else {
+      setGeneralError("hide");
+    }
+    console.log("response logged in handle login: ");
     console.log(response);
-    console.log("login clicked");
   };
 
   return (
@@ -91,6 +98,9 @@ function Login() {
                     required
                   />
                 </div>
+              </div>
+              <div className={"registerErrorContainer " + generalError}>
+                <div className="errorText">{generalErrorMsg}</div>
               </div>
               <hr></hr>
               <div className="buttonContainer">

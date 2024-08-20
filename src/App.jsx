@@ -74,7 +74,7 @@ function App() {
       message: ["First test message", "Second test message!"],
     },
   ];
-  const [count, setCount] = useState(0);
+  const [user, setUser] = useState("");
   const [isAuth, setIsAuth] = useState(true);
   const [tempFriends, setTempFriends] = useState(friends);
   const [tempMessages, setTempMessages] = useState(messages);
@@ -82,7 +82,7 @@ function App() {
   return (
     <>
       <AuthContext.Provider
-        value={{ isAuth, setIsAuth, tempFriends, tempMessages }}
+        value={{ isAuth, setIsAuth, tempFriends, tempMessages, user, setUser }}
       >
         <RouterProvider router={router}></RouterProvider>
       </AuthContext.Provider>
