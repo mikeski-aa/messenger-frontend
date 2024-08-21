@@ -1,12 +1,22 @@
 import Layout from "../components/Layout";
 import "../styles/friends.css";
 import { AuthContext } from "../App";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import FriendProfile from "../components/FriendProfile";
 import { v4 as uuidv4 } from "uuid";
 
 function Friends() {
+  const [inputFriend, setInputFriend] = useState("");
+  const [userArray, setUserArray] = useState([]);
   const authContext = useContext(AuthContext);
+
+  const handleInputType = (e) => {
+    setInputFriend(e.target.value);
+  };
+
+  const handleSearchClick = (e) => {
+    e.preventDefault();
+  };
 
   return (
     <>
@@ -20,10 +30,25 @@ function Friends() {
                 name="searchFriend"
                 type="text"
                 placeholder="Your friend's username"
+                onChange={(e) => handleInputType(e)}
               ></input>
-              <button type="submit">Search</button>
+              <button
+                type="submit"
+                onClick={(e) => {
+                  handleSearchClick(e);
+                }}
+              >
+                Search
+              </button>
             </div>
           </form>
+          <div className="testUsers">
+            {userArray.map((user) => (
+              <>
+                <div>Test</div>
+              </>
+            ))}
+          </div>
           {authContext.tempFriends.map((friend) => (
             <FriendProfile
               username={friend.username}

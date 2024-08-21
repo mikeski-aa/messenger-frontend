@@ -57,7 +57,7 @@ function Register() {
       // no response, therefore error
       setGeneralError("show");
       return setGeneralErrorMsg(
-        "Please make sure the email is correct and unique"
+        "Please make sure the email and username is correct and unique"
       );
     } else {
       setGeneralError("hide");
