@@ -4,6 +4,7 @@ import { AuthContext } from "../App";
 import { useContext, useState } from "react";
 import FriendProfile from "../components/FriendProfile";
 import { v4 as uuidv4 } from "uuid";
+import getUsernames from "../services/getUsernames";
 
 function Friends() {
   const [inputFriend, setInputFriend] = useState("");
@@ -14,8 +15,14 @@ function Friends() {
     setInputFriend(e.target.value);
   };
 
-  const handleSearchClick = (e) => {
+  // on click call DB to get users that include name being searched
+  // if no items returned inform user no match
+  // otherwise map to list
+  const handleSearchClick = async (e) => {
     e.preventDefault();
+    const users = await getUsernames(inputFriend);
+    setUserArray(users);
+    console.log(users);
   };
 
   return (
@@ -30,6 +37,8 @@ function Friends() {
                 name="searchFriend"
                 type="text"
                 placeholder="Your friend's username"
+                minLength={1}
+                maxLength={15}
                 onChange={(e) => handleInputType(e)}
               ></input>
               <button
@@ -45,7 +54,7 @@ function Friends() {
           <div className="testUsers">
             {userArray.map((user) => (
               <>
-                <div>Test</div>
+                <div>{user.username}</div>
               </>
             ))}
           </div>
