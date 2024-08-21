@@ -83,7 +83,7 @@ function Friends() {
           </div>
           <hr></hr>
           <div className="friendsDiv">
-            {authContext.tempFriends.map((friend) => (
+            {authContext.friends.map((friend) => (
               <FriendProfile
                 username={friend.username}
                 status={friend.status}

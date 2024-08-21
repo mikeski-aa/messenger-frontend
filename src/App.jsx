@@ -114,7 +114,16 @@ function App() {
   return (
     <>
       <AuthContext.Provider
-        value={{ isAuth, setIsAuth, tempFriends, tempMessages, user, setUser }}
+        value={{
+          isAuth,
+          setIsAuth,
+          tempFriends,
+          tempMessages,
+          user,
+          setUser,
+          friends,
+          setFriends,
+        }}
       >
         <RouterProvider router={router}></RouterProvider>
       </AuthContext.Provider>
