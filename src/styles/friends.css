@@ -34,3 +34,10 @@
 .inputButton {
   width: 100%;
 }
+
+.searchResultDiv,
+.friendsDiv {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}

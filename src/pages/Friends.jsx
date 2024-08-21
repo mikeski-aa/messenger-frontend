@@ -5,6 +5,7 @@ import { useContext, useState } from "react";
 import FriendProfile from "../components/FriendProfile";
 import { v4 as uuidv4 } from "uuid";
 import getUsernames from "../services/getUsernames";
+import FriendSearchProfile from "../components/FriendSearchProfile";
 
 function Friends() {
   const [inputFriend, setInputFriend] = useState("");
@@ -71,20 +72,25 @@ function Friends() {
               {friendErrorText}
             </div>
           </form>
-          <div className="testUsers">
+          <div className="searchResultDiv">
             {userArray.map((user) => (
-              <div key={user.id}>
-                <div>{user.username}</div>
-              </div>
+              <FriendSearchProfile
+                username={user.username}
+                status={user.status}
+                key={user.id}
+              />
             ))}
           </div>
-          {authContext.tempFriends.map((friend) => (
-            <FriendProfile
-              username={friend.username}
-              status={friend.status}
-              key={uuidv4()}
-            />
-          ))}
+          <hr></hr>
+          <div className="friendsDiv">
+            {authContext.tempFriends.map((friend) => (
+              <FriendProfile
+                username={friend.username}
+                status={friend.status}
+                key={uuidv4()}
+              />
+            ))}
+          </div>
         </div>
       </div>
     </>
