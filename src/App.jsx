@@ -13,11 +13,12 @@ import validateUser from "./services/authValidate";
 import { validate } from "uuid";
 import ProtectedRoute from "./components/ProtectedRoute";
 import Layout from "./components/Layout";
+import getFriends from "./services/getFriends";
 
 export const AuthContext = createContext();
 
 function App() {
-  const friends = [
+  const tempf = [
     {
       username: "LongFriendNameX",
       profilePic: "default",
@@ -47,11 +48,12 @@ function App() {
   ];
   const [user, setUser] = useState({ username: "", id: null });
   const [isAuth, setIsAuth] = useState("");
-  const [tempFriends, setTempFriends] = useState(friends);
+  const [friends, setFriends] = useState([]);
+  const [tempFriends, setTempFriends] = useState(tempf);
   const [tempMessages, setTempMessages] = useState(messages);
 
   useEffect(() => {
-    const test = async () => {
+    const validate = async () => {
       const result = await validateUser();
       console.log(result);
 
@@ -59,13 +61,16 @@ function App() {
         console.log("USER IS NOT LOGGED IN! GO BACK");
         setIsAuth(false);
       } else {
+        console.log("see when uE runs:");
+        console.log(result.user.id);
+        const friendData = await getFriends(result.user.id);
+        setFriends(friendData);
         setUser(result.user);
         setIsAuth(true);
-        console.log(user);
       }
     };
 
-    test();
+    validate();
   }, []);
 
   const router = createBrowserRouter([
