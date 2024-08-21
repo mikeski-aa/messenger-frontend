@@ -2,8 +2,9 @@ const headerinfo = {
   Authorization: "bearer " + localStorage.getItem("token"),
 };
 
-async function getUsernames(username) {
-  const url = "http://localhost:3000/api/users?uname=" + username;
+async function getUsernames(username, id) {
+  const query = `uname=${username}&id=${id}`;
+  const url = "http://localhost:3000/api/users?" + query;
   try {
     const response = await fetch(url, { method: "GET", headers: headerinfo });
 

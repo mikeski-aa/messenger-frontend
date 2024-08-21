@@ -20,9 +20,14 @@ function Friends() {
   // otherwise map to list
   const handleSearchClick = async (e) => {
     e.preventDefault();
-    const users = await getUsernames(inputFriend);
-    setUserArray(users);
-    console.log(users);
+    const users = await getUsernames(inputFriend, authContext.user.id);
+    console.log(typeof users);
+    if (typeof users === "undefined") {
+      console.log("print error");
+    } else {
+      console.log(users.length);
+      setUserArray(users);
+    }
   };
 
   return (
@@ -54,7 +59,7 @@ function Friends() {
           <div className="testUsers">
             {userArray.map((user) => (
               <>
-                <div>{user.username}</div>
+                <div key={user.id}>{user.username}</div>
               </>
             ))}
           </div>
