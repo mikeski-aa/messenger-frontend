@@ -9,6 +9,8 @@ import getUsernames from "../services/getUsernames";
 function Friends() {
   const [inputFriend, setInputFriend] = useState("");
   const [userArray, setUserArray] = useState([]);
+  const [friendError, setFriendError] = useState("hide");
+  const [friendErrorText, setFriendErrorText] = useState("");
   const authContext = useContext(AuthContext);
 
   const handleInputType = (e) => {
@@ -20,12 +22,20 @@ function Friends() {
   // otherwise map to list
   const handleSearchClick = async (e) => {
     e.preventDefault();
+
+    if (inputFriend.length === 0) {
+      return;
+    }
+
     const users = await getUsernames(inputFriend, authContext.user.id);
     console.log(typeof users);
     if (typeof users === "undefined") {
       console.log("print error");
+    } else if (users.length === 0) {
+      setFriendError("show");
+      setFriendErrorText("No users found");
     } else {
-      console.log(users.length);
+      setFriendError("hide");
       setUserArray(users);
     }
   };
@@ -39,6 +49,7 @@ function Friends() {
             <label htmlFor="searchFriend">Add a new friend</label>
             <div className="inputButton">
               <input
+                className="searchFriendInputBox"
                 name="searchFriend"
                 type="text"
                 placeholder="Your friend's username"
@@ -47,6 +58,7 @@ function Friends() {
                 onChange={(e) => handleInputType(e)}
               ></input>
               <button
+                className="searchFriendSubmitBtn"
                 type="submit"
                 onClick={(e) => {
                   handleSearchClick(e);
@@ -55,12 +67,15 @@ function Friends() {
                 Search
               </button>
             </div>
+            <div className={"friendErrorBox " + friendError}>
+              {friendErrorText}
+            </div>
           </form>
           <div className="testUsers">
             {userArray.map((user) => (
-              <>
-                <div key={user.id}>{user.username}</div>
-              </>
+              <div key={user.id}>
+                <div>{user.username}</div>
+              </div>
             ))}
           </div>
           {authContext.tempFriends.map((friend) => (

@@ -10,3 +10,27 @@
   flex-direction: column;
   gap: 1rem;
 }
+
+.friendErrorBox.hide {
+  display: none;
+}
+
+.friendErrorBox.show {
+  display: flex;
+  outline: 2px solid red;
+  border-radius: 5px;
+  background-color: rgba(0, 0, 0, 0.644);
+  color: white;
+}
+
+.searchFriendInputBox {
+  max-width: 100%;
+}
+
+.searchFriendSubmitBtn {
+  max-width: 100%;
+}
+
+.inputButton {
+  width: 100%;
+}
