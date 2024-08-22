@@ -46,3 +46,7 @@
   flex-direction: column;
   gap: 0.5rem;
 }
+
+.pendingRequests.hide {
+  display: none;
+}

@@ -1,7 +1,7 @@
 import Layout from "../components/Layout";
 import "../styles/friends.css";
 import { AuthContext } from "../App";
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import FriendProfile from "../components/FriendProfile";
 import { v4 as uuidv4 } from "uuid";
 import getUsernames from "../services/getUsernames";
@@ -42,9 +42,11 @@ function Friends() {
     }
   };
 
-  if (authContext.requests.length > 1) {
-    console.log("test");
-  }
+  useEffect(() => {
+    if (authContext.requests.length > 0) {
+      setPendingReq("show");
+    }
+  }, [authContext.requests]);
 
   return (
     <>
@@ -90,6 +92,11 @@ function Friends() {
           <hr></hr>
           <div className={"pendingRequests " + pendingReq}>
             <h4>Pending requests only show if there are pending reqs</h4>
+            {authContext.requests.map((request) => (
+              <div key={request.id}>
+                {request.ownerId} , {request.targetId}
+              </div>
+            ))}
             <hr></hr>
           </div>
 
