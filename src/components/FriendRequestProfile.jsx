@@ -5,6 +5,7 @@ import { useContext, useEffect, useState } from "react";
 import getRequestOwnerInfo from "../services/getRequestOwnerInfo";
 import updateUserFriends from "../services/updateUserFriends";
 import { AuthContext } from "../App";
+import deleteRequest from "../services/deleteRequest";
 
 function FriendRequestProfile(props) {
   const [menuOpen, setMenuOpen] = useState("closed");
@@ -23,18 +24,20 @@ function FriendRequestProfile(props) {
   };
 
   const handleAcceptClick = async () => {
-    console.log(authContext.user.id, reqOwner.id);
     const response = await updateUserFriends(
       authContext.user.id,
       reqOwner.id,
       props.reqid
     );
-    console.log(response);
     window.location.href = "/friends";
     setMenuOpen("closed");
   };
 
-  const handleDeclineClick = async () => {};
+  const handleDeclineClick = async () => {
+    const response = await deleteRequest(props.reqid);
+    window.location.href = "/friends";
+    setMenuOpen("closed");
+  };
 
   // there has to be a better way of handling this
   // probably the models I have created are poor, because calling db for every request to get
