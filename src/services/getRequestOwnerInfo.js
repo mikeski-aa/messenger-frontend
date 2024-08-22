@@ -12,6 +12,9 @@ async function getRequestOwnerInfo(id) {
     }
 
     const json = await response.json();
+    console.log("JSON FROM OWNER REQ");
+    console.log(json);
+    return json;
   } catch (error) {
     console.log(error);
   }

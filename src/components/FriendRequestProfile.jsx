@@ -1,12 +1,15 @@
 import "../styles/friendprofile.css";
 import person from "../assets/person.svg";
 import more from "../assets/moredots.svg";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import getRequestOwnerInfo from "../services/getRequestOwnerInfo";
 
-function FriendProfile(props) {
+function FriendRequestProfile(props) {
   const [menuOpen, setMenuOpen] = useState("closed");
-  const [reqOwner, setReqOwner] = useState({});
+  const [reqOwner, setReqOwner] = useState({
+    status: "Pending",
+    username: "pending",
+  });
 
   const handleOpenMore = () => {
     if (menuOpen === "closed") {
@@ -15,6 +18,17 @@ function FriendProfile(props) {
       setMenuOpen("closed");
     }
   };
+
+  useEffect(() => {
+    const stateUpdate = async () => {
+      const tempOwner = await getRequestOwnerInfo(props.id);
+      console.log("TEMP OWNER STRUCTURE");
+      console.log(tempOwner);
+      setReqOwner(tempOwner);
+    };
+
+    stateUpdate();
+  }, []);
   return (
     <>
       <div className="friendProfileContainer">
@@ -23,8 +37,8 @@ function FriendProfile(props) {
           <div className="optionFriend Three">Decline</div>
         </div>
         <div className="friendMain">
-          <img src={person} className={"personImg " + props.status}></img>
-          <div className="friendName">{props.username}</div>
+          <img src={person} className={"personImg " + reqOwner.status}></img>
+          <div className="friendName">{reqOwner.username}</div>
         </div>
         <div className="friendBtn">
           <button className="moreOptBtn">
@@ -40,4 +54,4 @@ function FriendProfile(props) {
   );
 }
 
-export default FriendProfile;
+export default FriendRequestProfile;

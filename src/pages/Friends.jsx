@@ -6,6 +6,7 @@ import FriendProfile from "../components/FriendProfile";
 import { v4 as uuidv4 } from "uuid";
 import getUsernames from "../services/getUsernames";
 import FriendSearchProfile from "../components/FriendSearchProfile";
+import FriendRequestProfile from "../components/FriendRequestProfile";
 
 function Friends() {
   const [inputFriend, setInputFriend] = useState("");
@@ -94,7 +95,7 @@ function Friends() {
             <h4>Pending requests only show if there are pending reqs</h4>
             {authContext.requests.map((request) => (
               <div key={request.id}>
-                {request.ownerId} , {request.targetId}
+                <FriendRequestProfile id={request.ownerId} />
               </div>
             ))}
             <hr></hr>
