@@ -1,5 +1,5 @@
-async function postFriendRequest(id) {
-  const url = `http://localhost:3000/api/request?id=${id}`;
+async function postFriendRequest(targetId, userId) {
+  const url = `http://localhost:3000/api/request?target=${targetId}&user=${userId}`;
   const headerinfo = {
     Authorization: "bearer " + localStorage.getItem("token"),
   };
@@ -11,6 +11,7 @@ async function postFriendRequest(id) {
     }
 
     const json = await response.json();
+    console.log(json);
     return json;
   } catch (error) {
     console.log(error);

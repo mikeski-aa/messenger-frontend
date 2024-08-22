@@ -13,7 +13,7 @@ import validateUser from "./services/authValidate";
 import { validate } from "uuid";
 import ProtectedRoute from "./components/ProtectedRoute";
 import Layout from "./components/Layout";
-import getFriends from "./services/getFriends";
+import getUserData from "./services/getUserData";
 
 export const AuthContext = createContext();
 
@@ -49,6 +49,7 @@ function App() {
   const [user, setUser] = useState({ username: "", id: null });
   const [isAuth, setIsAuth] = useState("");
   const [friends, setFriends] = useState([]);
+  const [requests, setRequests] = useState([]);
   const [tempFriends, setTempFriends] = useState(tempf);
   const [tempMessages, setTempMessages] = useState(messages);
 
@@ -63,8 +64,9 @@ function App() {
       } else {
         console.log("see when uE runs:");
         console.log(result.user.id);
-        const friendData = await getFriends(result.user.id);
-        setFriends(friendData);
+        const userData = await getUserData(result.user.id);
+        setFriends(userData.friends);
+        setRequests(userData.requests);
         setUser(result.user);
         setIsAuth(true);
       }
@@ -123,6 +125,8 @@ function App() {
           setUser,
           friends,
           setFriends,
+          requests,
+          setRequests,
         }}
       >
         <RouterProvider router={router}></RouterProvider>

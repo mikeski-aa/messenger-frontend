@@ -12,6 +12,7 @@ function Friends() {
   const [userArray, setUserArray] = useState([]);
   const [friendError, setFriendError] = useState("hide");
   const [friendErrorText, setFriendErrorText] = useState("");
+  const [pendingReq, setPendingReq] = useState("hide");
   const authContext = useContext(AuthContext);
 
   const handleInputType = (e) => {
@@ -40,6 +41,10 @@ function Friends() {
       setUserArray(users);
     }
   };
+
+  if (authContext.requests.length > 1) {
+    console.log("test");
+  }
 
   return (
     <>
@@ -83,10 +88,11 @@ function Friends() {
             ))}
           </div>
           <hr></hr>
-          <div className="pendingRequests">
+          <div className={"pendingRequests " + pendingReq}>
             <h4>Pending requests only show if there are pending reqs</h4>
+            <hr></hr>
           </div>
-          <hr></hr>
+
           <div className="friendsDiv">
             {authContext.friends.map((friend) => (
               <FriendProfile

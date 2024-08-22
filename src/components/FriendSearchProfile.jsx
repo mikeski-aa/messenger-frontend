@@ -1,11 +1,15 @@
 import "../styles/friendmessage.css";
 import person from "../assets/person.svg";
 import more from "../assets/moredots.svg";
-import { useState } from "react";
+import { useContext, useState } from "react";
+import { AuthContext } from "../App";
+import postFriendRequest from "../services/postFriendRequest";
 
 function FriendSearchProfile(props) {
   const [menuOpen, setMenuOpen] = useState("closed");
   const [friendId, setFriendId] = useState(props.id);
+
+  const authContext = useContext(AuthContext);
 
   const handleOpenMore = () => {
     if (menuOpen === "closed") {
@@ -16,9 +20,13 @@ function FriendSearchProfile(props) {
   };
 
   const handleAddFriendClick = async () => {
+    setMenuOpen("closed");
     // on click call API that creates a new request
     // if pending request don't create a new one
     console.log(props.id);
+    console.log(authContext.user.id);
+    const response = await postFriendRequest(props.id, authContext.user.id);
+    console.log(response);
   };
   return (
     <>

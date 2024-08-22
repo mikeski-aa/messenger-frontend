@@ -1,5 +1,5 @@
-async function getFriends(id) {
-  const url = `http://localhost:3000/api/friends?id=${id}`;
+async function getUserData(id) {
+  const url = `http://localhost:3000/api/userdata?id=${id}`;
   const headerinfo = {
     Authorization: "bearer " + localStorage.getItem("token"),
   };
@@ -19,4 +19,4 @@ async function getFriends(id) {
   }
 }
 
-export default getFriends;
+export default getUserData;
