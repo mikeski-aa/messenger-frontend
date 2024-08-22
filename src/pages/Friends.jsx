@@ -106,7 +106,8 @@ function Friends() {
               <FriendProfile
                 username={friend.username}
                 status={friend.status}
-                key={uuidv4()}
+                id={friend.id}
+                key={friend.id}
               />
             ))}
           </div>
