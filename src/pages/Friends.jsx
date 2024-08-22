@@ -95,7 +95,7 @@ function Friends() {
             <h4 className="inReqTitle">Incoming friend requests: </h4>
             {authContext.requests.map((request) => (
               <div key={request.id}>
-                <FriendRequestProfile id={request.ownerId} />
+                <FriendRequestProfile id={request.ownerId} reqid={request.id} />
               </div>
             ))}
             <hr></hr>

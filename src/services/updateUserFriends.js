@@ -1,5 +1,5 @@
-async function updateUserFriends(idA, idB) {
-  const url = `http://localhost:3000/api/friends?userA=${idA}&userB=${idB}`;
+async function updateUserFriends(idA, idB, reqId) {
+  const url = `http://localhost:3000/api/friends?userA=${idA}&userB=${idB}&reqId=${reqId}`;
   const headerinfo = {
     Authorization: "bearer " + localStorage.getItem("token"),
   };

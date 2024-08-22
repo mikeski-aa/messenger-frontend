@@ -24,9 +24,14 @@ function FriendRequestProfile(props) {
 
   const handleAcceptClick = async () => {
     console.log(authContext.user.id, reqOwner.id);
-    const response = await updateUserFriends(authContext.user.id, reqOwner.id);
+    const response = await updateUserFriends(
+      authContext.user.id,
+      reqOwner.id,
+      props.reqid
+    );
     console.log(response);
     window.location.href = "/friends";
+    setMenuOpen("closed");
   };
 
   const handleDeclineClick = async () => {};
