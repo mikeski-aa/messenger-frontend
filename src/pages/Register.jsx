@@ -4,6 +4,8 @@ import dmLogo from "../assets/DM_ME_LOGO.png";
 import "../styles/forms.css";
 import postUser from "../services/postUser";
 
+// TO DO: CONVERT NAMES TO ALL CAPS
+
 function Register() {
   const authContext = useContext(AuthContext);
   const [username, setUsername] = useState("");

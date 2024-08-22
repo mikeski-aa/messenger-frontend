@@ -5,6 +5,7 @@ import { useState } from "react";
 
 function FriendSearchProfile(props) {
   const [menuOpen, setMenuOpen] = useState("closed");
+  const [friendId, setFriendId] = useState(props.id);
 
   const handleOpenMore = () => {
     if (menuOpen === "closed") {
@@ -14,7 +15,11 @@ function FriendSearchProfile(props) {
     }
   };
 
-  const handleAddFriendClick = async () => {};
+  const handleAddFriendClick = async () => {
+    // on click call API that creates a new request
+    // if pending request don't create a new one
+    console.log(props.id);
+  };
   return (
     <>
       <div className="friendProfileContainer">

@@ -77,9 +77,14 @@ function Friends() {
               <FriendSearchProfile
                 username={user.username}
                 status={user.status}
+                id={user.id}
                 key={user.id}
               />
             ))}
+          </div>
+          <hr></hr>
+          <div className="pendingRequests">
+            <h4>Pending requests only show if there are pending reqs</h4>
           </div>
           <hr></hr>
           <div className="friendsDiv">
