@@ -91,8 +91,8 @@ function Friends() {
             ))}
           </div>
           <hr></hr>
-          <div className={"pendingRequests " + pendingReq}>
-            <h4>Pending requests only show if there are pending reqs</h4>
+          <div className={"pendingRequestsDiv " + pendingReq}>
+            <h4 className="inReqTitle">Incoming friend requests: </h4>
             {authContext.requests.map((request) => (
               <div key={request.id}>
                 <FriendRequestProfile id={request.ownerId} />

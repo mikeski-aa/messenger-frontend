@@ -41,12 +41,17 @@
 }
 
 .searchResultDiv,
-.friendsDiv {
+.friendsDiv,
+.pendingRequestsDiv {
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
 }
 
-.pendingRequests.hide {
+.pendingRequestsDiv.hide {
   display: none;
+}
+
+.inReqTitle {
+  margin: 0;
 }

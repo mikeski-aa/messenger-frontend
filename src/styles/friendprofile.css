@@ -89,3 +89,11 @@
   background-color: rgba(95, 95, 95, 0.671);
   font-style: bold;
 }
+
+.optionFriend.One.Accept:hover {
+  background-color: rgb(23, 196, 23);
+}
+
+.optionFriend.Three.Decline:hover {
+  background-color: rgb(219, 43, 43);
+}
