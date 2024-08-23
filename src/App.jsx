@@ -62,8 +62,6 @@ function App() {
         console.log("USER IS NOT LOGGED IN! GO BACK");
         setIsAuth(false);
       } else {
-        console.log("see when uE runs:");
-        console.log(result.user.id);
         const userData = await getUserData(result.user.id);
         setFriends(userData.friends);
         setRequests(userData.requests);

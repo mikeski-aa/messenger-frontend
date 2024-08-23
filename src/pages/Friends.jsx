@@ -10,17 +10,25 @@ import FriendRequestProfile from "../components/FriendRequestProfile";
 import getUserData from "../services/getUserData";
 
 function Friends() {
+  const authContext = useContext(AuthContext);
   const [inputFriend, setInputFriend] = useState("");
   const [userArray, setUserArray] = useState([]);
   const [friendError, setFriendError] = useState("hide");
   const [friendErrorText, setFriendErrorText] = useState("");
   const [pendingReq, setPendingReq] = useState("hide");
   const [tempFriends, setTempFriends] = useState([]);
-  const authContext = useContext(AuthContext);
+  const [tempReqs, setTempReqs] = useState([]);
+  const [tempStatus, setTempStatus] = useState(0);
+
+  console.log(authContext.requests);
 
   const handleInputType = (e) => {
     setInputFriend(e.target.value);
   };
+
+  // useEffect(() => {
+  //   setTempReqs(authContext.requests);
+  // }, [authContext.requests]);
 
   // on click call DB to get users that include name being searched
   // if no items returned inform user no match
@@ -33,7 +41,6 @@ function Friends() {
     }
 
     const users = await getUsernames(inputFriend, authContext.user.id);
-    console.log(typeof users);
     if (typeof users === "undefined") {
       console.log("print error");
     } else if (users.length === 0) {
@@ -51,16 +58,33 @@ function Friends() {
     }
   }, [authContext.requests]);
 
+  // useEffect(() => {
+  //   const test = async () => {
+  //     console.log("HELLO??");
+  //     console.log(authContext.user.id);
+  //     const data = await getUserData(authContext.user.id);
+  //     console.log(data);
+  //     setTempFriends(data.friends);
+  //     setTempReqs(data.requests);
+  //     console.log("data loaded");
+  //   };
+
+  //   test();
+  // }, []);
+
+  // call function to get user data instead of getting it globally
   useEffect(() => {
     const getFriends = async () => {
       const response = await getUserData(authContext.user.id);
       console.log("get user data from Friends");
-      console.log(response.friends);
+      console.log(response.requests);
       setTempFriends(response.friends);
+      setTempReqs(response.requests);
+      console.log(response);
     };
 
     getFriends();
-  }, []);
+  }, [authContext.user]);
 
   return (
     <>
@@ -108,13 +132,19 @@ function Friends() {
             <h4 className="inReqTitle">Incoming friend requests: </h4>
             {authContext.requests.map((request) => (
               <div key={request.id}>
-                <FriendRequestProfile id={request.ownerId} reqid={request.id} />
+                <FriendRequestProfile
+                  id={request.ownerId}
+                  reqid={request.id}
+                  tempStatus={tempStatus}
+                  setTempStatus={setTempStatus}
+                />
               </div>
             ))}
             <hr></hr>
           </div>
 
           <div className="friendsDiv">
+            <h4 className="inReqTitle">Friends: </h4>
             {authContext.friends.map((friend) => (
               <FriendProfile
                 username={friend.username}

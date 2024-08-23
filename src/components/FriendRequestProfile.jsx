@@ -32,6 +32,8 @@ function FriendRequestProfile(props) {
 
     console.log("accept click response");
     console.log(response);
+    props.setTempStatus(props.tempStatus + 1);
+    console.log(props.tempStatus);
     setMenuOpen("closed");
   };
 
