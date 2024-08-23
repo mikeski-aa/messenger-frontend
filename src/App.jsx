@@ -14,6 +14,7 @@ import { validate } from "uuid";
 import ProtectedRoute from "./components/ProtectedRoute";
 import Layout from "./components/Layout";
 import getUserData from "./services/getUserData";
+import ProtectedConvo from "./components/ProtectedConvo";
 
 export const AuthContext = createContext();
 
@@ -96,7 +97,11 @@ function App() {
         },
         {
           path: "convo/:id",
-          element: <UserMessage />,
+          element: (
+            <ProtectedConvo>
+              <UserMessage />
+            </ProtectedConvo>
+          ),
         },
       ],
       errorElement: <ErrorPage />,

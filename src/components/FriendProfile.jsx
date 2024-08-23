@@ -37,8 +37,11 @@ function FriendProfile(props) {
     console.log(response);
     console.log(response.error);
     if (typeof response.convo != "undefined") {
-      console.log("Duplicate error detected" + " " + response.convo[0].id);
+      console.log(
+        "Conversation already exists, redirecting" + " " + response.convo[0].id
+      );
       // display error message to user
+      window.location.href = `/convo/${response.convo[0].id}`;
       return alert("Conversation already exists, redirecting");
     }
 
