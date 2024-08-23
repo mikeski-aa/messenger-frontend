@@ -1,7 +1,10 @@
+import { useState } from "react";
 import "../styles/conversationbox.css";
 import { v4 as uuidv4 } from "uuid";
 
 function ConversationBox(props) {
+  const [messageText, setMessageText] = useState("");
+
   // dummy check, this will either be done on backend or FE depends after fetching data.
   for (let x = 0; x < props.convoTest.length; x++) {
     console.log(props.convoTest[x]);

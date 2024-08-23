@@ -18,8 +18,6 @@ function Friends() {
   const [tempReqs, setTempReqs] = useState([]);
   const [friendShow, setFriendShow] = useState("hide");
 
-  console.log(authContext.requests);
-
   const handleInputType = (e) => {
     setInputFriend(e.target.value);
   };
@@ -49,7 +47,6 @@ function Friends() {
   // set visibility of requests coming in
   useEffect(() => {
     if (tempReqs.length > 0) {
-      console.log(tempReqs.length);
       setPendingReq("show");
     } else {
       setPendingReq("hide");
@@ -59,7 +56,6 @@ function Friends() {
   // set friend list visibility depending on people in friendlist
   useEffect(() => {
     if (tempFriends.length > 0) {
-      console.log(tempReqs.length);
       setFriendShow("show");
     } else {
       setFriendShow("hide");
@@ -73,11 +69,8 @@ function Friends() {
   useEffect(() => {
     const getFriends = async () => {
       const response = await getUserData(authContext.user.id);
-      console.log("get user data from Friends");
-      console.log(response.requests);
       setTempFriends(response.friends);
       setTempReqs(response.requests);
-      console.log(response);
     };
 
     if (authContext.user.id === null) {

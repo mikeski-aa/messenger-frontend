@@ -5,6 +5,7 @@ import { useContext, useState } from "react";
 import deleteFriend from "../services/deleteFriend";
 import { AuthContext } from "../App";
 import getUserData from "../services/getUserData";
+import postConverastion from "../services/postConversation";
 
 function FriendProfile(props) {
   const [menuOpen, setMenuOpen] = useState("closed");
@@ -18,6 +19,7 @@ function FriendProfile(props) {
     }
   };
 
+  // deletes the friend
   const handleDeleteClick = async () => {
     setMenuOpen("closed");
     const response = await deleteFriend(authContext.user.id, props.id);
@@ -26,11 +28,22 @@ function FriendProfile(props) {
     authContext.setFriends(test.friends);
   };
 
+  // creates a new conversation
+  // redirects to new conversation
+  const handleMessageClick = async () => {
+    setMenuOpen("closed");
+    console.log(props.id);
+    const response = await postConverastion([authContext.user.id, props.id]);
+    console.log(response);
+  };
+
   return (
     <>
       <div className="friendProfileContainer">
         <div className={"menu " + menuOpen}>
-          <div className="optionFriend One">Message</div>
+          <div className="optionFriend One" onClick={handleMessageClick}>
+            Message
+          </div>
           <div className="optionFriend Two" onClick={handleDeleteClick}>
             Remove friend
           </div>
