@@ -7,6 +7,7 @@ import { v4 as uuidv4 } from "uuid";
 import getUsernames from "../services/getUsernames";
 import FriendSearchProfile from "../components/FriendSearchProfile";
 import FriendRequestProfile from "../components/FriendRequestProfile";
+import getUserData from "../services/getUserData";
 
 function Friends() {
   const [inputFriend, setInputFriend] = useState("");
@@ -14,6 +15,7 @@ function Friends() {
   const [friendError, setFriendError] = useState("hide");
   const [friendErrorText, setFriendErrorText] = useState("");
   const [pendingReq, setPendingReq] = useState("hide");
+  const [tempFriends, setTempFriends] = useState([]);
   const authContext = useContext(AuthContext);
 
   const handleInputType = (e) => {
@@ -48,6 +50,17 @@ function Friends() {
       setPendingReq("show");
     }
   }, [authContext.requests]);
+
+  useEffect(() => {
+    const getFriends = async () => {
+      const response = await getUserData(authContext.user.id);
+      console.log("get user data from Friends");
+      console.log(response.friends);
+      setTempFriends(response.friends);
+    };
+
+    getFriends();
+  }, []);
 
   return (
     <>

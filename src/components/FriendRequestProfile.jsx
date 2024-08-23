@@ -29,7 +29,9 @@ function FriendRequestProfile(props) {
       reqOwner.id,
       props.reqid
     );
-    window.location.href = "/friends";
+
+    console.log("accept click response");
+    console.log(response);
     setMenuOpen("closed");
   };
 
