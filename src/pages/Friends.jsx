@@ -1,9 +1,7 @@
-import Layout from "../components/Layout";
 import "../styles/friends.css";
 import { AuthContext } from "../App";
 import { useContext, useEffect, useState } from "react";
 import FriendProfile from "../components/FriendProfile";
-import { v4 as uuidv4 } from "uuid";
 import getUsernames from "../services/getUsernames";
 import FriendSearchProfile from "../components/FriendSearchProfile";
 import FriendRequestProfile from "../components/FriendRequestProfile";
@@ -18,17 +16,13 @@ function Friends() {
   const [pendingReq, setPendingReq] = useState("hide");
   const [tempFriends, setTempFriends] = useState([]);
   const [tempReqs, setTempReqs] = useState([]);
-  const [tempStatus, setTempStatus] = useState(0);
+  const [friendShow, setFriendShow] = useState("hide");
 
   console.log(authContext.requests);
 
   const handleInputType = (e) => {
     setInputFriend(e.target.value);
   };
-
-  // useEffect(() => {
-  //   setTempReqs(authContext.requests);
-  // }, [authContext.requests]);
 
   // on click call DB to get users that include name being searched
   // if no items returned inform user no match
@@ -52,39 +46,44 @@ function Friends() {
     }
   };
 
+  // set visibility of requests coming in
   useEffect(() => {
-    if (authContext.requests.length > 0) {
+    if (tempReqs.length > 0) {
+      console.log(tempReqs.length);
       setPendingReq("show");
+    } else {
+      setPendingReq("hide");
     }
-  }, [authContext.requests]);
+  }, [tempReqs]);
 
-  // useEffect(() => {
-  //   const test = async () => {
-  //     console.log("HELLO??");
-  //     console.log(authContext.user.id);
-  //     const data = await getUserData(authContext.user.id);
-  //     console.log(data);
-  //     setTempFriends(data.friends);
-  //     setTempReqs(data.requests);
-  //     console.log("data loaded");
-  //   };
-
-  //   test();
-  // }, []);
+  // set friend list visibility depending on people in friendlist
+  useEffect(() => {
+    if (tempFriends.length > 0) {
+      console.log(tempReqs.length);
+      setFriendShow("show");
+    } else {
+      setFriendShow("hide");
+    }
+  }, [tempFriends]);
 
   // call function to get user data instead of getting it globally
   useEffect(() => {
     const getFriends = async () => {
-      const response = await getUserData(authContext.user.id);
+      // const response = await getUserData(authContext.user.id);
       console.log("get user data from Friends");
-      console.log(response.requests);
-      setTempFriends(response.friends);
-      setTempReqs(response.requests);
-      console.log(response);
+      // console.log(response.requests);
+      // setTempFriends(response.friends);
+      // setTempReqs(response.requests);
+      // console.log(response);
     };
 
+    if (authContext.user.id === null) {
+      console.log("null id");
+      return;
+    }
+
     getFriends();
-  }, [authContext.user]);
+  }, [authContext.requests, authContext.friends]);
 
   return (
     <>
@@ -130,22 +129,17 @@ function Friends() {
           <hr></hr>
           <div className={"pendingRequestsDiv " + pendingReq}>
             <h4 className="inReqTitle">Incoming friend requests: </h4>
-            {authContext.requests.map((request) => (
+            {tempReqs.map((request) => (
               <div key={request.id}>
-                <FriendRequestProfile
-                  id={request.ownerId}
-                  reqid={request.id}
-                  tempStatus={tempStatus}
-                  setTempStatus={setTempStatus}
-                />
+                <FriendRequestProfile id={request.ownerId} reqid={request.id} />
               </div>
             ))}
             <hr></hr>
           </div>
 
-          <div className="friendsDiv">
+          <div className={"friendsDiv " + friendShow}>
             <h4 className="inReqTitle">Friends: </h4>
-            {authContext.friends.map((friend) => (
+            {tempFriends.map((friend) => (
               <FriendProfile
                 username={friend.username}
                 status={friend.status}

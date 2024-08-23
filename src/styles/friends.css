@@ -55,3 +55,7 @@
 .inReqTitle {
   margin: 0;
 }
+
+.friendsDiv.hide {
+  display: none;
+}

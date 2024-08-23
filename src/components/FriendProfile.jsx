@@ -4,6 +4,7 @@ import more from "../assets/moredots.svg";
 import { useContext, useState } from "react";
 import deleteFriend from "../services/deleteFriend";
 import { AuthContext } from "../App";
+import getUserData from "../services/getUserData";
 
 function FriendProfile(props) {
   const [menuOpen, setMenuOpen] = useState("closed");
@@ -20,7 +21,9 @@ function FriendProfile(props) {
   const handleDeleteClick = async () => {
     setMenuOpen("closed");
     const response = await deleteFriend(authContext.user.id, props.id);
-    window.location.href = "/friends";
+
+    const test = await getUserData(authContext.user.id);
+    authContext.setFriends(test.friends);
   };
 
   return (

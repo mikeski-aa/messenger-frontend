@@ -6,6 +6,7 @@ import getRequestOwnerInfo from "../services/getRequestOwnerInfo";
 import updateUserFriends from "../services/updateUserFriends";
 import { AuthContext } from "../App";
 import deleteRequest from "../services/deleteRequest";
+import getUserData from "../services/getUserData";
 
 function FriendRequestProfile(props) {
   const [menuOpen, setMenuOpen] = useState("closed");
@@ -15,6 +16,7 @@ function FriendRequestProfile(props) {
   });
   const authContext = useContext(AuthContext);
 
+  // open an options tab when clicking the icon
   const handleOpenMore = () => {
     if (menuOpen === "closed") {
       setMenuOpen("open");
@@ -23,6 +25,7 @@ function FriendRequestProfile(props) {
     }
   };
 
+  // handle clicking accept on request option tab
   const handleAcceptClick = async () => {
     const response = await updateUserFriends(
       authContext.user.id,
@@ -30,10 +33,12 @@ function FriendRequestProfile(props) {
       props.reqid
     );
 
+    const test = await getUserData(authContext.user.id);
+    authContext.setRequests(test.requests);
+    console.log(test.requests);
+
     console.log("accept click response");
     console.log(response);
-    props.setTempStatus(props.tempStatus + 1);
-    console.log(props.tempStatus);
     setMenuOpen("closed");
   };
 
