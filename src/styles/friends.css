@@ -49,7 +49,7 @@
 }
 
 .pendingRequestsDiv.hide {
-  display: none;
+  opacity: 0.5;
 }
 
 .inReqTitle {
@@ -57,5 +57,5 @@
 }
 
 .friendsDiv.hide {
-  display: none;
+  opacity: 0.5;
 }

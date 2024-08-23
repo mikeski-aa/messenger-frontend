@@ -44,7 +44,9 @@ function FriendRequestProfile(props) {
 
   const handleDeclineClick = async () => {
     const response = await deleteRequest(props.reqid);
-    window.location.href = "/friends";
+    const test = await getUserData(authContext.user.id);
+    authContext.setRequests(test.requests);
+    console.log(test.requests);
     setMenuOpen("closed");
   };
 

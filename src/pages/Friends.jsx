@@ -67,14 +67,17 @@ function Friends() {
   }, [tempFriends]);
 
   // call function to get user data instead of getting it globally
+  // I hate this solution. It causes me to create duplicate states because im not handling state management correctly.
+  // Setting state on App.js level might have been a mistake.
+  // This causes me to call getUserData multiple times, including during accepting, declining and removing a friend
   useEffect(() => {
     const getFriends = async () => {
-      // const response = await getUserData(authContext.user.id);
+      const response = await getUserData(authContext.user.id);
       console.log("get user data from Friends");
-      // console.log(response.requests);
-      // setTempFriends(response.friends);
-      // setTempReqs(response.requests);
-      // console.log(response);
+      console.log(response.requests);
+      setTempFriends(response.friends);
+      setTempReqs(response.requests);
+      console.log(response);
     };
 
     if (authContext.user.id === null) {
