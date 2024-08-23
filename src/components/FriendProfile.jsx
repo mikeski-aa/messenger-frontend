@@ -35,6 +35,14 @@ function FriendProfile(props) {
     console.log(props.id);
     const response = await postConverastion([authContext.user.id, props.id]);
     console.log(response);
+    console.log(response.error);
+    if (typeof response.convo != "undefined") {
+      console.log("Duplicate error detected" + " " + response.convo[0].id);
+      // display error message to user
+      return alert("Conversation already exists, redirecting");
+    }
+
+    // window.location.href = `/convo/${response.id}`;
   };
 
   return (
