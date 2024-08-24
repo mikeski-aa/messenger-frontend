@@ -12,10 +12,8 @@ async function postNewMessage(convoid, authorid, authorname, message) {
     message: message,
   };
 
-  console.log(body);
-
   try {
-    const response = fetch(url, {
+    const response = await fetch(url, {
       method: "POST",
       headers: headerinfo,
       body: JSON.stringify(body),
@@ -24,9 +22,9 @@ async function postNewMessage(convoid, authorid, authorname, message) {
     if (!response.ok) {
       throw new Error(`ERROR: ${response.status}`);
     }
-    console.log(response);
+
     const json = await response.json();
-    console.log(json);
+
     return json;
   } catch (error) {
     console.log("error");

@@ -68,7 +68,7 @@ function UserMessage() {
   }, [authContext.user]);
   return (
     <>
-      <div className="mesageBox">
+      <div className="messageBox">
         <h1>Your conversation with test</h1>
         <ConversationBox
           convoTest={messageArray}

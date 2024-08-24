@@ -42,7 +42,7 @@ function ConversationBox(props) {
               className={msg.isOwner ? "msg isOwner" : "msg notOwner"}
               key={msg.id}
             >
-              <div className="authorDiv">{msg.author}:</div>
+              <div className="authorDiv">{msg.authorname}:</div>
               {msg.message}
             </div>
           ))}
