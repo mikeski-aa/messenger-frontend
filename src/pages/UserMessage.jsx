@@ -2,6 +2,9 @@ import "../styles/usermessage.css";
 import Layout from "../components/Layout";
 import { useLocation, useParams } from "react-router-dom";
 import ConversationBox from "../components/ConversationBox";
+import { AuthContext } from "../App";
+import { useContext, useEffect } from "react";
+import getConvo from "../services/getConvo";
 
 function UserMessage() {
   const location = useLocation();
@@ -40,6 +43,28 @@ function UserMessage() {
   ];
 
   console.log(userId);
+
+  const authContext = useContext(AuthContext);
+  const { id } = useParams();
+
+  useEffect(() => {
+    const convo = async () => {
+      if (
+        typeof authContext.user.id === "undefined" ||
+        authContext.user.id === null
+      ) {
+        return null;
+      }
+
+      const response = await getConvo(id, authContext.user.id);
+
+      // permission error, show error
+      if (typeof response.error != "undefined") {
+        return (window.location.href = "/messages");
+      }
+    };
+    convo();
+  }, [authContext.user]);
   return (
     <>
       <div className="mesageBox">
