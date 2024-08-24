@@ -9,39 +9,7 @@ import getConvo from "../services/getConvo";
 function UserMessage() {
   const [messageArray, setMessageArray] = useState([]);
   const [convoId, setConvoId] = useState();
-  const userId = useParams();
-
-  const convoTest = [
-    {
-      message: "Test One",
-      author: "Author one",
-    },
-    {
-      message: "Test Two",
-      author: "Author one",
-    },
-    {
-      message: "Reply",
-      author: "Me",
-    },
-    {
-      message: "Test three",
-      author: "Author one",
-    },
-    {
-      message:
-        "Super long message test, Super long message test, Super long message test, Super long message test, Super long message test, Super long message test, Super long message test, Super long message test, Super long message test, Super long message test, ",
-      author: "Me",
-    },
-    {
-      message:
-        "Super long message test 2, Super long message test 2, Super long message test 2, Super long message test 2, Super long message test 2, Super long message test 2, Super long message test 2, Super long message test 2, Super long message test 2, Super long message test 2, Super long message test 2, ",
-      author: "Author one",
-    },
-  ];
-
-  console.log(userId);
-
+  const [fetchUpdate, setFetchUpdate] = useState(0);
   const authContext = useContext(AuthContext);
   const { id } = useParams();
 
@@ -74,7 +42,11 @@ function UserMessage() {
           convoTest={messageArray}
           myId={authContext.user.id}
           myUname={authContext.user.username}
-          convoid={convoId}
+          convoid={id}
+          fetchUpdate={fetchUpdate}
+          setFetchUpdate={setFetchUpdate}
+          messageArray={messageArray}
+          setMessageArray={setMessageArray}
         />
       </div>
     </>

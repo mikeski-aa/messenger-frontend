@@ -5,6 +5,7 @@ import postNewMessage from "../services/postNewMessage";
 
 function ConversationBox(props) {
   const [newMessage, setNewMessage] = useState("");
+  const [testArr, setTestArr] = useState([]);
 
   // assign incoming v.s my messages
   for (let x = 0; x < props.convoTest.length; x++) {
@@ -30,6 +31,11 @@ function ConversationBox(props) {
       newMessage
     );
 
+    const test = [...props.messageArray];
+    test.push(response);
+    console.log(test);
+    props.setMessageArray(test);
+
     console.log(response);
   };
 
@@ -40,7 +46,7 @@ function ConversationBox(props) {
           {props.convoTest.map((msg) => (
             <div
               className={msg.isOwner ? "msg isOwner" : "msg notOwner"}
-              key={msg.id}
+              key={uuidv4()}
             >
               <div className="authorDiv">{msg.authorname}:</div>
               {msg.message}
@@ -54,6 +60,7 @@ function ConversationBox(props) {
               type="text"
               className="newMessageInput"
               onChange={(e) => handleNewMessage(e)}
+              defaultValue={newMessage}
             ></input>
             <button
               type="submit"
