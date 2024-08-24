@@ -8,6 +8,7 @@ import getConvo from "../services/getConvo";
 
 function UserMessage() {
   const [messageArray, setMessageArray] = useState([]);
+  const [convoId, setConvoId] = useState();
   const userId = useParams();
 
   const convoTest = [
@@ -59,7 +60,7 @@ function UserMessage() {
       if (typeof response.error != "undefined") {
         return (window.location.href = "/messages");
       } else {
-        console.log(response.message);
+        setConvoId(response.id);
         setMessageArray(response.message);
       }
     };
@@ -69,7 +70,12 @@ function UserMessage() {
     <>
       <div className="mesageBox">
         <h1>Your conversation with test</h1>
-        <ConversationBox convoTest={messageArray} myId={authContext.user.id} />
+        <ConversationBox
+          convoTest={messageArray}
+          myId={authContext.user.id}
+          myUname={authContext.user.username}
+          convoid={convoId}
+        />
       </div>
     </>
   );
