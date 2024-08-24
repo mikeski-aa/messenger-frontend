@@ -3,15 +3,12 @@ import Layout from "../components/Layout";
 import { useLocation, useParams } from "react-router-dom";
 import ConversationBox from "../components/ConversationBox";
 import { AuthContext } from "../App";
-import { useContext, useEffect } from "react";
+import { useContext, useEffect, useState } from "react";
 import getConvo from "../services/getConvo";
 
 function UserMessage() {
-  const location = useLocation();
-
-  console.log("location");
-  console.log("test");
-  let userId = useParams();
+  const [messageArray, setMessageArray] = useState([]);
+  const userId = useParams();
 
   const convoTest = [
     {
@@ -62,7 +59,8 @@ function UserMessage() {
       if (typeof response.error != "undefined") {
         return (window.location.href = "/messages");
       } else {
-        console.log(response);
+        console.log(response.message);
+        setMessageArray(response.message);
       }
     };
     convo();
@@ -71,7 +69,7 @@ function UserMessage() {
     <>
       <div className="mesageBox">
         <h1>Your conversation with test</h1>
-        <ConversationBox convoTest={convoTest} />
+        <ConversationBox convoTest={messageArray} myId={authContext.user.id} />
       </div>
     </>
   );

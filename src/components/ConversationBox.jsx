@@ -5,7 +5,7 @@ import { v4 as uuidv4 } from "uuid";
 function ConversationBox(props) {
   // dummy check, this will either be done on backend or FE depends after fetching data.
   for (let x = 0; x < props.convoTest.length; x++) {
-    if (props.convoTest[x].author === "Me") {
+    if (props.convoTest[x].author === props.myId) {
       props.convoTest[x] = { ...props.convoTest[x], isOwner: true };
     } else {
       props.convoTest[x] = { ...props.convoTest[x], isOwner: false };
