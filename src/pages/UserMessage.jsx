@@ -61,6 +61,8 @@ function UserMessage() {
       // permission error, show error
       if (typeof response.error != "undefined") {
         return (window.location.href = "/messages");
+      } else {
+        console.log(response);
       }
     };
     convo();
