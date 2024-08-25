@@ -9,6 +9,7 @@ import getUserDms from "../services/getUserDms";
 
 function Messages() {
   const authContext = useContext(AuthContext);
+  const [messages, setMessages] = useState([]);
   const [testShow, setTestShow] = useState("hide");
 
   const handleShowClick = () => {
@@ -29,6 +30,7 @@ function Messages() {
       } else {
         const dms = await getUserDms(authContext.user.id);
         console.log(dms);
+        setMessages(dms);
       }
     };
     fetchMessages();
@@ -42,7 +44,7 @@ function Messages() {
       <div className="messagesContainer">
         <h1>Conversations</h1>
         <div className="messageContainer">
-          {authContext.tempFriends.map((friend) => (
+          {messages.map((friend) => (
             <FriendMessage
               username={friend.username}
               status={friend.status}
