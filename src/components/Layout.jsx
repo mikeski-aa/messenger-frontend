@@ -51,7 +51,7 @@ function Layout({ children }) {
             ></NavButton>
             <NavButton
               buttonName="messagesBtn"
-              buttonText="Messages"
+              buttonText="Conversations"
               click={handleMessagesClick}
             ></NavButton>
             <NavButton buttonName="Groups" buttonText="Groups"></NavButton>

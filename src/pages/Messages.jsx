@@ -1,10 +1,11 @@
 import "../styles/messages.css";
 import { AuthContext } from "../App";
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import Layout from "../components/Layout";
 import FriendMessage from "../components/FriendMessage";
 import { v4 as uuidv4 } from "uuid";
 import { Outlet } from "react-router-dom";
+import getUserDms from "../services/getUserDms";
 
 function Messages() {
   const authContext = useContext(AuthContext);
@@ -17,6 +18,21 @@ function Messages() {
       setTestShow("hide");
     }
   };
+
+  useEffect(() => {
+    const fetchMessages = async () => {
+      if (
+        typeof authContext.user.id === "undefined" ||
+        authContext.user.id === null
+      ) {
+        return;
+      } else {
+        const dms = await getUserDms(authContext.user.id);
+        console.log(dms);
+      }
+    };
+    fetchMessages();
+  }, [authContext.user]);
 
   // this should return a list of people with currently active conversations
   // map them
