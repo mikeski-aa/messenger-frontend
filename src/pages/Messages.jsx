@@ -29,6 +29,7 @@ function Messages() {
         return;
       } else {
         const dms = await getUserDms(authContext.user.id);
+        console.log("messages: ");
         console.log(dms);
         setMessages(dms);
       }
@@ -48,6 +49,10 @@ function Messages() {
             <FriendMessage
               username={friend.username}
               status={friend.status}
+              convoid={friend.convo}
+              userid={friend.user}
+              messages={messages}
+              setMessages={setMessages}
               key={uuidv4()}
             />
           ))}

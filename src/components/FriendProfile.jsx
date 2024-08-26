@@ -45,7 +45,7 @@ function FriendProfile(props) {
       return alert("Conversation already exists, redirecting");
     }
 
-    // window.location.href = `/convo/${response.id}`;
+    window.location.href = `/convo/${response.id}`;
   };
 
   return (

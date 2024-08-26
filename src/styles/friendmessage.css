@@ -6,3 +6,14 @@
   border-radius: 5px;
   padding: 5px;
 }
+
+.friendName {
+}
+
+.friendMain {
+  width: 100%;
+}
+
+.friendMain:hover {
+  cursor: pointer;
+}
