@@ -1,24 +1,25 @@
 import "../styles/friendgroupadd.css";
 import person from "../assets/person.svg";
 import addCircle from "../assets/addCircle.svg.svg";
-import { useContext, useState } from "react";
+import { useContext, useState, useEffect } from "react";
 import { AuthContext } from "../App";
 
 function FriendGroupAdd(props) {
   const [menuOpen, setMenuOpen] = useState("closed");
+  const [addVis, setAddVis] = useState("show");
+
   const authContext = useContext(AuthContext);
 
-  const handleOpenMore = () => {
-    if (menuOpen === "closed") {
-      setMenuOpen("open");
-    } else {
-      setMenuOpen("closed");
-    }
+  const handleAddClick = () => {
+    props.setTempGroupFriends([...props.tempFriends, props.data]);
+    const temp = [...props.friendContCopy];
+    const filtered = temp.filter((friend) => friend != props.data);
+    props.setFriendContCopy(filtered);
   };
 
   return (
     <>
-      <div className="friendProfileContainer">
+      <div className={"friendProfileContainer"}>
         <div className="friendMain">
           <img src={person} className={"personImg " + props.status}></img>
           <div className="friendName">{props.username}</div>
@@ -28,7 +29,7 @@ function FriendGroupAdd(props) {
             <img
               src={addCircle}
               className="addCircleSvg"
-              onClick={handleOpenMore}
+              onClick={handleAddClick}
             ></img>
           </button>
         </div>

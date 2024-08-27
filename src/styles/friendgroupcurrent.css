@@ -1,0 +1,9 @@
+.minusCircleSvg {
+  width: 25px;
+}
+
+.tempFriendsContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}

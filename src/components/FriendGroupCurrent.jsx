@@ -1,19 +1,18 @@
 import "../styles/friendgroupcurrent.css";
 import person from "../assets/person.svg";
-import addCircle from "../assets/addCircle.svg.svg";
+import minusCircle from "../assets/minusCircle.svg.svg";
 import { useContext, useState } from "react";
 import { AuthContext } from "../App";
 
 function FriendGroupCurrent(props) {
-  const [menuOpen, setMenuOpen] = useState("closed");
   const authContext = useContext(AuthContext);
 
-  const handleOpenMore = () => {
-    if (menuOpen === "closed") {
-      setMenuOpen("open");
-    } else {
-      setMenuOpen("closed");
-    }
+  const handleMinusClick = () => {
+    const tempHolder = [...props.tempFriends];
+    const filtered = tempHolder.filter((friend) => friend != props.data);
+    console.log(filtered);
+    props.setTempGroupFriends(filtered);
+    props.setFriendContCopy([...props.friendContCopy, props.data]);
   };
 
   return (
@@ -26,9 +25,9 @@ function FriendGroupCurrent(props) {
         <div className="friendBtn">
           <button className="moreOptBtn">
             <img
-              src={addCircle}
-              className="addCircleSvg"
-              onClick={handleOpenMore}
+              src={minusCircle}
+              className="minusCircleSvg"
+              onClick={handleMinusClick}
             ></img>
           </button>
         </div>
@@ -37,4 +36,4 @@ function FriendGroupCurrent(props) {
   );
 }
 
-export default FriendGroupAdd;
+export default FriendGroupCurrent;
