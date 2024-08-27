@@ -4,6 +4,7 @@ import { useContext, useEffect, useState } from "react";
 import FriendGroupAdd from "../components/FriendGroupAdd";
 import FriendGroupCurrent from "../components/FriendGroupCurrent";
 import { v4 as uuidv4 } from "uuid";
+import postNewGroup from "../services/postNewGroup";
 
 function Groups() {
   const authContext = useContext(AuthContext);
@@ -45,7 +46,8 @@ function Groups() {
     setInputName(e.target.value);
   };
 
-  const handleSubmitGroup = () => {
+  const handleSubmitGroup = async () => {
+    let users = [authContext.user.id];
     // validate inputs to make sure enough members are added and that name has been entered.
     if (inputName.length < 1) {
       setErrorText("Input name must be at least one character long");
@@ -63,6 +65,14 @@ function Groups() {
     setErrorState("hide");
 
     // call service here to create a new group chat!
+    // get array of users to be added to new group chat
+    // get group name
+    for (let x = 0; x < tempGroupFriends.length; x++) {
+      console.log(tempGroupFriends[x].id);
+      users.push(tempGroupFriends[x].id);
+    }
+    const response = await postNewGroup(users, inputName);
+    console.log(response);
   };
 
   return (
