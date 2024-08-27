@@ -10,6 +10,10 @@ function Groups() {
   const [tempGroupFriends, setTempGroupFriends] = useState([]);
   const [friendContCopy, setFriendContCopy] = useState([]);
   const [holderVis, setHolderVis] = useState("hide");
+  const [inputName, setInputName] = useState("");
+  const [errorState, setErrorState] = useState("hide");
+  const [errorText, setErrorText] = useState("TEMP ERROR TEXT");
+
   let tempGroupVis = "show";
   let copyFriendVis = "show";
 
@@ -37,6 +41,30 @@ function Groups() {
     }
   };
 
+  const handleInputChange = (e) => {
+    setInputName(e.target.value);
+  };
+
+  const handleSubmitGroup = () => {
+    // validate inputs to make sure enough members are added and that name has been entered.
+    if (inputName.length < 1) {
+      setErrorText("Input name must be at least one character long");
+      setErrorState("show");
+      return;
+    }
+
+    if (tempGroupFriends.length < 2) {
+      setErrorText("A group must have at least two friends added!");
+      setErrorState("show");
+      return;
+    }
+
+    setErrorText("");
+    setErrorState("hide");
+
+    // call service here to create a new group chat!
+  };
+
   return (
     <>
       <div className="groupContainer">
@@ -53,6 +81,9 @@ function Groups() {
                   className="newGroupNameInput"
                   name="inputGroupName"
                   placeholder="Your group name"
+                  minLength={1}
+                  maxLength={15}
+                  onChange={(e) => handleInputChange(e)}
                 ></input>
               </div>
               <div className={"tempGroupFriends " + tempGroupVis}>
@@ -91,9 +122,13 @@ function Groups() {
                   ))}
                 </div>
               </div>
-              <button className="confirmGroupBtn">Confirm group create</button>
+              <div className={"errorBox " + errorState}>{errorText}</div>
+              <button className="confirmGroupBtn" onClick={handleSubmitGroup}>
+                Confirm group create
+              </button>
             </div>
           </div>
+
           <div className="currentGroups">GROUPS GO HERE</div>
         </div>
       </div>
