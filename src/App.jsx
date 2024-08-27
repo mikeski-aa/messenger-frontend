@@ -19,40 +19,10 @@ import Groups from "./pages/Groups";
 export const AuthContext = createContext();
 
 function App() {
-  const tempf = [
-    {
-      username: "LongFriendNameX",
-      profilePic: "default",
-      status: "online",
-    },
-    {
-      username: "xXxFriendxXx",
-      profilePic: "default",
-      status: "busy",
-    },
-    {
-      username: "DS",
-      profilePic: "default",
-      status: "offline",
-    },
-    {
-      username: "Jupp",
-      profilePic: "default",
-      status: "away",
-    },
-  ];
-  const messages = [
-    {
-      author: "xXxFriendxXx",
-      message: ["First test message", "Second test message!"],
-    },
-  ];
   const [user, setUser] = useState({ username: "", id: null });
   const [isAuth, setIsAuth] = useState("");
   const [friends, setFriends] = useState([]);
   const [requests, setRequests] = useState([]);
-  const [tempFriends, setTempFriends] = useState(tempf);
-  const [tempMessages, setTempMessages] = useState(messages);
 
   useEffect(() => {
     const validate = async () => {
@@ -122,8 +92,6 @@ function App() {
         value={{
           isAuth,
           setIsAuth,
-          tempFriends,
-          tempMessages,
           user,
           setUser,
           friends,
