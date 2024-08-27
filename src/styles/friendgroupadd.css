@@ -1,0 +1,9 @@
+.addCircleSvg {
+  width: 25px;
+}
+
+.groupFriendsContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
