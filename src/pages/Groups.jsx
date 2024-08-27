@@ -9,12 +9,33 @@ function Groups() {
   const authContext = useContext(AuthContext);
   const [tempGroupFriends, setTempGroupFriends] = useState([]);
   const [friendContCopy, setFriendContCopy] = useState([]);
+  const [holderVis, setHolderVis] = useState("hide");
+  let tempGroupVis = "show";
+  let copyFriendVis = "show";
+
+  if (tempGroupFriends.length === 0) {
+    tempGroupVis = "hide";
+  } else {
+    tempGroupVis = "show";
+  }
+
+  if (friendContCopy.length === 0) {
+    copyFriendVis = "hide";
+  } else {
+    copyFriendVis = "show";
+  }
 
   useEffect(() => {
     setFriendContCopy(authContext.friends);
   }, [authContext.friends]);
 
-  const handleCreateGroupClick = () => {};
+  const handleCreateGroupClick = () => {
+    if (holderVis === "show") {
+      setHolderVis("hide");
+    } else {
+      setHolderVis("show");
+    }
+  };
 
   return (
     <>
@@ -25,43 +46,53 @@ function Groups() {
             <button className="createGroupBtn" onClick={handleCreateGroupClick}>
               Create group
             </button>
-            <div className="tempGroupFriends">
-              <h3>Friends added to group:</h3>
-              <div className="tempFriendsContainer">
-                {tempGroupFriends.map((friend) => (
-                  <FriendGroupCurrent
-                    username={friend.username}
-                    status={friend.status}
-                    id={friend.id}
-                    tempFriends={tempGroupFriends}
-                    setTempGroupFriends={setTempGroupFriends}
-                    setFriendContCopy={setFriendContCopy}
-                    friendContCopy={friendContCopy}
-                    data={friend}
-                    key={uuidv4()}
-                  />
-                ))}
+            <div className={"newGroupHolder " + holderVis}>
+              <div className="inputContainer">
+                <label htmlFor="inputGroupName">Enter group name</label>
+                <input
+                  className="newGroupNameInput"
+                  name="inputGroupName"
+                  placeholder="Your group name"
+                ></input>
               </div>
-            </div>
-            <div className="groupFriendsAdd">
-              <h3>Add friend to group</h3>
-              <div className="groupFriendsContainer">
-                {friendContCopy.map((friend) => (
-                  <FriendGroupAdd
-                    username={friend.username}
-                    status={friend.status}
-                    id={friend.id}
-                    tempFriends={tempGroupFriends}
-                    setTempGroupFriends={setTempGroupFriends}
-                    setFriendContCopy={setFriendContCopy}
-                    friendContCopy={friendContCopy}
-                    data={friend}
-                    key={uuidv4()}
-                  />
-                ))}
+              <div className={"tempGroupFriends " + tempGroupVis}>
+                <h3>Friends added to group:</h3>
+                <div className="tempFriendsContainer">
+                  {tempGroupFriends.map((friend) => (
+                    <FriendGroupCurrent
+                      username={friend.username}
+                      status={friend.status}
+                      id={friend.id}
+                      tempFriends={tempGroupFriends}
+                      setTempGroupFriends={setTempGroupFriends}
+                      setFriendContCopy={setFriendContCopy}
+                      friendContCopy={friendContCopy}
+                      data={friend}
+                      key={uuidv4()}
+                    />
+                  ))}
+                </div>
               </div>
+              <div className={"groupFriendsAdd " + copyFriendVis}>
+                <h3>Add friend to group</h3>
+                <div className="groupFriendsContainer">
+                  {friendContCopy.map((friend) => (
+                    <FriendGroupAdd
+                      username={friend.username}
+                      status={friend.status}
+                      id={friend.id}
+                      tempFriends={tempGroupFriends}
+                      setTempGroupFriends={setTempGroupFriends}
+                      setFriendContCopy={setFriendContCopy}
+                      friendContCopy={friendContCopy}
+                      data={friend}
+                      key={uuidv4()}
+                    />
+                  ))}
+                </div>
+              </div>
+              <button className="confirmGroupBtn">Confirm group create</button>
             </div>
-            <button className="confirmGroupBtn">Confirm group create</button>
           </div>
           <div className="currentGroups">GROUPS GO HERE</div>
         </div>
