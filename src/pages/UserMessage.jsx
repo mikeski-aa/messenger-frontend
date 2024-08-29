@@ -12,6 +12,7 @@ function UserMessage() {
   const [fetchUpdate, setFetchUpdate] = useState(0);
   const authContext = useContext(AuthContext);
   const { id } = useParams();
+  const [participants, setParticipants] = useState(["Null"]);
 
   useEffect(() => {
     const convo = async () => {
@@ -23,13 +24,14 @@ function UserMessage() {
       }
 
       const response = await getConvo(id, authContext.user.id);
-
+      console.log(response);
       // permission error, show error
       if (typeof response.error != "undefined") {
         return (window.location.href = "/messages");
       } else {
         setConvoId(response.id);
         setMessageArray(response.message);
+        console.log(response.participants);
       }
     };
     convo();
@@ -37,7 +39,7 @@ function UserMessage() {
   return (
     <>
       <div className="messageBox">
-        <h1>Your conversation with test</h1>
+        <h1>Your conversation with {participants}</h1>
         <ConversationBox
           convoTest={messageArray}
           myId={authContext.user.id}

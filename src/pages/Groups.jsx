@@ -103,7 +103,7 @@ function Groups() {
     <>
       <div className="groupContainer">
         <h1>Groups</h1>
-        <div className="mainCont">
+        <div className="groupCont">
           <div className="createGroupDiv">
             <button className="createGroupBtn" onClick={handleCreateGroupClick}>
               Create group
@@ -164,7 +164,6 @@ function Groups() {
           </div>
 
           <div className="currentGroups">
-            GROUPS GO HERE
             <div className="allGroupsContainer">
               {groups.map((convo) => (
                 <GroupFriends

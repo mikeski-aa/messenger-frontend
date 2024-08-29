@@ -24,9 +24,15 @@
 .listMembers {
   display: flex;
   gap: 0.25rem;
+  overflow-x: scroll;
+  width: 100%;
 }
 
 .memberName,
 .groupTitle {
   font-weight: bold;
+}
+
+.listMembers {
+  overflow-x: hidden;
 }

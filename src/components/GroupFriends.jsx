@@ -3,7 +3,12 @@ import groupicon from "../assets/groupicon.svg";
 import binicon from "../assets/binicon.svg";
 
 function GroupFriends(props) {
-  const handleBinClick = () => {};
+  const handleBinClick = () => {
+    const test = confirm("Are you sure you want to delete this chat?");
+    if (test) {
+      // delete the group
+    }
+  };
 
   const handleOpenClick = () => {
     window.location.href = `/convo/${props.convoid}`;
@@ -14,12 +19,7 @@ function GroupFriends(props) {
       <div className="iconTitle" onClick={handleOpenClick}>
         <img src={groupicon} className="groupIconImage"></img>
         <div className="groupTitle">{props.title}</div>
-        <div className="listMembers">
-          Group members:
-          {props.members.map((member) => (
-            <div className="memberName">|{member}|</div>
-          ))}
-        </div>
+        <div className="listMembers">Members: {props.members.length}</div>
       </div>
       <div className="friendBtn">
         <button className="moreOptBtn">

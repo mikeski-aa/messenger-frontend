@@ -1,9 +1,9 @@
 .tempGroupFriends.hide {
-  opacity: 0.5;
+  opacity: 0;
 }
 
 .groupFriendsAdd.hide {
-  opacity: 0.5;
+  opacity: 0;
 }
 
 .newGroupHolder {
@@ -14,10 +14,11 @@
 .newGroupHolder.hide {
   opacity: 0;
   max-height: 0;
+  visibility: collapse;
 }
 
 .errorBox.hide {
-  opacity: 0.5;
+  opacity: 0;
   height: 0;
 }
 
@@ -29,4 +30,17 @@
   font-weight: bolder;
   margin-left: 1px;
   text-align: center;
+}
+
+.allGroupsContainer {
+  margin-top: 10px;
+}
+
+.groupCont {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  background-color: rgba(255, 255, 255, 0.288);
+  border-radius: 5px;
+  padding: 5px;
 }
