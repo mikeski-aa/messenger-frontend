@@ -1,12 +1,18 @@
 import "../styles/groupfriends.css";
 import groupicon from "../assets/groupicon.svg";
 import binicon from "../assets/binicon.svg";
+import deleteConvo from "../services/deleteConvo";
 
 function GroupFriends(props) {
-  const handleBinClick = () => {
+  const handleBinClick = async () => {
     const test = confirm("Are you sure you want to delete this chat?");
     if (test) {
       // delete the group
+      const response = await deleteConvo(props.convoid, props.userid);
+      const temp = [...props.groups];
+      const filtered = temp.filter((item) => item.id != props.convoid);
+      props.setGroups(filtered);
+      console.log(response);
     }
   };
 

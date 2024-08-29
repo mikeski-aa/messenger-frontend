@@ -80,7 +80,7 @@ function Groups() {
       // create an error instead of an alert
       alert("group already exists");
     }
-
+    // setGroups({ ...groups, response });
     console.log(response);
   };
 
@@ -170,7 +170,10 @@ function Groups() {
                   title={convo.groupname}
                   members={convo.usernames}
                   key={convo.id}
+                  userid={authContext.user.id}
                   convoid={convo.id}
+                  groups={groups}
+                  setGroups={setGroups}
                 />
               ))}
             </div>
