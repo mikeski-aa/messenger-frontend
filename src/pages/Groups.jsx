@@ -68,10 +68,15 @@ function Groups() {
     // get array of users to be added to new group chat
     // get group name
     for (let x = 0; x < tempGroupFriends.length; x++) {
-      console.log(tempGroupFriends[x].id);
       users.push(tempGroupFriends[x].id);
     }
     const response = await postNewGroup(users, inputName);
+
+    if (typeof response.error != "undefined") {
+      // create an error instead of an alert
+      alert("group already exists");
+    }
+
     console.log(response);
   };
 
