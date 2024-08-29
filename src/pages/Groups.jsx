@@ -6,6 +6,7 @@ import FriendGroupCurrent from "../components/FriendGroupCurrent";
 import { v4 as uuidv4 } from "uuid";
 import postNewGroup from "../services/postNewGroup";
 import GroupFriends from "../components/GroupFriends";
+import getUserGroups from "../services/getUserGroups";
 
 function Groups() {
   const authContext = useContext(AuthContext);
@@ -37,6 +38,7 @@ function Groups() {
   }, [authContext.friends]);
 
   const handleCreateGroupClick = () => {
+    console.log(groups);
     if (holderVis === "show") {
       setHolderVis("hide");
     } else {
@@ -163,7 +165,16 @@ function Groups() {
 
           <div className="currentGroups">
             GROUPS GO HERE
-            <div className="allGroupsContainer"></div>
+            <div className="allGroupsContainer">
+              {groups.map((convo) => (
+                <GroupFriends
+                  title={convo.groupname}
+                  members={convo.usernames}
+                  key={convo.id}
+                  convoid={convo.id}
+                />
+              ))}
+            </div>
           </div>
         </div>
       </div>

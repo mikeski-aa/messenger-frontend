@@ -5,12 +5,21 @@ import binicon from "../assets/binicon.svg";
 function GroupFriends(props) {
   const handleBinClick = () => {};
 
+  const handleOpenClick = () => {
+    window.location.href = `/convo/${props.convoid}`;
+  };
+
   return (
     <div className="individualGroupContainer">
-      <div className="iconTitle">
+      <div className="iconTitle" onClick={handleOpenClick}>
         <img src={groupicon} className="groupIconImage"></img>
         <div className="groupTitle">{props.title}</div>
-        <div className="listMembers">{props.members}</div>
+        <div className="listMembers">
+          Group members:
+          {props.members.map((member) => (
+            <div className="memberName">|{member}|</div>
+          ))}
+        </div>
       </div>
       <div className="friendBtn">
         <button className="moreOptBtn">

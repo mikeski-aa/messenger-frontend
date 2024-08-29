@@ -2,3 +2,31 @@
 .groupIconImage {
   width: 25px;
 }
+
+.individualGroupContainer,
+.iconTitle,
+.friendBtn {
+  display: flex;
+}
+
+.individualGroupContainer {
+  display: flex;
+  justify-content: space-between;
+  background-color: rgba(211, 211, 211, 0.63);
+  border-radius: 5px;
+  padding: 4px;
+}
+
+.iconTitle {
+  gap: 0.5rem;
+}
+
+.listMembers {
+  display: flex;
+  gap: 0.25rem;
+}
+
+.memberName,
+.groupTitle {
+  font-weight: bold;
+}
