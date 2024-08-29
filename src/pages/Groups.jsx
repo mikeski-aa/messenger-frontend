@@ -5,6 +5,7 @@ import FriendGroupAdd from "../components/FriendGroupAdd";
 import FriendGroupCurrent from "../components/FriendGroupCurrent";
 import { v4 as uuidv4 } from "uuid";
 import postNewGroup from "../services/postNewGroup";
+import GroupFriends from "../components/GroupFriends";
 
 function Groups() {
   const authContext = useContext(AuthContext);
@@ -14,6 +15,7 @@ function Groups() {
   const [inputName, setInputName] = useState("");
   const [errorState, setErrorState] = useState("hide");
   const [errorText, setErrorText] = useState("TEMP ERROR TEXT");
+  const [groups, setGroups] = useState([]);
 
   let tempGroupVis = "show";
   let copyFriendVis = "show";
@@ -80,6 +82,21 @@ function Groups() {
     console.log(response);
   };
 
+  useEffect(() => {
+    const fetchGroups = async () => {
+      if (
+        typeof authContext.user.id === "undefined" ||
+        authContext.user.id === null
+      ) {
+        return;
+      } else {
+        const groups = await getUserGroups(authContext.user.id);
+        setGroups(groups);
+      }
+    };
+    fetchGroups();
+  }, [authContext.user]);
+
   return (
     <>
       <div className="groupContainer">
@@ -144,7 +161,10 @@ function Groups() {
             </div>
           </div>
 
-          <div className="currentGroups">GROUPS GO HERE</div>
+          <div className="currentGroups">
+            GROUPS GO HERE
+            <div className="allGroupsContainer"></div>
+          </div>
         </div>
       </div>
     </>
