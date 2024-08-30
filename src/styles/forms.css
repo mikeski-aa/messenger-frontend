@@ -152,3 +152,7 @@ hr {
   outline: 3px solid red;
   border-radius: 5px;
 }
+
+.usernameInputDiv {
+  text-transform: uppercase;
+}

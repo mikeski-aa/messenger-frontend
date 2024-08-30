@@ -6,6 +6,7 @@ import rightArrow from "../assets/rightArrow.svg";
 import mainLogo from "../assets/DM_ME_LOGO.png";
 import { AuthContext } from "../App";
 import { Outlet } from "react-router-dom";
+import updateUserStatus from "../services/updateUserStatus";
 
 function Layout({ children }) {
   const authContext = useContext(AuthContext);
@@ -24,11 +25,11 @@ function Layout({ children }) {
   };
 
   const handleMessagesClick = () => {
-    console.log("test");
     window.location.href = "/messages";
   };
 
-  const handleLogoutClick = () => {
+  const handleLogoutClick = async () => {
+    await updateUserStatus("offline");
     localStorage.removeItem("token");
     window.location.href = "/login";
   };
