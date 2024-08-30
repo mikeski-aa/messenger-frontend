@@ -24,4 +24,21 @@
   cursor: pointer;
   background-color: white;
   color: black;
+  border-radius: 5px;
+}
+
+.profilePicImg.online {
+  outline: 3px solid limegreen;
+}
+
+.profilePicImg.offline {
+  outline: 3px solid grey;
+}
+
+.profilePicImg.busy {
+  outline: 3px solid red;
+}
+
+.profilePicImg.away {
+  outline: 3px solid yellow;
 }

@@ -5,6 +5,8 @@ function PersonProfile(props) {
   const tempHandler = () => {
     window.location.href = "/profile";
   };
+
+  console.log(props.status);
   return (
     <>
       <div
@@ -12,7 +14,7 @@ function PersonProfile(props) {
         onClick={tempHandler}
       >
         <div className="personProfilePic">
-          <img className="profilePicImg" src={person} />
+          <img className={"profilePicImg " + props.status} src={person} />
         </div>
         <div className="personName">{props.username}</div>
       </div>

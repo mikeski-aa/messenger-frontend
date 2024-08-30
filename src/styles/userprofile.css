@@ -29,3 +29,19 @@
 h1 {
   margin: 0;
 }
+
+.errorNameChange.hide {
+  display: none;
+}
+
+.errorNameChange {
+  outline: 2px solid red;
+  color: red;
+  background-color: rgba(0, 0, 0, 0.719);
+  border-radius: 5px;
+  max-width: 255px;
+  padding: 2px;
+  font-size: 1rem;
+  text-align: center;
+  font-weight: bold;
+}

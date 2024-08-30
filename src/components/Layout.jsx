@@ -48,6 +48,7 @@ function Layout({ children }) {
             <PersonProfile
               visible={navVis}
               username={authContext.user.username}
+              status={authContext.user.status}
             />
             <NavButton
               buttonName="friendsBtn"
