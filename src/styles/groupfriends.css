@@ -25,7 +25,6 @@
   display: flex;
   gap: 0.25rem;
   overflow: none;
-  width: 100%;
 }
 
 .memberName,
@@ -36,16 +35,26 @@
 .iconTitle {
   display: flex;
   align-items: center;
-  width: 80%;
+  width: 100%;
   border-radius: 5px;
 }
 
 @media (max-width: 500px) {
   .iconTitle {
-    width: 50%;
     display: flex;
-    justify-content: center;
-    position: relative;
     width: fit-content;
+    justify-content: left;
   }
+
+  .groupIconImage {
+  }
+
+  .individualGroupContainer {
+    justify-content: left;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+}
+
+.groupTitle {
 }

@@ -50,6 +50,7 @@
   display: flex;
   justify-content: space-between;
   align-content: center;
+  gap: 5px;
 }
 
 .sendButtonMsg {
@@ -114,4 +115,9 @@
 
 .authorDiv {
   color: white;
+}
+
+.convoInput {
+  display: flex;
+  gap: 5px;
 }

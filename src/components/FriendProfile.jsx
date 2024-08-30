@@ -33,6 +33,8 @@ function FriendProfile(props) {
   const handleMessageClick = async () => {
     setMenuOpen("closed");
     console.log(props.id);
+    // issue where the conversation is not being created, backend issue with endpoint;
+    // instead of a new converastion it is only checking if two users match participants!
     const response = await postConverastion([authContext.user.id, props.id]);
     console.log(response);
     console.log(response.error);
@@ -41,11 +43,10 @@ function FriendProfile(props) {
         "Conversation already exists, redirecting" + " " + response.convo[0].id
       );
       // display error message to user
-      window.location.href = `/convo/${response.convo[0].id}`;
-      return alert("Conversation already exists, redirecting");
+      return (window.location.href = `/convo/${response.convo[0].id}?participants=${props.username}`);
     }
 
-    window.location.href = `/convo/${response.id}`;
+    // window.location.href = `/convo/${response.id}?participants=${props.username}`;
   };
 
   return (

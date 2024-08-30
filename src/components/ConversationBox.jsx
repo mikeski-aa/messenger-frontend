@@ -35,6 +35,7 @@ function ConversationBox(props) {
     test.push(response);
     console.log(test);
     props.setMessageArray(test);
+    setNewMessage("");
 
     console.log(response);
   };
@@ -55,12 +56,11 @@ function ConversationBox(props) {
         </div>
         <div className="convoInput">
           <form className="newMsgInputForm">
-            <label htmlFor="convoText"></label>
             <input
               type="text"
               className="newMessageInput"
               onChange={(e) => handleNewMessage(e)}
-              defaultValue={newMessage}
+              value={newMessage}
             ></input>
             <button
               type="submit"

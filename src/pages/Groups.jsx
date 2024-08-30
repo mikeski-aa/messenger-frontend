@@ -160,7 +160,7 @@ function Groups() {
                   ))}
                 </div>
               </div>
-              <div className={"errorBox " + errorState}>{errorText}</div>
+              <div className={"groupsErrBox " + errorState}>{errorText}</div>
               <button className="confirmGroupBtn" onClick={handleSubmitGroup}>
                 Confirm group create
               </button>

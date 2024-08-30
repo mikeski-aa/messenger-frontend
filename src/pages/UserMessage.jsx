@@ -4,6 +4,7 @@ import { useLocation, useParams } from "react-router-dom";
 import ConversationBox from "../components/ConversationBox";
 import { AuthContext } from "../App";
 import { useContext, useEffect, useState } from "react";
+import { v4 as uuidv4 } from "uuid";
 import getConvo from "../services/getConvo";
 
 function UserMessage() {
@@ -13,12 +14,15 @@ function UserMessage() {
   const authContext = useContext(AuthContext);
   const { id } = useParams();
   const [participants, setParticipants] = useState(["Null"]);
+  let tempHolder = [];
 
   useEffect(() => {
     const urlParams = new URLSearchParams(window.location.search);
     const participants = urlParams.get("participants");
     console.log(participants);
-    setParticipants(participants);
+
+    tempHolder = participants.split(",");
+    setParticipants(tempHolder);
   }, []);
 
   useEffect(() => {
@@ -38,17 +42,23 @@ function UserMessage() {
       } else {
         setConvoId(response.id);
         setMessageArray(response.message);
-        console.log(response.participants);
       }
     };
     convo();
   }, [authContext.user]);
+
   return (
     <>
       <div className="messageBox">
         <h1>Your conversation with:</h1>
         <div className="participantNamesDiv">
-          <h5>{participants}</h5>
+          <div className="participantsUserMessage">
+            {participants.map((person) => (
+              <div key={uuidv4()} className="listOfMembers">
+                {person} &nbsp;
+              </div>
+            ))}
+          </div>
         </div>
         <ConversationBox
           convoTest={messageArray}

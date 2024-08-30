@@ -17,12 +17,12 @@
   visibility: collapse;
 }
 
-.errorBox.hide {
+.groupsErrBox.hide {
   opacity: 0;
   height: 0;
 }
 
-.errorBox {
+.groupsErrBox {
   margin-top: 10px;
   margin-bottom: 0.5rem;
   display: flex;
