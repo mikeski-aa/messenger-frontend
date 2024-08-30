@@ -12,7 +12,15 @@ function UserMessage() {
   const [fetchUpdate, setFetchUpdate] = useState(0);
   const authContext = useContext(AuthContext);
   const { id } = useParams();
+
   const [participants, setParticipants] = useState(["Null"]);
+
+  useEffect(() => {
+    const urlParams = new URLSearchParams(window.location.search);
+    const participants = urlParams.get("participants");
+    console.log(participants);
+    setParticipants(participants);
+  }, []);
 
   useEffect(() => {
     const convo = async () => {

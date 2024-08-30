@@ -116,10 +116,8 @@
   position: relative;
   left: 0;
   transition: 1.5s ease-in-out;
-
-  width: 10vw;
+  width: 200px;
 }
 
 .mainLogo.show {
-  transform: scaleX(1);
 }

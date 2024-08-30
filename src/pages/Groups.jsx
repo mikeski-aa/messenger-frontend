@@ -165,6 +165,7 @@ function Groups() {
                 Confirm group create
               </button>
             </div>
+            <hr />
           </div>
 
           <div className="currentGroups">

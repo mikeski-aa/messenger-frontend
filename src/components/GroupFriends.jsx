@@ -17,7 +17,7 @@ function GroupFriends(props) {
   };
 
   const handleOpenClick = () => {
-    window.location.href = `/convo/${props.convoid}`;
+    window.location.href = `/convo/${props.convoid}?participants=${props.members}`;
   };
 
   return (
@@ -25,7 +25,9 @@ function GroupFriends(props) {
       <div className="iconTitle" onClick={handleOpenClick}>
         <img src={groupicon} className="groupIconImage"></img>
         <div className="groupTitle">{props.title}</div>
-        <div className="listMembers">People: {props.participants.length}</div>
+        <span className="listMembers">
+          People:{` ` + props.participants.length}
+        </span>
       </div>
       <div className="friendBtn">
         <button className="moreOptBtn">

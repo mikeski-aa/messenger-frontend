@@ -24,7 +24,7 @@
 .listMembers {
   display: flex;
   gap: 0.25rem;
-  overflow-x: scroll;
+  overflow: none;
   width: 100%;
 }
 
@@ -33,24 +33,19 @@
   font-weight: bold;
 }
 
-.listMembers {
-  overflow-x: hidden;
-}
-
 .iconTitle {
   display: flex;
   align-items: center;
+  width: 80%;
+  border-radius: 5px;
 }
 
 @media (max-width: 500px) {
-  .individualGroupContainer {
-    flex-direction: column;
+  .iconTitle {
+    width: 50%;
+    display: flex;
     justify-content: center;
-    align-items: center;
-  }
-  .binBtn {
     position: relative;
-    left: 100;
-    top: 0;
+    width: fit-content;
   }
 }
