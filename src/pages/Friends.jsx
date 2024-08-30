@@ -18,32 +18,6 @@ function Friends() {
   const [tempReqs, setTempReqs] = useState([]);
   const [friendShow, setFriendShow] = useState("hide");
 
-  const handleInputType = (e) => {
-    setInputFriend(e.target.value);
-  };
-
-  // on click call DB to get users that include name being searched
-  // if no items returned inform user no match
-  // otherwise map to list
-  const handleSearchClick = async (e) => {
-    e.preventDefault();
-
-    if (inputFriend.length === 0) {
-      return;
-    }
-
-    const users = await getUsernames(inputFriend, authContext.user.id);
-    if (typeof users === "undefined") {
-      console.log("print error");
-    } else if (users.length === 0) {
-      setFriendError("show");
-      setFriendErrorText("No users found");
-    } else {
-      setFriendError("hide");
-      setUserArray(users);
-    }
-  };
-
   // set visibility of requests coming in
   useEffect(() => {
     if (tempReqs.length > 0) {
@@ -81,6 +55,33 @@ function Friends() {
     getFriends();
   }, [authContext.requests, authContext.friends]);
 
+  const handleInputType = (e) => {
+    setInputFriend(e.target.value.toUpperCase());
+  };
+
+  // on click call DB to get users that include name being searched
+  // if no items returned inform user no match
+  // otherwise map to list
+  const handleSearchClick = async (e) => {
+    e.preventDefault();
+
+    if (inputFriend.length === 0) {
+      return;
+    }
+
+    const users = await getUsernames(inputFriend, authContext.user.id);
+    if (typeof users === "undefined") {
+      setFriendError("show");
+      setFriendErrorText("Error finding the user");
+    } else if (users.length === 0) {
+      setFriendError("show");
+      setFriendErrorText("No users found");
+    } else {
+      setFriendError("hide");
+      setUserArray(users);
+    }
+  };
+
   return (
     <>
       <div className="friendsMain">
@@ -93,7 +94,7 @@ function Friends() {
                 className="searchFriendInputBox"
                 name="searchFriend"
                 type="text"
-                placeholder="Your friend's username"
+                placeholder="Friend username"
                 minLength={1}
                 maxLength={15}
                 onChange={(e) => handleInputType(e)}

@@ -12,6 +12,7 @@ function GroupFriends(props) {
       const temp = [...props.groups];
       const filtered = temp.filter((item) => item.id != props.convoid);
       props.setGroups(filtered);
+
       console.log(response);
     }
   };
