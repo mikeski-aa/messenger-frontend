@@ -19,7 +19,11 @@ import Groups from "./pages/Groups";
 export const AuthContext = createContext();
 
 function App() {
-  const [user, setUser] = useState({ username: "", id: null });
+  const [user, setUser] = useState({
+    username: "",
+    id: null,
+    status: "online",
+  });
   const [isAuth, setIsAuth] = useState("");
   const [friends, setFriends] = useState([]);
   const [requests, setRequests] = useState([]);
@@ -59,7 +63,14 @@ function App() {
         },
         {
           path: "profile",
-          element: <UserProfile username={user.username} />,
+          element: (
+            <UserProfile
+              username={user.username}
+              status={user.status}
+              setUser={setUser}
+              user={user}
+            />
+          ),
         },
         {
           path: "messages",

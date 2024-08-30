@@ -5,6 +5,7 @@ import background from "../assets/testBck.png";
 import postLogin from "../services/postLogin";
 import "../styles/forms.css";
 import postUser from "../services/postUser";
+import updateUserStatus from "../services/updateUserStatus";
 
 function Login() {
   const authContext = useContext(AuthContext);
@@ -51,6 +52,7 @@ function Login() {
       console.log("response logged in handle login: ");
       console.log(response);
       window.location.href = "/";
+      await updateUserStatus("online");
     }
   };
 

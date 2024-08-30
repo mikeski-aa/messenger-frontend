@@ -1,7 +1,23 @@
 import "../styles/userprofile.css";
 import Layout from "../components/Layout";
+import updateUserStatus from "../services/updateUserStatus";
+import { useEffect, useState } from "react";
+import userEvent from "@testing-library/user-event";
 
 function UserProfile(props) {
+  const [status, setStatus] = useState("");
+
+  const handleSaveStatus = async (e) => {
+    e.preventDefault();
+
+    await updateUserStatus(status);
+  };
+
+  const handleStatusSelect = (e) => {
+    setStatus(e.target.value);
+    props.setUser({ ...props.user, status: e.target.value });
+  };
+  console.log(props.status);
   return (
     <>
       <div className="myProfileontainer">
@@ -14,13 +30,20 @@ function UserProfile(props) {
               <div className="status">
                 <label htmlFor="changeStatus">Change status</label>
                 <div className="btnInput">
-                  <select name="changeStatus" className="statusSelectBox">
+                  <select
+                    name="changeStatus"
+                    className="statusSelectBox"
+                    onChange={(e) => handleStatusSelect(e)}
+                    value={props.status}
+                  >
                     <option value="online">Online</option>
                     <option value="busy">Busy</option>
                     <option value="away">Away</option>
-                    <option value="aoffline">Appear Offline</option>
+                    <option value="offline">Appear Offline</option>
                   </select>
-                  <button type="submit">Save</button>
+                  <button type="submit" onClick={(e) => handleSaveStatus(e)}>
+                    Save
+                  </button>
                 </div>
               </div>
             </form>
