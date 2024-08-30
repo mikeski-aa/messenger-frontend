@@ -25,15 +25,11 @@ function GroupFriends(props) {
       <div className="iconTitle" onClick={handleOpenClick}>
         <img src={groupicon} className="groupIconImage"></img>
         <div className="groupTitle">{props.title}</div>
-        <div className="listMembers">Members: {props.members.length}</div>
+        <div className="listMembers">People: {props.participants.length}</div>
       </div>
       <div className="friendBtn">
         <button className="moreOptBtn">
-          <img
-            src={binicon}
-            className="moreBtnImage"
-            onClick={handleBinClick}
-          ></img>
+          <img src={binicon} className="binBtn" onClick={handleBinClick}></img>
         </button>
       </div>
     </div>

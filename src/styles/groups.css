@@ -34,6 +34,9 @@
 
 .allGroupsContainer {
   margin-top: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
 }
 
 .groupCont {
@@ -43,4 +46,13 @@
   background-color: rgba(255, 255, 255, 0.288);
   border-radius: 5px;
   padding: 5px;
+}
+
+.groupContainer {
+  margin-left: 5px;
+}
+
+.createGroupDiv {
+  display: flex;
+  flex-direction: column;
 }

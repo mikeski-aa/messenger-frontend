@@ -1,4 +1,4 @@
-.moreBtnImage,
+.binBtn,
 .groupIconImage {
   width: 25px;
 }
@@ -35,4 +35,22 @@
 
 .listMembers {
   overflow-x: hidden;
+}
+
+.iconTitle {
+  display: flex;
+  align-items: center;
+}
+
+@media (max-width: 500px) {
+  .individualGroupContainer {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  .binBtn {
+    position: relative;
+    left: 100;
+    top: 0;
+  }
 }

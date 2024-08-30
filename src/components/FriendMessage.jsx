@@ -25,7 +25,7 @@ function FriendMessage(props) {
     const tempConvos = props.messages.filter(
       (item) => item.convo != props.convoid
     );
-
+ 
     props.setMessages(tempConvos);
     console.log(response);
     setMenuOpen("closed");
