@@ -112,7 +112,9 @@ function Groups() {
             </button>
             <div className={"newGroupHolder " + holderVis}>
               <div className="inputContainer">
-                <label htmlFor="inputGroupName">Enter group name</label>
+                <label htmlFor="inputGroupName" className="inputLabelClass">
+                  Enter group name
+                </label>
                 <input
                   className="newGroupNameInput"
                   name="inputGroupName"

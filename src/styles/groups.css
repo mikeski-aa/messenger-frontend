@@ -52,7 +52,33 @@
   margin-left: 5px;
 }
 
-.createGroupDiv {
+.createGroupDiv,
+.inputContainer {
   display: flex;
   flex-direction: column;
+}
+
+.inputContainer {
+  width: 100%;
+  align-items: center;
+}
+.inputLabelClass {
+  font-weight: bold;
+}
+
+.createGroupBtn {
+  width: 30%;
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.newGroupNameInput {
+  text-align: center;
+}
+
+.confirmGroupBtn {
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%);
 }
