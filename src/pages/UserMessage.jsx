@@ -12,7 +12,6 @@ function UserMessage() {
   const [fetchUpdate, setFetchUpdate] = useState(0);
   const authContext = useContext(AuthContext);
   const { id } = useParams();
-
   const [participants, setParticipants] = useState(["Null"]);
 
   useEffect(() => {
@@ -47,7 +46,10 @@ function UserMessage() {
   return (
     <>
       <div className="messageBox">
-        <h1>Your conversation with {participants}</h1>
+        <h1>Your conversation with:</h1>
+        <div className="participantNamesDiv">
+          <h5>{participants}</h5>
+        </div>
         <ConversationBox
           convoTest={messageArray}
           myId={authContext.user.id}

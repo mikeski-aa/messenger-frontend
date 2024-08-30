@@ -6,7 +6,7 @@
 }
 .msg {
   width: 50%;
-  border-radius: 5px;
+
   padding: 2px;
 }
 
@@ -16,11 +16,13 @@
   left: 100%;
   max-width: 45%;
   transform: translateX(-100%);
+  border-radius: 5px 5px 0px 5px;
 }
 
 .msg.notOwner {
   background-color: rgba(213, 235, 23, 0.616);
   text-align: left;
+  border-radius: 0px 5px 5px 5px;
   max-width: 45%;
 }
 
@@ -59,11 +61,10 @@
 .msg.notOwner {
   position: relative;
   background: rgba(213, 235, 23, 0.616);
-  border-radius: 0.4em;
   margin-bottom: 15px;
 }
 
-.msg.notOwner:after {
+/* .msg.notOwner:after {
   content: "";
   position: absolute;
   bottom: 0;
@@ -76,16 +77,16 @@
   border-left: 0;
   margin-left: -10px;
   margin-bottom: -20px;
-}
+} */
 
 .msg.isOwner {
   position: relative;
   background: rgba(7, 156, 255, 0.616);
-  border-radius: 0.4em;
+
   margin-bottom: 15px;
 }
 
-.msg.isOwner:after {
+/* .msg.isOwner:after {
   content: "";
   position: absolute;
   bottom: 0;
@@ -98,4 +99,19 @@
   border-right: 0;
   margin-left: -10px;
   margin-bottom: -20px;
+} */
+
+@media (max-width: 500px) {
+  .convoHistory {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    max-height: 58vh;
+    min-height: 50vh;
+    overflow-y: scroll;
+  }
+}
+
+.authorDiv {
+  color: white;
 }
