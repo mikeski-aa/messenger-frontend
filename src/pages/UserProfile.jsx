@@ -4,12 +4,15 @@ import updateUserStatus from "../services/updateUserStatus";
 import { useEffect, useState } from "react";
 import userEvent from "@testing-library/user-event";
 import updateUserName from "../services/updateUserName";
+import postUserImg from "../services/postUserImg";
+import postUser from "../services/postUser";
 
 function UserProfile(props) {
   const [status, setStatus] = useState("");
   const [username, setUsername] = useState("");
   const [showError, setShowError] = useState("hide");
   const [errorMessage, setErrorMessage] = useState("");
+  const [fileState, setFileState] = useState();
 
   const handleSaveStatus = async (e) => {
     e.preventDefault();
@@ -41,6 +44,17 @@ function UserProfile(props) {
     }
     setShowError("hide");
     props.setUser({ ...props.user, username: username });
+  };
+
+  const handleImageChange = (e) => {
+    console.log(e.target.files[0]);
+    setFileState(e.target.files[0]);
+  };
+
+  const handleImageSave = async (e) => {
+    e.preventDefault();
+    const response = await postUserImg(fileState);
+    console.log(response);
   };
 
   return (
@@ -83,8 +97,11 @@ function UserProfile(props) {
                     type="file"
                     name="uploadPic"
                     className="inputBoxFile"
+                    onChange={(e) => handleImageChange(e)}
                   />
-                  <button type="submit">Save</button>
+                  <button type="submit" onClick={(e) => handleImageSave(e)}>
+                    Save
+                  </button>
                 </div>
               </div>
             </form>
