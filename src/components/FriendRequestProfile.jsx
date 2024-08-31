@@ -9,12 +9,13 @@ import deleteRequest from "../services/deleteRequest";
 import getUserData from "../services/getUserData";
 
 function FriendRequestProfile(props) {
+  const authContext = useContext(AuthContext);
   const [menuOpen, setMenuOpen] = useState("closed");
   const [reqOwner, setReqOwner] = useState({
     status: "Pending",
     username: "pending",
   });
-  const authContext = useContext(AuthContext);
+  const [imgUrl, setImgUrl] = useState("");
 
   // open an options tab when clicking the icon
   const handleOpenMore = () => {
@@ -56,9 +57,13 @@ function FriendRequestProfile(props) {
   useEffect(() => {
     const stateUpdate = async () => {
       const tempOwner = await getRequestOwnerInfo(props.id);
-      console.log("TEMP OWNER STRUCTURE");
-      console.log(tempOwner);
       setReqOwner(tempOwner);
+
+      if (tempOwner.imageURL === "default") {
+        setImgUrl(person);
+      } else {
+        setImgUrl(tempOwner.imageURL);
+      }
     };
 
     stateUpdate();
@@ -78,7 +83,7 @@ function FriendRequestProfile(props) {
           </div>
         </div>
         <div className="friendMain">
-          <img src={person} className={"personImg " + reqOwner.status}></img>
+          <img src={imgUrl} className={"personImg " + reqOwner.status}></img>
           <div className="friendName">{reqOwner.username}</div>
         </div>
         <div className="friendBtn">

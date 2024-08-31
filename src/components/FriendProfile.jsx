@@ -1,7 +1,7 @@
 import "../styles/friendprofile.css";
 import person from "../assets/person.svg";
 import more from "../assets/moredots.svg";
-import { useContext, useState } from "react";
+import { useContext, useState, useEffect } from "react";
 import deleteFriend from "../services/deleteFriend";
 import { AuthContext } from "../App";
 import getUserData from "../services/getUserData";
@@ -10,6 +10,15 @@ import postConverastion from "../services/postConversation";
 function FriendProfile(props) {
   const [menuOpen, setMenuOpen] = useState("closed");
   const authContext = useContext(AuthContext);
+  const [imgUrl, setImgUrl] = useState("");
+
+  useEffect(() => {
+    if (props.imageURL === "default") {
+      setImgUrl(person);
+    } else {
+      setImgUrl(props.imageURL);
+    }
+  }, []);
 
   const handleOpenMore = () => {
     if (menuOpen === "closed") {
@@ -61,7 +70,7 @@ function FriendProfile(props) {
           </div>
         </div>
         <div className="friendMain">
-          <img src={person} className={"personImg " + props.status}></img>
+          <img src={imgUrl} className={"personImg " + props.status}></img>
           <div className="friendName">{props.username}</div>
         </div>
         <div className="friendBtn">

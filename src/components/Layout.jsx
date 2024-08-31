@@ -49,6 +49,7 @@ function Layout({ children }) {
               visible={navVis}
               username={authContext.user.username}
               status={authContext.user.status}
+              imageURL={authContext.user.imageURL}
             />
             <NavButton
               buttonName="friendsBtn"

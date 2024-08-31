@@ -118,6 +118,7 @@ function Friends() {
               <FriendSearchProfile
                 username={user.username}
                 status={user.status}
+                imageURL={user.imageURL}
                 id={user.id}
                 key={user.id}
               />
@@ -128,7 +129,11 @@ function Friends() {
             <h4 className="inReqTitle">Incoming friend requests: </h4>
             {tempReqs.map((request) => (
               <div key={request.id}>
-                <FriendRequestProfile id={request.ownerId} reqid={request.id} />
+                <FriendRequestProfile
+                  id={request.ownerId}
+                  reqid={request.id}
+                  imageURL={request.imageURL}
+                />
               </div>
             ))}
             <hr></hr>
@@ -142,6 +147,7 @@ function Friends() {
                 status={friend.status}
                 id={friend.id}
                 key={friend.id}
+                imageURL={friend.imageURL}
               />
             ))}
           </div>

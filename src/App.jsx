@@ -23,6 +23,7 @@ function App() {
     username: "",
     id: null,
     status: "online",
+    imageURL: "default",
   });
   const [isAuth, setIsAuth] = useState("");
   const [friends, setFriends] = useState([]);

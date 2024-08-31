@@ -7,6 +7,7 @@ import { AuthContext } from "../App";
 function FriendGroupAdd(props) {
   const [menuOpen, setMenuOpen] = useState("closed");
   const [addVis, setAddVis] = useState("show");
+  const [imgUrl, setImgUrl] = useState("");
 
   const authContext = useContext(AuthContext);
 
@@ -17,11 +18,19 @@ function FriendGroupAdd(props) {
     props.setFriendContCopy(filtered);
   };
 
+  useEffect(() => {
+    if (props.imageURL === "default") {
+      setImgUrl(person);
+    } else {
+      setImgUrl(props.imageURL);
+    }
+  }, []);
+
   return (
     <>
       <div className={"friendProfileContainer"}>
         <div className="friendMain">
-          <img src={person} className={"personImg " + props.status}></img>
+          <img src={imgUrl} className={"personImg " + props.status}></img>
           <div className="friendName">{props.username}</div>
         </div>
         <div className="friendBtn">
