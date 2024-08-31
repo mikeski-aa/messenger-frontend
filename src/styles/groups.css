@@ -76,6 +76,10 @@
 
 .newGroupNameInput {
   text-align: center;
+  border-radius: 5px;
+  padding: 3px;
+  border: 0px;
+  margin-top: 3px;
 }
 
 .confirmGroupBtn {

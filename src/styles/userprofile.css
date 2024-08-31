@@ -45,3 +45,7 @@ h1 {
   text-align: center;
   font-weight: bold;
 }
+
+.inputBoxFile {
+  max-width: 180px;
+}

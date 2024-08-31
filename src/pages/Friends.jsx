@@ -88,7 +88,9 @@ function Friends() {
         <h1>Friends</h1>
         <div className="searchFriend">
           <form className="searchFriendForm">
-            <label htmlFor="searchFriend">Add a new friend</label>
+            <label htmlFor="searchFriend" className="searchFriendLabel">
+              Add a new friend
+            </label>
             <div className="inputButton">
               <input
                 className="searchFriendInputBox"
