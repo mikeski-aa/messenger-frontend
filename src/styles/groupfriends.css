@@ -39,22 +39,5 @@
   border-radius: 5px;
 }
 
-@media (max-width: 500px) {
-  .iconTitle {
-    display: flex;
-    width: fit-content;
-    justify-content: left;
-  }
-
-  .groupIconImage {
-  }
-
-  .individualGroupContainer {
-    justify-content: left;
-    flex-direction: row;
-    justify-content: space-between;
-  }
-}
-
 .groupTitle {
 }

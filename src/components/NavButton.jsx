@@ -5,6 +5,7 @@ function NavButton(props) {
     <>
       <div className={"buttonContainer "} onClick={props.click}>
         <button className={"navButton " + props.buttonName}>
+          <img className="navIcons" src={props.btnImg}></img>
           {props.buttonText}
         </button>
       </div>

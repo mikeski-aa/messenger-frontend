@@ -25,9 +25,8 @@ function GroupFriends(props) {
     <div className="individualGroupContainer">
       <div className="iconTitle" onClick={handleOpenClick}>
         <img src={groupicon} className="groupIconImage"></img>
-        <div className="groupTitle">{props.title}</div>
-        <div className="listMembers">
-          People:{` ` + props.participants.length}
+        <div className="groupTitle">
+          {props.title} ({props.participants.length})
         </div>
       </div>
       <div className="friendBtn">

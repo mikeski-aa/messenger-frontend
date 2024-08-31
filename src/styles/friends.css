@@ -1,5 +1,5 @@
 .friendsMain {
-  width: 100%;
+  width: 99.5%;
   margin-left: 5px;
 }
 
@@ -31,7 +31,7 @@
 }
 
 .searchFriendInputBox {
-  max-width: 100%;
+  max-width: 140px;
   text-transform: uppercase;
   border-radius: 5px;
   border: 0px;

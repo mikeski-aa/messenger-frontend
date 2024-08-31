@@ -94,15 +94,27 @@
   cursor: pointer;
 }
 
-@media (max-width: 500px) {
+.listMember {
+  max-width: 0px;
+}
+
+/* @media (max-width: 500px) {
   .individualGroupContainer {
+    display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
   }
+
+  .groupTitle {
+  } */
+/* .friendBtn {
+    height: 0px;
+  }
   .binBtn {
     position: relative;
-    left: 100;
-    top: 0;
-  }
-}
+    left: 45vw;
+    transform: translateX(-50%);
+    top: -50%;
+  } */
+/* } */

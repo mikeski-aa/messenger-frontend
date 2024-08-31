@@ -6,8 +6,16 @@
   box-sizing: border-box;
   overflow: hidden;
   transition-duration: 0s;
+  display: flex;
+  align-items: center;
+  gap: 5px;
 }
 
 .navButton:hover {
   cursor: pointer;
+}
+
+.navIcons {
+  width: 20px;
+  height: 20px;
 }

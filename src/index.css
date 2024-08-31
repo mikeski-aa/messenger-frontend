@@ -13,3 +13,12 @@ body {
 input:focus {
   outline: 2px solid rgb(17, 127, 252);
 }
+
+button {
+  border-radius: 5px;
+  border: 0px;
+}
+
+input {
+  padding: 3px;
+}

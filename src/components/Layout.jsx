@@ -7,6 +7,10 @@ import mainLogo from "../assets/DM_ME_LOGO.png";
 import { AuthContext } from "../App";
 import { Outlet } from "react-router-dom";
 import updateUserStatus from "../services/updateUserStatus";
+import person from "../assets/person.svg";
+import groupicon from "../assets/groupicon.svg";
+import envelope from "../assets/envelope.svg";
+import logout from "../assets/logout.svg";
 
 function Layout({ children }) {
   const authContext = useContext(AuthContext);
@@ -54,21 +58,25 @@ function Layout({ children }) {
             <NavButton
               buttonName="friendsBtn"
               buttonText="Friends"
+              btnImg={person}
               click={handleFriendsClick}
             ></NavButton>
             <NavButton
               buttonName="messagesBtn"
               buttonText="Conversations"
+              btnImg={envelope}
               click={handleMessagesClick}
             ></NavButton>
             <NavButton
               buttonName="Groups"
               buttonText="Groups"
+              btnImg={groupicon}
               click={handleGroupsClick}
             ></NavButton>
             <NavButton
               buttonName="logout"
               buttonText="Logout"
+              btnImg={logout}
               click={handleLogoutClick}
             ></NavButton>
           </div>
