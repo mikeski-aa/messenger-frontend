@@ -1,5 +1,7 @@
 async function postNewGroup(users, name) {
-  const url = `http://localhost:3000/api/group`;
+  // const url = `http://localhost:3000/api/group`;
+  const url = `https://dm-me.adaptable.app/api/group`;
+
   const headerinfo = {
     Accept: "application/json",
     "Content-Type": "application/json",

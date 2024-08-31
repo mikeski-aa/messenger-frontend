@@ -1,4 +1,5 @@
-const url = "http://localhost:3000/api/validate";
+// const url = "http://localhost:3000/api/validate";
+const url = `https://dm-me.adaptable.app/api/validate`;
 const headerinfo = {
   Authorization: "bearer " + localStorage.getItem("token"),
 };

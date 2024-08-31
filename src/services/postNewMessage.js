@@ -1,5 +1,7 @@
 async function postNewMessage(convoid, authorid, authorname, message) {
-  const url = `http://localhost:3000/api/message?convoid=${convoid}&userid=${authorid}`;
+  // const url = `http://localhost:3000/api/message?convoid=${convoid}&userid=${authorid}`;
+  const url = `https://dm-me.adaptable.app/api/message?convoid=${convoid}&userid=${authorid}`;
+
   const headerinfo = {
     Accept: "application/json",
     "Content-Type": "application/json",

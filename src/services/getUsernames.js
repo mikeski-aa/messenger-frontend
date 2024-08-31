@@ -4,7 +4,9 @@ const headerinfo = {
 
 async function getUsernames(username, id) {
   const query = `uname=${username}&id=${id}`;
-  const url = "http://localhost:3000/api/users?" + query;
+  // const url = "http://localhost:3000/api/users?" + query;
+  const url = "https://dm-me.adaptable.app/api/users?" + query;
+
   try {
     const response = await fetch(url, { method: "GET", headers: headerinfo });
 

@@ -1,5 +1,7 @@
 async function getRequestOwnerInfo(id) {
-  const url = `http://localhost:3000/api/reqowner?id=${id}`;
+  // const url = `http://localhost:3000/api/reqowner?id=${id}`;
+  const url = `https://dm-me.adaptable.app/api/reqowner?id=${id}`;
+
   const headerinfo = {
     Authorization: "bearer " + localStorage.getItem("token"),
   };

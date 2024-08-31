@@ -1,4 +1,6 @@
-const url = "http://localhost:3000/api/register";
+// const url = "http://localhost:3000/api/register";
+const url = "https://dm-me.adaptable.app/api/register";
+
 const headerinfo = {
   Accept: "application/json",
   "Content-Type": "application/json",

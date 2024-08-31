@@ -1,5 +1,7 @@
 async function getUserData(id) {
-  const url = `http://localhost:3000/api/userdata?id=${id}`;
+  // const url = `http://localhost:3000/api/userdata?id=${id}`;
+  const url = `https://dm-me.adaptable.app/api/userdata?id=${id}`;
+
   const headerinfo = {
     Authorization: "bearer " + localStorage.getItem("token"),
   };

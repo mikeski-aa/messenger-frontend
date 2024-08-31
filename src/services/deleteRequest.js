@@ -1,5 +1,7 @@
 async function deleteRequest(id) {
-  const url = `http://localhost:3000/api/request?reqId=${id}`;
+  // const url = `http://localhost:3000/api/request?reqId=${id}`;
+  const url = `https://dm-me.adaptable.app/api/request?reqId=${id}`;
+
   const headerinfo = {
     Authorization: "bearer " + localStorage.getItem("token"),
   };

@@ -1,5 +1,7 @@
 async function updateUserName(username) {
-  const url = `http://localhost:3000/api/username?name=${username}`;
+  // const url = `http://localhost:3000/api/username?name=${username}`;
+  const url = `https://dm-me.adaptable.app/api/username?name=${username}`;
+
   const headerinfo = {
     Authorization: "bearer " + localStorage.getItem("token"),
   };

@@ -1,5 +1,7 @@
 async function postUserImg(file) {
-  const url = `http://localhost:3000/api/profileimg`;
+  // const url = `http://localhost:3000/api/profileimg`;
+  const url = `https://dm-me.adaptable.app/api/profileimg`;
+
   const headerinfo = {
     Authorization: "bearer " + localStorage.getItem("token"),
   };

@@ -1,5 +1,7 @@
 async function updateUserStatus(status) {
-  const url = `http://localhost:3000/api/userstatus?status=${status}`;
+  // const url = `http://localhost:3000/api/userstatus?status=${status}`;
+  const url = `https://dm-me.adaptable.app/api/userstatus?status=${status}`;
+
   const headerinfo = {
     Authorization: "bearer " + localStorage.getItem("token"),
   };
