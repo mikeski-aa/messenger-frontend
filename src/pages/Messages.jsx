@@ -51,6 +51,7 @@ function Messages() {
               status={friend.status}
               convoid={friend.convo}
               userid={friend.user}
+              imageURL={friend.imageURL}
               messages={messages}
               setMessages={setMessages}
               key={uuidv4()}

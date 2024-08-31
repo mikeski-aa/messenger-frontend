@@ -92,6 +92,7 @@ function Register() {
                     type="text"
                     name="username"
                     className="usernameInputBox"
+                    id="unameIbox"
                     minLength={1}
                     maxLength={15}
                     onChange={(e) => handleUserInput(e)}

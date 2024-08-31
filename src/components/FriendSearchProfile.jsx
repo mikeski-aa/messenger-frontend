@@ -1,14 +1,22 @@
 import "../styles/friendmessage.css";
 import person from "../assets/person.svg";
 import more from "../assets/moredots.svg";
-import { useContext, useState } from "react";
+import { useContext, useState, useEffect } from "react";
 import { AuthContext } from "../App";
 import postFriendRequest from "../services/postFriendRequest";
 
 function FriendSearchProfile(props) {
   const [menuOpen, setMenuOpen] = useState("closed");
   const [friendId, setFriendId] = useState(props.id);
+  const [imgUrl, setImgUrl] = useState("");
 
+  useEffect(() => {
+    if (props.imageURL === "default") {
+      setImgUrl(person);
+    } else {
+      setImgUrl(props.imageURL);
+    }
+  }, []);
   const authContext = useContext(AuthContext);
 
   const handleOpenMore = () => {
@@ -37,7 +45,7 @@ function FriendSearchProfile(props) {
           </div>
         </div>
         <div className="friendMain">
-          <img src={person} className={"personImg " + props.status}></img>
+          <img src={imgUrl} className={"personImg " + props.status}></img>
           <div className="friendName">{props.username}</div>
         </div>
         <div className="friendBtn">

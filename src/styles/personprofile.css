@@ -4,6 +4,7 @@
   gap: 0.25rem;
   transition-duration: 1s;
   color: white;
+  margin-left: 5px;
 }
 
 .profilePicImg {

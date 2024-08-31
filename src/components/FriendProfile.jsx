@@ -55,7 +55,7 @@ function FriendProfile(props) {
       return (window.location.href = `/convo/${response.convo[0].id}?participants=${props.username}`);
     }
 
-    // window.location.href = `/convo/${response.id}?participants=${props.username}`;
+    window.location.href = `/convo/${response.id}?participants=${props.username}`;
   };
 
   return (

@@ -156,3 +156,7 @@ hr {
 .usernameInputDiv {
   text-transform: uppercase;
 }
+
+#unameIbox {
+  text-transform: uppercase;
+}

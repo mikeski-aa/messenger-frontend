@@ -1,10 +1,11 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import person from "../assets/person.svg";
 import "../styles/personprofile.css";
 import { AuthContext } from "../App";
 
 function PersonProfile(props) {
   const [imgUrl, setImgUrl] = useState("");
+  const authContext = useContext(AuthContext);
 
   const handleOpenProfile = () => {
     window.location.href = "/profile";
@@ -16,7 +17,7 @@ function PersonProfile(props) {
     } else {
       setImgUrl(props.imageURL);
     }
-  }, []);
+  }, [authContext.user]);
 
   console.log(props.status);
   return (

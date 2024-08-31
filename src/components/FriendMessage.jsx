@@ -1,7 +1,7 @@
 import "../styles/friendmessage.css";
 import person from "../assets/person.svg";
 import more from "../assets/moredots.svg";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import deleteConvo from "../services/deleteConvo";
 
 function FriendMessage(props) {
@@ -14,6 +14,15 @@ function FriendMessage(props) {
       setMenuOpen("closed");
     }
   };
+  const [imgUrl, setImgUrl] = useState("");
+
+  useEffect(() => {
+    if (props.imageURL === "default") {
+      setImgUrl(person);
+    } else {
+      setImgUrl(props.imageURL);
+    }
+  }, []);
 
   const handleFriendMainClick = () => {
     window.location.href = `/convo/${props.convoid}?participants=${props.username}`;
@@ -39,7 +48,7 @@ function FriendMessage(props) {
           </div>
         </div>
         <div className="friendMain" onClick={handleFriendMainClick}>
-          <img src={person} className={"personImg " + props.status}></img>
+          <img src={imgUrl} className={"personImg " + props.status}></img>
           <div className="friendName">{props.username}</div>
         </div>
         <div className="friendBtn">
