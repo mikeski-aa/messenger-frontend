@@ -22,3 +22,7 @@ button {
 input {
   padding: 3px;
 }
+
+button:hover {
+  cursor: pointer;
+}
