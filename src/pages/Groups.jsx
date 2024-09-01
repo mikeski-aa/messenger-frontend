@@ -7,6 +7,7 @@ import { v4 as uuidv4 } from "uuid";
 import postNewGroup from "../services/postNewGroup";
 import GroupFriends from "../components/GroupFriends";
 import getUserGroups from "../services/getUserGroups";
+import Loading from "../components/Loading";
 
 function Groups() {
   const authContext = useContext(AuthContext);
@@ -17,6 +18,7 @@ function Groups() {
   const [errorState, setErrorState] = useState("hide");
   const [errorText, setErrorText] = useState("TEMP ERROR TEXT");
   const [groups, setGroups] = useState([]);
+  const [loadingStatus, setLoadingStatus] = useState("show");
 
   let tempGroupVis = "show";
   let copyFriendVis = "show";
@@ -96,6 +98,7 @@ function Groups() {
       } else {
         const groups = await getUserGroups(authContext.user.id);
         setGroups(groups);
+        setLoadingStatus("hide");
       }
     };
     fetchGroups();
@@ -174,7 +177,7 @@ function Groups() {
             </div>
             <hr />
           </div>
-          {checkGroups()}
+          <Loading loadingstatus={loadingStatus} />
           <div className="currentGroups">
             <div className="allGroupsContainer">
               {groups.map((convo) => (

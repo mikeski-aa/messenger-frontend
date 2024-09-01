@@ -6,11 +6,13 @@ import FriendMessage from "../components/FriendMessage";
 import { v4 as uuidv4 } from "uuid";
 import { Outlet } from "react-router-dom";
 import getUserDms from "../services/getUserDms";
+import Loading from "../components/Loading";
 
 function Messages() {
   const authContext = useContext(AuthContext);
   const [messages, setMessages] = useState([]);
   const [testShow, setTestShow] = useState("hide");
+  const [loadingStatus, setLoadingStatus] = useState("");
 
   const handleShowClick = () => {
     if (testShow === "hide") {
@@ -29,6 +31,7 @@ function Messages() {
         return;
       } else {
         const dms = await getUserDms(authContext.user.id);
+        setLoadingStatus("hide");
         console.log("messages: ");
         console.log(dms);
         setMessages(dms);
@@ -49,7 +52,7 @@ function Messages() {
       <div className="messagesContainer">
         <h1>Conversations</h1>
         <div className="messageContainer">
-          {checkMsgs()}
+          <Loading loadingstatus={loadingStatus} />
           {messages.map((friend) => (
             <FriendMessage
               username={friend.username}
