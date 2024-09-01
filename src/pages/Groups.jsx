@@ -79,7 +79,7 @@ function Groups() {
       users.push(tempGroupFriends[x].id);
     }
     const response = await postNewGroup(users, inputName);
-
+    console.log(response);
     if (typeof response.error != "undefined") {
       // create an error instead of an alert
       alert("group already exists");
@@ -87,7 +87,8 @@ function Groups() {
     setGroups([...groups, response]);
     setHolderVis("hide");
     setInputName("");
-    console.log(response);
+
+    setActiveShow("hide");
   };
 
   useEffect(() => {
@@ -107,13 +108,7 @@ function Groups() {
       }
     };
     fetchGroups();
-  }, [authContext.user]);
-
-  const checkGroups = () => {
-    if (groups.length === 0) {
-      return <p>You are not a member of any groups right now!</p>;
-    }
-  };
+  }, [authContext.user, groups]);
 
   return (
     <>
