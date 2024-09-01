@@ -1,0 +1,32 @@
+.loadingDiv {
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  font-weight: bold;
+  border-radius: 5px;
+  width: fit-content;
+}
+
+@keyframes rotateImg {
+  from {
+    transform: rotateZ(0deg);
+  }
+  to {
+    transform: rotateZ(360deg);
+  }
+}
+
+.loadingPic {
+  width: 25px;
+  height: 25px;
+  animation-name: rotateImg;
+  animation-duration: 1s;
+  animation-iteration-count: infinite;
+}
+
+.loadingDiv.hide {
+  display: none;
+}

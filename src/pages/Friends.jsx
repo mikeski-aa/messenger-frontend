@@ -6,6 +6,7 @@ import getUsernames from "../services/getUsernames";
 import FriendSearchProfile from "../components/FriendSearchProfile";
 import FriendRequestProfile from "../components/FriendRequestProfile";
 import getUserData from "../services/getUserData";
+import Loading from "../components/Loading";
 
 function Friends() {
   const authContext = useContext(AuthContext);
@@ -17,6 +18,8 @@ function Friends() {
   const [tempFriends, setTempFriends] = useState([]);
   const [tempReqs, setTempReqs] = useState([]);
   const [friendShow, setFriendShow] = useState("hide");
+  const [loadingstatus, setLoadingStatus] = useState("");
+  const [loadingSearch, setLoadingSearch] = useState("hide");
 
   // set visibility of requests coming in
   useEffect(() => {
@@ -45,6 +48,7 @@ function Friends() {
       const response = await getUserData(authContext.user.id);
       setTempFriends(response.friends);
       setTempReqs(response.requests);
+      setLoadingStatus("hide");
     };
 
     if (authContext.user.id === null) {
@@ -64,12 +68,14 @@ function Friends() {
   // otherwise map to list
   const handleSearchClick = async (e) => {
     e.preventDefault();
-
+    setLoadingSearch("show");
     if (inputFriend.length === 0) {
+      setLoadingSearch("hide");
       return;
     }
 
     const users = await getUsernames(inputFriend, authContext.user.id);
+    setLoadingSearch("hide");
     if (typeof users === "undefined") {
       setFriendError("show");
       setFriendErrorText("Error finding the user");
@@ -122,6 +128,7 @@ function Friends() {
             </div>
           </form>
           <div className="searchResultDiv">
+            <Loading loadingstatus={loadingSearch} />
             {userArray.map((user) => (
               <FriendSearchProfile
                 username={user.username}
@@ -146,7 +153,7 @@ function Friends() {
             ))}
             <hr></hr>
           </div>
-          {checkFriends()}
+          <Loading loadingstatus={loadingstatus} />
           <div className={"friendsDiv " + friendShow}>
             <h4 className="inReqTitle">Friends: </h4>
 
