@@ -7,6 +7,7 @@ import FriendSearchProfile from "../components/FriendSearchProfile";
 import FriendRequestProfile from "../components/FriendRequestProfile";
 import getUserData from "../services/getUserData";
 import Loading from "../components/Loading";
+import NoActive from "../components/NoActive";
 
 function Friends() {
   const authContext = useContext(AuthContext);
@@ -20,6 +21,7 @@ function Friends() {
   const [friendShow, setFriendShow] = useState("hide");
   const [loadingstatus, setLoadingStatus] = useState("");
   const [loadingSearch, setLoadingSearch] = useState("hide");
+  const [activeShow, setActiveShow] = useState("hide");
 
   // set visibility of requests coming in
   useEffect(() => {
@@ -49,6 +51,9 @@ function Friends() {
       setTempFriends(response.friends);
       setTempReqs(response.requests);
       setLoadingStatus("hide");
+      if (response.friends.length === 0) {
+        setActiveShow("show");
+      }
     };
 
     if (authContext.user.id === null) {
@@ -76,6 +81,7 @@ function Friends() {
 
     const users = await getUsernames(inputFriend, authContext.user.id);
     setLoadingSearch("hide");
+
     if (typeof users === "undefined") {
       setFriendError("show");
       setFriendErrorText("Error finding the user");
@@ -85,12 +91,6 @@ function Friends() {
     } else {
       setFriendError("hide");
       setUserArray(users);
-    }
-  };
-
-  const checkFriends = () => {
-    if (tempFriends.length === 0) {
-      return <p>No friends currently added!</p>;
     }
   };
 
@@ -154,6 +154,10 @@ function Friends() {
             <hr></hr>
           </div>
           <Loading loadingstatus={loadingstatus} />
+          <NoActive
+            activeshow={activeShow}
+            text="You have no friends added... Yet!"
+          />
           <div className={"friendsDiv " + friendShow}>
             <h4 className="inReqTitle">Friends: </h4>
 

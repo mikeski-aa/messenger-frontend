@@ -7,12 +7,14 @@ import { v4 as uuidv4 } from "uuid";
 import { Outlet } from "react-router-dom";
 import getUserDms from "../services/getUserDms";
 import Loading from "../components/Loading";
+import NoActive from "../components/NoActive";
 
 function Messages() {
   const authContext = useContext(AuthContext);
   const [messages, setMessages] = useState([]);
   const [testShow, setTestShow] = useState("hide");
   const [loadingStatus, setLoadingStatus] = useState("");
+  const [noActive, setNoActive] = useState("hide");
 
   const handleShowClick = () => {
     if (testShow === "hide") {
@@ -35,6 +37,9 @@ function Messages() {
         console.log("messages: ");
         console.log(dms);
         setMessages(dms);
+        if (dms.length === 0) {
+          setNoActive("show");
+        }
       }
     };
     fetchMessages();
@@ -53,6 +58,10 @@ function Messages() {
         <h1>Conversations</h1>
         <div className="messageContainer">
           <Loading loadingstatus={loadingStatus} />
+          <NoActive
+            text="You have no active conversations... Yet!"
+            activeshow={noActive}
+          />
           {messages.map((friend) => (
             <FriendMessage
               username={friend.username}

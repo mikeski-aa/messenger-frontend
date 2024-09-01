@@ -1,0 +1,10 @@
+.noActiveBox.hide {
+  display: none;
+}
+
+.noActiveBox {
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%);
+  width: fit-content;
+}

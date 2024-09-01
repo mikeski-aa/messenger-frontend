@@ -8,6 +8,7 @@ import postNewGroup from "../services/postNewGroup";
 import GroupFriends from "../components/GroupFriends";
 import getUserGroups from "../services/getUserGroups";
 import Loading from "../components/Loading";
+import NoActive from "../components/NoActive";
 
 function Groups() {
   const authContext = useContext(AuthContext);
@@ -19,6 +20,7 @@ function Groups() {
   const [errorText, setErrorText] = useState("TEMP ERROR TEXT");
   const [groups, setGroups] = useState([]);
   const [loadingStatus, setLoadingStatus] = useState("show");
+  const [activeShow, setActiveShow] = useState("hide");
 
   let tempGroupVis = "show";
   let copyFriendVis = "show";
@@ -99,6 +101,9 @@ function Groups() {
         const groups = await getUserGroups(authContext.user.id);
         setGroups(groups);
         setLoadingStatus("hide");
+        if (groups.length == 0) {
+          setActiveShow("show");
+        }
       }
     };
     fetchGroups();
@@ -178,6 +183,10 @@ function Groups() {
             <hr />
           </div>
           <Loading loadingstatus={loadingStatus} />
+          <NoActive
+            text="You have no active groups... Yet!"
+            activeshow={activeShow}
+          />
           <div className="currentGroups">
             <div className="allGroupsContainer">
               {groups.map((convo) => (
