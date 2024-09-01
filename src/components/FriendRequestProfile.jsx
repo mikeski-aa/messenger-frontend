@@ -28,6 +28,7 @@ function FriendRequestProfile(props) {
 
   // handle clicking accept on request option tab
   const handleAcceptClick = async () => {
+    setMenuOpen("closed");
     const response = await updateUserFriends(
       authContext.user.id,
       reqOwner.id,
@@ -36,19 +37,14 @@ function FriendRequestProfile(props) {
 
     const test = await getUserData(authContext.user.id);
     authContext.setRequests(test.requests);
-    console.log(test.requests);
-
-    console.log("accept click response");
-    console.log(response);
-    setMenuOpen("closed");
   };
 
   const handleDeclineClick = async () => {
+    setMenuOpen("closed");
     const response = await deleteRequest(props.reqid);
     const test = await getUserData(authContext.user.id);
     authContext.setRequests(test.requests);
     console.log(test.requests);
-    setMenuOpen("closed");
   };
 
   // there has to be a better way of handling this

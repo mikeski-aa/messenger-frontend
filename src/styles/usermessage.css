@@ -23,14 +23,17 @@
 
 @media (max-width: 500px) {
   .participantsUserMessage {
+    display: flex;
+    align-items: center;
     max-width: 200px;
+    height: 45px;
     flex-wrap: nowrap;
     overflow-x: scroll;
     overflow-y: hidden;
     text-align: center;
   }
-}
-
-.listOfMembers {
-  height: 50%;
+  .listOfMembers {
+    height: 50%;
+    overflow-x: hidden;
+  }
 }
