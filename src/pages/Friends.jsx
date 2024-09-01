@@ -148,6 +148,7 @@ function Friends() {
                   id={request.ownerId}
                   reqid={request.id}
                   imageURL={request.imageURL}
+                  setActiveShow={setActiveShow}
                 />
               </div>
             ))}

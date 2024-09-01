@@ -1,0 +1,44 @@
+.modal {
+  position: absolute;
+  background-color: rgba(0, 0, 0, 0.767);
+  left: 0;
+  top: 0;
+  height: 100vh;
+  width: 100vw;
+}
+
+.modalContent {
+  display: flex;
+  align-items: center;
+  position: relative;
+  width: fit-content;
+  gap: 1rem;
+  left: 50%;
+  top: 30%;
+  transform: translateX(-50%), translateY(-50%);
+  color: white;
+  font-weight: bold;
+  font-size: larger;
+}
+
+.modal.hide {
+  display: none;
+}
+
+.loadingLoop {
+  height: 40px;
+  width: 40px;
+  filter: invert();
+  animation: animateloop;
+  animation-duration: 1s;
+  animation-iteration-count: infinite;
+}
+
+@keyframes animateloop {
+  from {
+    transform: rotateZ(0deg);
+  }
+  to {
+    transform: rotateZ(360deg);
+  }
+}

@@ -42,8 +42,7 @@ function Layout({ children }) {
     window.location.href = "/groups";
   };
 
-  console.log(window.location.href);
-
+  // this is probably a terrible workaround, but it works
   if (
     window.location.href === "https://dmmeapp.netlify.app/" ||
     window.location.href === "dmmeapp.netlify.app/" ||

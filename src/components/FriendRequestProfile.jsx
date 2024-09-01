@@ -37,6 +37,7 @@ function FriendRequestProfile(props) {
 
     const test = await getUserData(authContext.user.id);
     authContext.setRequests(test.requests);
+    props.setActiveShow("hide");
   };
 
   const handleDeclineClick = async () => {

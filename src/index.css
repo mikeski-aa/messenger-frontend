@@ -26,3 +26,11 @@ input {
 button:hover {
   cursor: pointer;
 }
+
+button:focus {
+  outline: 2px solid rgb(17, 127, 252);
+}
+
+h1 {
+  color: white;
+}

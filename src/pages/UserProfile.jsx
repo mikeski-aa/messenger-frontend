@@ -1,11 +1,9 @@
 import "../styles/userprofile.css";
-import Layout from "../components/Layout";
 import updateUserStatus from "../services/updateUserStatus";
 import { useEffect, useState } from "react";
-import userEvent from "@testing-library/user-event";
 import updateUserName from "../services/updateUserName";
 import postUserImg from "../services/postUserImg";
-import postUser from "../services/postUser";
+import SavingModal from "../components/SavingModal";
 
 function UserProfile(props) {
   const [status, setStatus] = useState("");
@@ -13,11 +11,13 @@ function UserProfile(props) {
   const [showError, setShowError] = useState("hide");
   const [errorMessage, setErrorMessage] = useState("");
   const [fileState, setFileState] = useState();
+  const [modalShow, setModalShow] = useState("hide");
 
   const handleSaveStatus = async (e) => {
     e.preventDefault();
-
+    setModalShow("show");
     await updateUserStatus(status);
+    setModalShow("hide");
   };
 
   const handleStatusSelect = (e) => {
@@ -26,11 +26,11 @@ function UserProfile(props) {
   };
 
   const handleNameInput = (e) => {
-    console.log(e.target.value);
     setUsername(e.target.value);
   };
 
   const handleNameChange = async (e) => {
+    setModalShow("show");
     e.preventDefault();
     const response = await updateUserName(username);
 
@@ -40,9 +40,11 @@ function UserProfile(props) {
       setErrorMessage(
         "Error updating username, make sure the username is unique"
       );
+      setModalShow("hide");
       return;
     }
     setShowError("hide");
+    setModalShow("hide");
     props.setUser({ ...props.user, username: username });
   };
 
@@ -53,12 +55,14 @@ function UserProfile(props) {
 
   const handleImageSave = async (e) => {
     e.preventDefault();
+    setModalShow("show");
     const response = await postUserImg(fileState);
-    console.log(response);
+    setModalShow("hide");
   };
 
   return (
     <>
+      <SavingModal modalshow={modalShow} />
       <div className="myProfileontainer">
         <div className="myProfileHeader">
           <h1>Welcome, {props.username}</h1>
@@ -80,7 +84,11 @@ function UserProfile(props) {
                     <option value="away">Away</option>
                     <option value="offline">Appear Offline</option>
                   </select>
-                  <button type="submit" onClick={(e) => handleSaveStatus(e)}>
+                  <button
+                    className="saveBtnProfile"
+                    type="submit"
+                    onClick={(e) => handleSaveStatus(e)}
+                  >
                     Save
                   </button>
                 </div>
@@ -99,7 +107,11 @@ function UserProfile(props) {
                     className="inputBoxFile"
                     onChange={(e) => handleImageChange(e)}
                   />
-                  <button type="submit" onClick={(e) => handleImageSave(e)}>
+                  <button
+                    className="saveBtnProfile"
+                    type="submit"
+                    onClick={(e) => handleImageSave(e)}
+                  >
                     Save
                   </button>
                 </div>
@@ -120,7 +132,11 @@ function UserProfile(props) {
                     maxLength={15}
                     onChange={(e) => handleNameInput(e)}
                   ></input>
-                  <button type="submit" onClick={(e) => handleNameChange(e)}>
+                  <button
+                    className="saveBtnProfile"
+                    type="submit"
+                    onClick={(e) => handleNameChange(e)}
+                  >
                     Save
                   </button>
                 </div>

@@ -49,3 +49,7 @@ h1 {
 .inputBoxFile {
   max-width: 180px;
 }
+
+.saveBtnProfile {
+  max-height: 20px;
+}
