@@ -5,7 +5,7 @@ import { useState, useContext } from "react";
 import rightArrow from "../assets/rightArrow.svg";
 import mainLogo from "../assets/DM_ME_LOGO.png";
 import { AuthContext } from "../App";
-import { Outlet } from "react-router-dom";
+import { Outlet, useParams, useSearchParams } from "react-router-dom";
 import updateUserStatus from "../services/updateUserStatus";
 import person from "../assets/person.svg";
 import groupicon from "../assets/groupicon.svg";
@@ -41,6 +41,16 @@ function Layout({ children }) {
   const handleGroupsClick = () => {
     window.location.href = "/groups";
   };
+
+  console.log(window.location.href);
+
+  if (
+    window.location.href === "https://dmmeapp.netlify.app/" ||
+    window.location.href === "dmmeapp.netlify.app/" ||
+    window.location.href === "http://localhost:5173/"
+  ) {
+    window.location.href = "/friends";
+  }
 
   return (
     <>
