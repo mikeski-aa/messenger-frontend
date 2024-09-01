@@ -37,6 +37,10 @@ function Messages() {
     fetchMessages();
   }, [authContext.user]);
 
+  const checkMsgs = () => {
+    return <p>You have no active conversations</p>;
+  };
+
   // this should return a list of people with currently active conversations
   // map them
   // option to delete conversation
@@ -45,6 +49,7 @@ function Messages() {
       <div className="messagesContainer">
         <h1>Conversations</h1>
         <div className="messageContainer">
+          {checkMsgs()}
           {messages.map((friend) => (
             <FriendMessage
               username={friend.username}

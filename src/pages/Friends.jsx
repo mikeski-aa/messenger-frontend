@@ -82,6 +82,12 @@ function Friends() {
     }
   };
 
+  const checkFriends = () => {
+    if (tempFriends.length === 0) {
+      return <p>No friends currently added!</p>;
+    }
+  };
+
   return (
     <>
       <div className="friendsMain">
@@ -140,9 +146,10 @@ function Friends() {
             ))}
             <hr></hr>
           </div>
-
+          {checkFriends()}
           <div className={"friendsDiv " + friendShow}>
             <h4 className="inReqTitle">Friends: </h4>
+
             {tempFriends.map((friend) => (
               <FriendProfile
                 username={friend.username}

@@ -101,6 +101,12 @@ function Groups() {
     fetchGroups();
   }, [authContext.user]);
 
+  const checkGroups = () => {
+    if (groups.length === 0) {
+      return <p>You are not a member of any groups right now!</p>;
+    }
+  };
+
   return (
     <>
       <div className="groupContainer">
@@ -151,6 +157,7 @@ function Groups() {
                       status={friend.status}
                       id={friend.id}
                       tempFriends={tempGroupFriends}
+                      imageURL={friend.imageURL}
                       setTempGroupFriends={setTempGroupFriends}
                       setFriendContCopy={setFriendContCopy}
                       friendContCopy={friendContCopy}
@@ -167,7 +174,7 @@ function Groups() {
             </div>
             <hr />
           </div>
-
+          {checkGroups()}
           <div className="currentGroups">
             <div className="allGroupsContainer">
               {groups.map((convo) => (
