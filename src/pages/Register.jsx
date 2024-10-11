@@ -4,6 +4,7 @@ import dmLogo from "../assets/DM_ME_LOGO.png";
 import "../styles/forms.css";
 // import postUser from "../services/deprecated_user_calls/postUser";
 import { postUser } from "../services/userCalls";
+import { Link } from "react-router-dom";
 
 // TO DO: CONVERT NAMES TO ALL CAPS
 
@@ -158,10 +159,7 @@ function Register() {
             </form>
           </div>
           <div className="createNew">
-            Already have an account?{" "}
-            <a href="/login" className="formLink">
-              Login!
-            </a>
+            Already have an account? <Link to="/login">Login!</Link>
           </div>
         </div>
       </div>

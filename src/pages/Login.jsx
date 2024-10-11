@@ -9,7 +9,7 @@ import "../styles/forms.css";
 import { postUser } from "../services/userCalls";
 // import updateUserStatus from "../services/deprecated_user_calls/updateUserStatus";
 import { updateUserStatus } from "../services/userCalls";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 function Login() {
   const authContext = useContext(AuthContext);
@@ -29,7 +29,6 @@ function Login() {
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log("form submitted");
-    return navigate("/friends");
   };
 
   // handling email input
@@ -73,7 +72,7 @@ function Login() {
             <div className="welcomeHeadingDiv">
               <h1 className="welcomeHeading">Welcome back</h1>
             </div>
-            <form className="loginForm" onSubmit={(e) => handleSubmit(e)}>
+            <form className="loginForm">
               <div className="emailLogin">
                 <label htmlFor="email" className="labelEmail">
                   EMAIL
@@ -127,9 +126,7 @@ function Login() {
           </div>
           <div className="createNew">
             Don't have an account?
-            <a href="/register" className="formLink">
-              Register!
-            </a>
+            <Link to="/register">Register!</Link>
           </div>
         </div>
       </div>
