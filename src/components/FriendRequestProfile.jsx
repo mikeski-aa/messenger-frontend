@@ -2,11 +2,13 @@ import "../styles/friendprofile.css";
 import person from "../assets/person.svg";
 import more from "../assets/moredots.svg";
 import { useContext, useEffect, useState } from "react";
-import getRequestOwnerInfo from "../services/getRequestOwnerInfo";
+// import getRequestOwnerInfo from "../services/getRequestOwnerInfo";
+import { getRequestOwnerInfo } from "../services/requestCalls";
 // import updateUserFriends from "../services/updateUserFriends";
 import { updateUserFriends } from "../services/friendCalls";
 import { AuthContext } from "../App";
-import deleteRequest from "../services/deleteRequest";
+// import deleteRequest from "../services/deleteRequest";
+import { deleteRequest } from "../services/requestCalls";
 // import getUserData from "../services/deprecated_user_calls/getUserData";
 import { getUserData } from "../services/userCalls";
 

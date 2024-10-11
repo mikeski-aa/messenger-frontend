@@ -3,7 +3,8 @@ import person from "../assets/person.svg";
 import more from "../assets/moredots.svg";
 import { useContext, useState, useEffect } from "react";
 import { AuthContext } from "../App";
-import postFriendRequest from "../services/postFriendRequest";
+// import postFriendRequest from "../services/postFriendRequest";
+import { postFriendRequest } from "../services/requestCalls";
 
 function FriendSearchProfile(props) {
   const [menuOpen, setMenuOpen] = useState("closed");

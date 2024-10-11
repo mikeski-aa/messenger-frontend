@@ -1,4 +1,4 @@
-import { LOCAL_URL } from "../../utils/url.const";
+import { LOCAL_URL } from "../../../utils/url.const";
 
 async function postFriendRequest(targetId, userId) {
   // const url = `http://localhost:3000/api/request?target=${targetId}&user=${userId}`;
