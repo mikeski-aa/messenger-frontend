@@ -5,7 +5,12 @@ import { useState, useContext } from "react";
 import rightArrow from "../assets/rightArrow.svg";
 import mainLogo from "../assets/DM_ME_LOGO.png";
 import { AuthContext } from "../App";
-import { Outlet, useParams, useSearchParams } from "react-router-dom";
+import {
+  Outlet,
+  useNavigate,
+  useParams,
+  useSearchParams,
+} from "react-router-dom";
 // import updateUserStatus from "../services/deprecated_user_calls/updateUserStatus";
 import { updateUserStatus } from "../services/userCalls";
 import person from "../assets/person.svg";
@@ -16,6 +21,7 @@ import logout from "../assets/logout.svg";
 function Layout({ children }) {
   const authContext = useContext(AuthContext);
   const [navVis, setNavVis] = useState("show");
+  const navigate = useNavigate();
 
   const handleShowClick = () => {
     if (navVis === "show") {
@@ -26,20 +32,24 @@ function Layout({ children }) {
   };
 
   const handleFriendsClick = () => {
+    return navigate("/friends");
     window.location.href = "/friends";
   };
 
   const handleMessagesClick = () => {
+    return navigate("/messages");
     window.location.href = "/messages";
   };
 
   const handleLogoutClick = async () => {
     await updateUserStatus("offline");
     localStorage.removeItem("token");
+    return navigate("/login");
     window.location.href = "/login";
   };
 
   const handleGroupsClick = () => {
+    return navigate("/groups");
     window.location.href = "/groups";
   };
 
