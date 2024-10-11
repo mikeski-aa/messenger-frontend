@@ -70,4 +70,4 @@ async function postFriendRequest(targetId, userId) {
     console.log(error);
   }
 }
-export { deleteRequest };
+export { deleteRequest, getRequestOwnerInfo, postFriendRequest };

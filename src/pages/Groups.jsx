@@ -4,9 +4,11 @@ import { useContext, useEffect, useState } from "react";
 import FriendGroupAdd from "../components/FriendGroupAdd";
 import FriendGroupCurrent from "../components/FriendGroupCurrent";
 import { v4 as uuidv4 } from "uuid";
-import postNewGroup from "../services/postNewGroup";
+// import postNewGroup from "../services/postNewGroup";
+import { postNewGroup } from "../services/groupCalls";
 import GroupFriends from "../components/GroupFriends";
-import getUserGroups from "../services/getUserGroups";
+// import getUserGroups from "../services/getUserGroups";
+import { getUserGroups } from "../services/groupCalls";
 import Loading from "../components/Loading";
 import NoActive from "../components/NoActive";
 

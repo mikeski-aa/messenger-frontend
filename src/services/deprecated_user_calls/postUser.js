@@ -1,4 +1,4 @@
-import { LOCAL_URL } from "../../utils/url.const";
+import { LOCAL_URL } from "../../../utils/url.const";
 
 // function for calling my api and creating a new user
 async function postUser(username, email, password, confirmPassword) {

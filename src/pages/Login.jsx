@@ -4,7 +4,8 @@ import dmLogo from "../assets/DM_ME_LOGO.png";
 import background from "../assets/testBck.png";
 import postLogin from "../services/postLogin";
 import "../styles/forms.css";
-import postUser from "../services/postUser";
+// import postUser from "../services/deprecated_user_calls/postUser";
+import { postUser } from "../services/userCalls";
 // import updateUserStatus from "../services/deprecated_user_calls/updateUserStatus";
 import { updateUserStatus } from "../services/userCalls";
 
