@@ -1,11 +1,13 @@
-const headerinfo = {
-  Authorization: "bearer " + localStorage.getItem("token"),
-};
+import { LOCAL_URL } from "../../utils/url.const";
 
 async function getUsernames(username, id) {
   const query = `uname=${username}&id=${id}`;
   // const url = "http://localhost:3000/api/users?" + query;
-  const url = "https://dm-me.adaptable.app/api/users?" + query;
+  const url = LOCAL_URL + "users?" + query;
+
+  const headerinfo = {
+    Authorization: "bearer " + localStorage.getItem("token"),
+  };
 
   try {
     const response = await fetch(url, { method: "GET", headers: headerinfo });

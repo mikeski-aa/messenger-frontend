@@ -1,12 +1,14 @@
-// const url = "http://localhost:3000/api/register";
-const url = "https://dm-me.adaptable.app/api/register";
+import { LOCAL_URL } from "../../utils/url.const";
 
-const headerinfo = {
-  Accept: "application/json",
-  "Content-Type": "application/json",
-};
 // function for calling my api and creating a new user
 async function postUser(username, email, password, confirmPassword) {
+  // const url = "http://localhost:3000/api/register";
+  const url = LOCAL_URL + "register";
+
+  const headerinfo = {
+    Accept: "application/json",
+    "Content-Type": "application/json",
+  };
   const body = {
     email: email,
     username: username,

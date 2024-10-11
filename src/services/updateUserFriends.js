@@ -1,6 +1,8 @@
+import { LOCAL_URL } from "../../utils/url.const";
+
 async function updateUserFriends(idA, idB, reqId) {
   // const url = `http://localhost:3000/api/friends?userA=${idA}&userB=${idB}&reqId=${reqId}`;
-  const url = `https://dm-me.adaptable.app/api/friends?userA=${idA}&userB=${idB}&reqId=${reqId}`;
+  const url = LOCAL_URL + `friends?userA=${idA}&userB=${idB}&reqId=${reqId}`;
 
   const headerinfo = {
     Authorization: "bearer " + localStorage.getItem("token"),

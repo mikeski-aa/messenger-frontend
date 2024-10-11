@@ -1,6 +1,8 @@
+import { LOCAL_URL } from "../../utils/url.const";
+
 async function getConvo(convoid, userid) {
   // const url = `http://localhost:3000/api/convo?convoid=${convoid}&userid=${userid}`;
-  const url = `https://dm-me.adaptable.app/api/convo?convoid=${convoid}&userid=${userid}`;
+  const url = LOCAL_URL + `convo?convoid=${convoid}&userid=${userid}`;
 
   const headerinfo = {
     Authorization: "bearer " + localStorage.getItem("token"),

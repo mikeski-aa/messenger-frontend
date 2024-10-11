@@ -1,6 +1,8 @@
+import { LOCAL_URL } from "../../utils/url.const";
+
 async function getUserGroups(userid) {
   // const url = `http://localhost:3000/api/group?userid=${userid}`;
-  const url = `  https://dm-me.adaptable.app/api/group?userid=${userid}`;
+  const url = LOCAL_URL + `group?userid=${userid}`;
 
   const headerinfo = {
     Authorization: "bearer " + localStorage.getItem("token"),

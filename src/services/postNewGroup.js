@@ -1,6 +1,8 @@
+import { LOCAL_URL } from "../../utils/url.const";
+
 async function postNewGroup(users, name) {
   // const url = `http://localhost:3000/api/group`;
-  const url = `https://dm-me.adaptable.app/api/group`;
+  const url = LOCAL_URL + `group`;
 
   const headerinfo = {
     Accept: "application/json",

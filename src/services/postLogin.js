@@ -1,12 +1,13 @@
-// const url = "http://localhost:3000/api/login";
-const url = "https://dm-me.adaptable.app/api/login";
-
-const headerinfo = {
-  Accept: "application/json",
-  "Content-Type": "application/json",
-};
+import { LOCAL_URL } from "../../utils/url.const";
 
 async function postLogin(email, password) {
+  // const url = "http://localhost:3000/api/login";
+  const url = LOCAL_URL + "login";
+
+  const headerinfo = {
+    Accept: "application/json",
+    "Content-Type": "application/json",
+  };
   const newbody = {
     email: email,
     password: password,

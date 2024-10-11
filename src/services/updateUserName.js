@@ -1,6 +1,8 @@
+import { LOCAL_URL } from "../../utils/url.const";
+
 async function updateUserName(username) {
   // const url = `http://localhost:3000/api/username?name=${username}`;
-  const url = `https://dm-me.adaptable.app/api/username?name=${username}`;
+  const url = LOCAL_URL + `username?name=${username}`;
 
   const headerinfo = {
     Authorization: "bearer " + localStorage.getItem("token"),
