@@ -27,7 +27,7 @@ function App() {
     status: "online",
     imageURL: "default",
   });
-  const [isAuth, setIsAuth] = useState(false);
+  const [isAuth, setIsAuth] = useState("");
   const [friends, setFriends] = useState([]);
   const [requests, setRequests] = useState([]);
   const [loading, setLoading] = useState(false);

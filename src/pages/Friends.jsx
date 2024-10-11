@@ -25,8 +25,6 @@ function Friends() {
   const [loadingSearch, setLoadingSearch] = useState("hide");
   const [activeShow, setActiveShow] = useState("hide");
 
-  useRedirectValidate(authContext.isAuth);
-
   // set visibility of requests coming in
   useEffect(() => {
     if (tempReqs.length > 0) {

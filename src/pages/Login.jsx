@@ -9,6 +9,7 @@ import "../styles/forms.css";
 import { postUser } from "../services/userCalls";
 // import updateUserStatus from "../services/deprecated_user_calls/updateUserStatus";
 import { updateUserStatus } from "../services/userCalls";
+import { useNavigate } from "react-router-dom";
 
 function Login() {
   const authContext = useContext(AuthContext);
@@ -16,7 +17,7 @@ function Login() {
   const [password, setPassword] = useState("");
   const [generalError, setGeneralError] = useState("hide");
   const [generalErrorMsg, setGeneralErrorMsg] = useState("");
-
+  const navigate = useNavigate();
   // if (authContext.isAuth === false) {
   //   console.log("Context false");
   // } else {
@@ -28,7 +29,7 @@ function Login() {
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log("form submitted");
-    window.location.href = "/";
+    return navigate("/friends");
   };
 
   // handling email input
@@ -54,8 +55,9 @@ function Login() {
       setGeneralError("hide");
       console.log("response logged in handle login: ");
       console.log(response);
-      window.location.href = "/";
+
       await updateUserStatus("online");
+      return navigate("/friends");
     }
   };
 

@@ -57,15 +57,15 @@ function Layout({ children }) {
   };
 
   // this is probably a terrible workaround, but it works
-  if (
-    window.location.href === "https://dmmeapp.netlify.app/" ||
-    window.location.href === "dmmeapp.netlify.app/" ||
-    window.location.href === "http://localhost:5173/"
-  ) {
-    window.location.href = "/friends";
-  }
+  // if (
+  //   window.location.href === "https://dmmeapp.netlify.app/" ||
+  //   window.location.href === "dmmeapp.netlify.app/" ||
+  //   window.location.href === "http://localhost:5173/"
+  // ) {
+  //   return navigate("/friends");
+  // }
 
-  if (authContext.isAuth === false) {
+  if (authContext.isAuth === false || authContext.isAuth === "") {
     return <div>Loading...</div>;
   }
 
