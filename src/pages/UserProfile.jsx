@@ -1,7 +1,9 @@
 import "../styles/userprofile.css";
-import updateUserStatus from "../services/updateUserStatus";
+// import updateUserStatus from "../services/deprecated_user_calls/updateUserStatus";
+import { updateUserStatus } from "../services/userCalls";
 import { useEffect, useState } from "react";
-import updateUserName from "../services/updateUserName";
+// import updateUserName from "../services/deprecated_user_calls/updateUserName";
+import { updateUserName } from "../services/userCalls";
 import postUserImg from "../services/postUserImg";
 import SavingModal from "../components/SavingModal";
 

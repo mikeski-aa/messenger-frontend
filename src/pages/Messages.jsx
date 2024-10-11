@@ -5,7 +5,8 @@ import Layout from "../components/Layout";
 import FriendMessage from "../components/FriendMessage";
 import { v4 as uuidv4 } from "uuid";
 import { Outlet } from "react-router-dom";
-import getUserDms from "../services/getUserDms";
+// import getUserDms from "../services/deprecated_user_calls/getUserDms";
+import { getUserDms } from "../services/userCalls";
 import Loading from "../components/Loading";
 import NoActive from "../components/NoActive";
 

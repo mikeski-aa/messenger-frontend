@@ -1,14 +1,13 @@
-import { LOCAL_URL } from "../../utils/url.const";
+import { LOCAL_URL } from "../../../utils/url.const";
 
-async function updateUserName(username) {
-  // const url = `http://localhost:3000/api/username?name=${username}`;
-  const url = LOCAL_URL + `username?name=${username}`;
+async function updateUserStatus(status) {
+  // const url = `http://localhost:3000/api/userstatus?status=${status}`;
+  const url = LOCAL_URL + `userstatus?status=${status}`;
 
   const headerinfo = {
     Authorization: "bearer " + localStorage.getItem("token"),
   };
   try {
-    console.log(url);
     const response = await fetch(url, { method: "PUT", headers: headerinfo });
 
     if (!response.ok) {
@@ -19,8 +18,7 @@ async function updateUserName(username) {
     return json;
   } catch (error) {
     console.log(error);
-    return { error: "Error changing name" };
   }
 }
 
-export default updateUserName;
+export default updateUserStatus;

@@ -13,7 +13,8 @@ import validateUser from "./services/authValidate";
 import { validate } from "uuid";
 import ProtectedRoute from "./components/ProtectedRoute";
 import Layout from "./components/Layout";
-import getUserData from "./services/getUserData";
+// import getUserData from "./services/deprecated_user_calls/getUserData";
+import { getUserData } from "./services/userCalls";
 import Groups from "./pages/Groups";
 
 export const AuthContext = createContext();

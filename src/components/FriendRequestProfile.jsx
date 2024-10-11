@@ -6,7 +6,8 @@ import getRequestOwnerInfo from "../services/getRequestOwnerInfo";
 import updateUserFriends from "../services/updateUserFriends";
 import { AuthContext } from "../App";
 import deleteRequest from "../services/deleteRequest";
-import getUserData from "../services/getUserData";
+// import getUserData from "../services/deprecated_user_calls/getUserData";
+import { getUserData } from "../services/userCalls";
 
 function FriendRequestProfile(props) {
   const authContext = useContext(AuthContext);

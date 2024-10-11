@@ -5,7 +5,8 @@ import background from "../assets/testBck.png";
 import postLogin from "../services/postLogin";
 import "../styles/forms.css";
 import postUser from "../services/postUser";
-import updateUserStatus from "../services/updateUserStatus";
+// import updateUserStatus from "../services/deprecated_user_calls/updateUserStatus";
+import { updateUserStatus } from "../services/userCalls";
 
 function Login() {
   const authContext = useContext(AuthContext);

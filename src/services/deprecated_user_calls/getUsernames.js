@@ -1,4 +1,4 @@
-import { LOCAL_URL } from "../../utils/url.const";
+import { LOCAL_URL } from "../../../utils/url.const";
 
 async function getUsernames(username, id) {
   const query = `uname=${username}&id=${id}`;

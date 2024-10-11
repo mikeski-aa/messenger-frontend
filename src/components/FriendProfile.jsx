@@ -4,7 +4,8 @@ import more from "../assets/moredots.svg";
 import { useContext, useState, useEffect } from "react";
 import deleteFriend from "../services/deleteFriend";
 import { AuthContext } from "../App";
-import getUserData from "../services/getUserData";
+// import getUserData from "../services/deprecated_user_calls/getUserData";
+import { getUserData } from "../services/userCalls";
 import postConverastion from "../services/postConversation";
 
 function FriendProfile(props) {

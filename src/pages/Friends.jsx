@@ -2,10 +2,11 @@ import "../styles/friends.css";
 import { AuthContext } from "../App";
 import { useContext, useEffect, useState } from "react";
 import FriendProfile from "../components/FriendProfile";
-import getUsernames from "../services/getUsernames";
+// import getUsernames from "../services/deprecated_user_calls/getUsernames";
+import { getUsernames } from "../services/userCalls";
 import FriendSearchProfile from "../components/FriendSearchProfile";
 import FriendRequestProfile from "../components/FriendRequestProfile";
-import getUserData from "../services/getUserData";
+import getUserData from "../services/deprecated_user_calls/getUserData";
 import Loading from "../components/Loading";
 import NoActive from "../components/NoActive";
 

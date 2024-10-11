@@ -1,4 +1,4 @@
-import { LOCAL_URL } from "../../utils/url.const";
+import { LOCAL_URL } from "../../../utils/url.const";
 
 async function getUserData(id) {
   // const url = `http://localhost:3000/api/userdata?id=${id}`;
