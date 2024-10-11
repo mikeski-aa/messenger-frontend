@@ -7,7 +7,8 @@ import { deleteFriend } from "../services/friendCalls";
 import { AuthContext } from "../App";
 // import getUserData from "../services/deprecated_user_calls/getUserData";
 import { getUserData } from "../services/userCalls";
-import postConverastion from "../services/postConversation";
+// import postConverastion from "../services/postConversation";
+import { postConverastion } from "../services/convoCalls";
 
 function FriendProfile(props) {
   const [menuOpen, setMenuOpen] = useState("closed");

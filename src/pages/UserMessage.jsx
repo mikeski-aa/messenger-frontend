@@ -5,7 +5,8 @@ import ConversationBox from "../components/ConversationBox";
 import { AuthContext } from "../App";
 import { useContext, useEffect, useState } from "react";
 import { v4 as uuidv4 } from "uuid";
-import getConvo from "../services/getConvo";
+// import getConvo from "../services/getConvo";
+import { getConvo } from "../services/convoCalls";
 
 function UserMessage() {
   const [messageArray, setMessageArray] = useState([]);

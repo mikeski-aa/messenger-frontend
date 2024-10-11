@@ -2,7 +2,8 @@ import "../styles/friendmessage.css";
 import person from "../assets/person.svg";
 import more from "../assets/moredots.svg";
 import { useState, useEffect } from "react";
-import deleteConvo from "../services/deleteConvo";
+// import deleteConvo from "../services/deleteConvo";
+import { deleteConvo } from "../services/convoCalls";
 
 function FriendMessage(props) {
   const [menuOpen, setMenuOpen] = useState("closed");

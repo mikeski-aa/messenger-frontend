@@ -1,7 +1,8 @@
 import "../styles/groupfriends.css";
 import groupicon from "../assets/groupicon.svg";
 import binicon from "../assets/binicon.svg";
-import deleteConvo from "../services/deleteConvo";
+// import deleteConvo from "../services/deleteConvo";
+import { deleteConvo } from "../services/convoCalls";
 
 function GroupFriends(props) {
   const handleBinClick = async () => {
