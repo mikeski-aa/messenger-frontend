@@ -9,6 +9,7 @@ import FriendRequestProfile from "../components/FriendRequestProfile";
 import getUserData from "../services/deprecated_user_calls/getUserData";
 import Loading from "../components/Loading";
 import NoActive from "../components/NoActive";
+import useRedirectValidate from "../hooks/useRedirectValidate";
 
 function Friends() {
   const authContext = useContext(AuthContext);
@@ -23,6 +24,8 @@ function Friends() {
   const [loadingstatus, setLoadingStatus] = useState("");
   const [loadingSearch, setLoadingSearch] = useState("hide");
   const [activeShow, setActiveShow] = useState("hide");
+
+  useRedirectValidate(authContext.isAuth);
 
   // set visibility of requests coming in
   useEffect(() => {

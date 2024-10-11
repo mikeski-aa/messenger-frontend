@@ -17,11 +17,14 @@ import person from "../assets/person.svg";
 import groupicon from "../assets/groupicon.svg";
 import envelope from "../assets/envelope.svg";
 import logout from "../assets/logout.svg";
+import useRedirectValidate from "../hooks/useRedirectValidate";
 
 function Layout({ children }) {
   const authContext = useContext(AuthContext);
   const [navVis, setNavVis] = useState("show");
   const navigate = useNavigate();
+
+  useRedirectValidate(authContext.isAuth);
 
   const handleShowClick = () => {
     if (navVis === "show") {
@@ -60,6 +63,10 @@ function Layout({ children }) {
     window.location.href === "http://localhost:5173/"
   ) {
     window.location.href = "/friends";
+  }
+
+  if (authContext.isAuth === false) {
+    return <div>Loading...</div>;
   }
 
   return (

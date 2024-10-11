@@ -27,15 +27,17 @@ function App() {
     status: "online",
     imageURL: "default",
   });
-  const [isAuth, setIsAuth] = useState("");
+  const [isAuth, setIsAuth] = useState(false);
   const [friends, setFriends] = useState([]);
   const [requests, setRequests] = useState([]);
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     const validate = async () => {
+      setLoading(true);
       const result = await validateUser();
       console.log(result);
-
+      setLoading(false);
       if (typeof result === "undefined") {
         console.log("USER IS NOT LOGGED IN! GO BACK");
         setIsAuth(false);
@@ -54,11 +56,7 @@ function App() {
   const router = createBrowserRouter([
     {
       path: "/",
-      element: (
-        <ProtectedRoute loggedIn={isAuth}>
-          <Layout />
-        </ProtectedRoute>
-      ),
+      element: <Layout />,
       children: [
         {
           path: "friends",
@@ -112,6 +110,7 @@ function App() {
           setFriends,
           requests,
           setRequests,
+          loading,
         }}
       >
         <RouterProvider router={router}></RouterProvider>
