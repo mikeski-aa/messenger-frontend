@@ -1,4 +1,4 @@
-import { LOCAL_URL } from "../../utils/url.const";
+import { LOCAL_URL } from "../../../utils/url.const";
 
 async function postNewMessage(convoid, authorid, authorname, message) {
   // const url = `http://localhost:3000/api/message?convoid=${convoid}&userid=${authorid}`;

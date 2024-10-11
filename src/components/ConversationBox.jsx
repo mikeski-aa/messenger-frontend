@@ -1,7 +1,8 @@
 import { useState, useEffect, useContext } from "react";
 import "../styles/conversationbox.css";
 import { v4 as uuidv4 } from "uuid";
-import postNewMessage from "../services/postNewMessage";
+// import postNewMessage from "../services/deprecated_convo_calls/postNewMessage";
+import { postNewMessage } from "../services/convoCalls";
 
 function ConversationBox(props) {
   const [newMessage, setNewMessage] = useState("");
