@@ -1,1 +1,1 @@
-export const LOCAL_URL = "http://localhost:3000/api/";
+export const LOCAL_URL = "https://dm-me-api.onrender.com/api/";
