@@ -56,7 +56,9 @@ function Login() {
       console.log(response);
 
       await updateUserStatus("online");
-      return navigate("/friends");
+      // navigate("/friends");
+      window.location.href = "/friends";
+      return;
     }
   };
 
